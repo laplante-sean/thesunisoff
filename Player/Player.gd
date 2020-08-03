@@ -2,8 +2,8 @@ extends KinematicBody2D
 class_name Player
 
 export(int) var ACCELERATION = 200
-export(int) var MAX_SPEED = 25
-export(int) var FRICTION = 175
+export(int) var MAX_SPEED = 45
+export(int) var FRICTION = 220
 
 enum {
 	MOVE,
