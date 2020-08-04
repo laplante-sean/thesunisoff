@@ -5,6 +5,7 @@
 
 [node name="TorchLight" type="Light2D"]
 texture = ExtResource( 1 )
+shadow_enabled = true
 shadow_filter = 3
 
 [node name="Torch" type="Sprite" parent="."]
