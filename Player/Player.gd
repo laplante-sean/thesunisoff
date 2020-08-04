@@ -11,13 +11,14 @@ enum {
 }
 
 var state = MOVE
-var punch_animation = "Punch"
+var punch_animation = "Punch" setget set_punch_animation, get_punch_animation
 var velocity = Vector2.ZERO
 
 var MainInstances = ResourceLoader.load("res://maininstances/MainInstances.tres")
 
 onready var animationPlayer = $AnimationPlayer
 onready var animationTree = $AnimationTree
+onready var doublePunchTimer = $DoublePunchTimer
 onready var animationState = animationTree.get("parameters/playback")
 
 
@@ -30,7 +31,7 @@ func _physics_process(delta):
 		MOVE:
 			move_state(delta)
 		PUNCH:
-			attack_state()
+			punch_state()
 
 
 func move_state(delta):
@@ -51,20 +52,29 @@ func move_state(delta):
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 
 	if Input.is_action_just_pressed("punch"):
-		punch_animation = "Punch"
+		animationState.travel(self.punch_animation)
 		state = PUNCH
 
 	move()
 
 
-func attack_state():
-	velocity = Vector2.ZERO
-	
-	if Input.is_action_just_pressed("punch"):
-		# They pressed attack again
-		punch_animation = "PunchAlt"
+func set_punch_animation(value):
+	punch_animation = value
 
-	animationState.travel(punch_animation)
+
+func get_punch_animation():
+	# Auto-alternate the punching animation
+	var ret = punch_animation
+	if ret == "Punch":
+		punch_animation = "PunchAlt"
+	else:
+		punch_animation = "Punch"
+	return ret
+
+
+func punch_state():
+	velocity = Vector2.ZERO
+
 
 func attack_animation_finished():
 	state = MOVE
