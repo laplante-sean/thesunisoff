@@ -37,6 +37,8 @@ position = Vector2( 16, 59 )
 
 [node name="AnimationTree" parent="YSortTileMap/Player" index="3"]
 parameters/playback = SubResource( 1 )
+parameters/Punch/blend_position = Vector2( 0, 0 )
+parameters/PunchAlt/blend_position = Vector2( 0, 0 )
 
 [node name="CameraFollow" parent="YSortTileMap/Player" index="4"]
 remote_path = NodePath("../../../Camera2D")
@@ -49,9 +51,6 @@ position = Vector2( 28, 4 )
 
 [node name="TorchLight2" parent="." instance=ExtResource( 4 )]
 position = Vector2( 60, 4 )
-
-[node name="TorchLight4" parent="." instance=ExtResource( 4 )]
-position = Vector2( 40, 68 )
 
 [node name="TorchLight5" parent="." instance=ExtResource( 4 )]
 position = Vector2( 60, 116 )

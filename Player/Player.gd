@@ -7,10 +7,11 @@ export(int) var FRICTION = 220
 
 enum {
 	MOVE,
-	ATTACK
+	PUNCH
 }
 
 var state = MOVE
+var punch_animation = "Punch"
 var velocity = Vector2.ZERO
 
 var MainInstances = ResourceLoader.load("res://maininstances/MainInstances.tres")
@@ -28,8 +29,8 @@ func _physics_process(delta):
 	match state:
 		MOVE:
 			move_state(delta)
-		ATTACK:
-			pass  # TODO
+		PUNCH:
+			attack_state()
 
 
 func move_state(delta):
@@ -41,13 +42,32 @@ func move_state(delta):
 	if input_vector != Vector2.ZERO:
 		animationTree.set("parameters/Idle/blend_position", input_vector)
 		animationTree.set("parameters/Run/blend_position", input_vector)
+		animationTree.set("parameters/Punch/blend_position", input_vector)
+		animationTree.set("parameters/PunchAlt/blend_position", input_vector)
 		animationState.travel("Run")
 		velocity = velocity.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta)
 	else:
 		animationState.travel("Idle")
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 
+	if Input.is_action_just_pressed("punch"):
+		punch_animation = "Punch"
+		state = PUNCH
+
 	move()
+
+
+func attack_state():
+	velocity = Vector2.ZERO
+	
+	if Input.is_action_just_pressed("punch"):
+		# They pressed attack again
+		punch_animation = "PunchAlt"
+
+	animationState.travel(punch_animation)
+
+func attack_animation_finished():
+	state = MOVE
 
 
 func move():
