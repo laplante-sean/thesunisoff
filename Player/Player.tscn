@@ -1,8 +1,7 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Player/player.png" type="Texture" id=2]
-[ext_resource path="res://Effects/TorchLight.tscn" type="PackedScene" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 2.0
@@ -236,10 +235,5 @@ parameters/Run/blend_position = Vector2( -0.0250458, 0.874477 )
 
 [node name="CameraFollow" type="RemoteTransform2D" parent="."]
 
-[node name="TorchLight" parent="." instance=ExtResource( 3 )]
-position = Vector2( 0, 2 )
-
-[node name="Torch" parent="TorchLight" index="0"]
-visible = false
-
-[editable path="TorchLight"]
+[node name="LightFollow" type="RemoteTransform2D" parent="."]
+position = Vector2( 0, -4 )
