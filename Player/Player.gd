@@ -7,7 +7,7 @@ export(int) var FRICTION = 220
 
 enum {
 	MOVE,
-	PUNCH
+	ATTACK
 }
 
 var state = MOVE
@@ -30,8 +30,8 @@ func _physics_process(delta):
 	match state:
 		MOVE:
 			move_state(delta)
-		PUNCH:
-			punch_state()
+		ATTACK:
+			attack_state()
 
 
 func move_state(delta):
@@ -45,6 +45,7 @@ func move_state(delta):
 		animationTree.set("parameters/Run/blend_position", input_vector)
 		animationTree.set("parameters/Punch/blend_position", input_vector)
 		animationTree.set("parameters/PunchAlt/blend_position", input_vector)
+		animationTree.set("parameters/SpellCast360/blend_position", input_vector)
 		animationState.travel("Run")
 		velocity = velocity.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta)
 	else:
@@ -53,7 +54,13 @@ func move_state(delta):
 
 	if Input.is_action_just_pressed("punch"):
 		animationState.travel(self.punch_animation)
-		state = PUNCH
+		state = ATTACK
+	elif Input.is_action_just_pressed("cast_spell"):
+		animationState.travel(self.punch_animation)
+		state = ATTACK
+	elif Input.is_action_just_pressed("cast_spell_360"):
+		animationState.travel("SpellCast360")
+		state = ATTACK
 
 	move()
 
@@ -72,7 +79,7 @@ func get_punch_animation():
 	return ret
 
 
-func punch_state():
+func attack_state():
 	velocity = Vector2.ZERO
 
 
