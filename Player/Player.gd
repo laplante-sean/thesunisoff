@@ -46,6 +46,7 @@ func move_state(delta):
 		animationTree.set("parameters/Punch/blend_position", input_vector)
 		animationTree.set("parameters/PunchAlt/blend_position", input_vector)
 		animationTree.set("parameters/SpellCast360/blend_position", input_vector)
+		animationTree.set("parameters/Die/blend_position", input_vector)
 		animationState.travel("Run")
 		velocity = velocity.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta)
 	else:
@@ -85,6 +86,10 @@ func attack_state():
 
 func attack_animation_finished():
 	state = MOVE
+
+
+func death_animation_finished():
+	pass
 
 
 func move():
