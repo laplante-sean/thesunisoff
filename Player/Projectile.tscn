@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Overlap/Hitbox.tscn" type="PackedScene" id=1]
+
+[node name="Projectile" type="Node2D"]
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+
+[node name="Hitbox" parent="." instance=ExtResource( 1 )]
+
+[editable path="Hitbox"]

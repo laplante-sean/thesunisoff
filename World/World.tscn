@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://World/World.gd" type="Script" id=1]
 [ext_resource path="res://World/YSortTileMap.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Enemies/Ghost.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Enemies/Crab.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Enemies/Bat.tscn" type="PackedScene" id=8]
+[ext_resource path="res://NPC/Bird.tscn" type="PackedScene" id=9]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=1]
 
@@ -42,9 +43,6 @@ position = Vector2( 16, 59 )
 
 [node name="AnimationTree" parent="YSortTileMap/Player" index="5"]
 parameters/playback = SubResource( 1 )
-parameters/Die/blend_position = Vector2( 0, 0 )
-parameters/Punch/blend_position = Vector2( 0, 0 )
-parameters/PunchAlt/blend_position = Vector2( 0, 0 )
 
 [node name="CameraFollow" parent="YSortTileMap/Player" index="6"]
 remote_path = NodePath("../../../Camera2D")
@@ -141,6 +139,260 @@ position = Vector2( 60, 4 )
 
 [node name="TorchLight5" parent="." instance=ExtResource( 4 )]
 position = Vector2( 60, 116 )
+
+[node name="TheBirds" type="Node" parent="."]
+
+[node name="Bird" parent="TheBirds" instance=ExtResource( 9 )]
+position = Vector2( 59, 41 )
+collision_layer = 1
+MAX_SPEED = 20
+FLIGHT_SPEED = 85
+
+[node name="Bird2" parent="TheBirds" instance=ExtResource( 9 )]
+position = Vector2( 58, 44 )
+collision_layer = 1
+
+[node name="Bird3" parent="TheBirds" instance=ExtResource( 9 )]
+position = Vector2( 54, 41 )
+collision_layer = 1
+
+[node name="Bird4" parent="TheBirds" instance=ExtResource( 9 )]
+position = Vector2( 57, 39 )
+collision_layer = 1
+
+[node name="Bird5" parent="TheBirds" instance=ExtResource( 9 )]
+position = Vector2( 63, 106 )
+collision_layer = 1
+MAX_SPEED = 20
+FLIGHT_SPEED = 85
+
+[node name="Bird6" parent="TheBirds" instance=ExtResource( 9 )]
+position = Vector2( 62, 109 )
+collision_layer = 1
+
+[node name="Bird7" parent="TheBirds" instance=ExtResource( 9 )]
+position = Vector2( 58, 106 )
+collision_layer = 1
+
+[node name="Bird8" parent="TheBirds" instance=ExtResource( 9 )]
+position = Vector2( 61, 104 )
+collision_layer = 1
+
+[node name="Bird53" parent="TheBirds" instance=ExtResource( 9 )]
+position = Vector2( 56, 130 )
+collision_layer = 1
+MAX_SPEED = 20
+FLIGHT_SPEED = 85
+
+[node name="Bird54" parent="TheBirds" instance=ExtResource( 9 )]
+position = Vector2( 55, 133 )
+collision_layer = 1
+
+[node name="Bird55" parent="TheBirds" instance=ExtResource( 9 )]
+position = Vector2( 51, 130 )
+collision_layer = 1
+
+[node name="Bird56" parent="TheBirds" instance=ExtResource( 9 )]
+position = Vector2( 54, 128 )
+collision_layer = 1
+
+[node name="Bird9" parent="TheBirds" instance=ExtResource( 9 )]
+position = Vector2( -7, 130 )
+collision_layer = 1
+MAX_SPEED = 20
+FLIGHT_SPEED = 85
+
+[node name="Bird10" parent="TheBirds" instance=ExtResource( 9 )]
+position = Vector2( -8, 133 )
+collision_layer = 1
+
+[node name="Bird11" parent="TheBirds" instance=ExtResource( 9 )]
+position = Vector2( -12, 130 )
+collision_layer = 1
+
+[node name="Bird12" parent="TheBirds" instance=ExtResource( 9 )]
+position = Vector2( -9, 128 )
+collision_layer = 1
+
+[node name="Bird13" parent="TheBirds" instance=ExtResource( 9 )]
+position = Vector2( -63, 95 )
+collision_layer = 1
+MAX_SPEED = 20
+FLIGHT_SPEED = 85
+
+[node name="Bird14" parent="TheBirds" instance=ExtResource( 9 )]
+position = Vector2( -64, 98 )
+collision_layer = 1
+
+[node name="Bird15" parent="TheBirds" instance=ExtResource( 9 )]
+position = Vector2( -68, 95 )
+collision_layer = 1
+
+[node name="Bird16" parent="TheBirds" instance=ExtResource( 9 )]
+position = Vector2( -65, 93 )
+collision_layer = 1
+
+[node name="Bird29" parent="TheBirds" instance=ExtResource( 9 )]
+position = Vector2( 113, 37 )
+collision_layer = 1
+MAX_SPEED = 20
+FLIGHT_SPEED = 85
+
+[node name="Bird30" parent="TheBirds" instance=ExtResource( 9 )]
+position = Vector2( 112, 40 )
+collision_layer = 1
+
+[node name="Bird31" parent="TheBirds" instance=ExtResource( 9 )]
+position = Vector2( 108, 37 )
+collision_layer = 1
+
+[node name="Bird32" parent="TheBirds" instance=ExtResource( 9 )]
+position = Vector2( 111, 35 )
+collision_layer = 1
+
+[node name="Bird33" parent="TheBirds" instance=ExtResource( 9 )]
+position = Vector2( 107, 41 )
+collision_layer = 1
+MAX_SPEED = 20
+FLIGHT_SPEED = 85
+
+[node name="Bird34" parent="TheBirds" instance=ExtResource( 9 )]
+position = Vector2( 106, 44 )
+collision_layer = 1
+
+[node name="Bird35" parent="TheBirds" instance=ExtResource( 9 )]
+position = Vector2( 102, 41 )
+collision_layer = 1
+
+[node name="Bird36" parent="TheBirds" instance=ExtResource( 9 )]
+position = Vector2( 105, 39 )
+collision_layer = 1
+
+[node name="Bird37" parent="TheBirds" instance=ExtResource( 9 )]
+position = Vector2( 105, 33 )
+collision_layer = 1
+MAX_SPEED = 20
+FLIGHT_SPEED = 85
+
+[node name="Bird38" parent="TheBirds" instance=ExtResource( 9 )]
+position = Vector2( 104, 36 )
+collision_layer = 1
+
+[node name="Bird39" parent="TheBirds" instance=ExtResource( 9 )]
+position = Vector2( 100, 33 )
+collision_layer = 1
+
+[node name="Bird40" parent="TheBirds" instance=ExtResource( 9 )]
+position = Vector2( 103, 31 )
+collision_layer = 1
+
+[node name="Bird41" parent="TheBirds" instance=ExtResource( 9 )]
+position = Vector2( 132, -58 )
+collision_layer = 1
+MAX_SPEED = 20
+FLIGHT_SPEED = 85
+
+[node name="Bird42" parent="TheBirds" instance=ExtResource( 9 )]
+position = Vector2( 131, -55 )
+collision_layer = 1
+
+[node name="Bird43" parent="TheBirds" instance=ExtResource( 9 )]
+position = Vector2( 127, -58 )
+collision_layer = 1
+
+[node name="Bird44" parent="TheBirds" instance=ExtResource( 9 )]
+position = Vector2( 130, -60 )
+collision_layer = 1
+
+[node name="Bird45" parent="TheBirds" instance=ExtResource( 9 )]
+position = Vector2( 126, -54 )
+collision_layer = 1
+MAX_SPEED = 20
+FLIGHT_SPEED = 85
+
+[node name="Bird46" parent="TheBirds" instance=ExtResource( 9 )]
+position = Vector2( 125, -51 )
+collision_layer = 1
+
+[node name="Bird47" parent="TheBirds" instance=ExtResource( 9 )]
+position = Vector2( 121, -54 )
+collision_layer = 1
+
+[node name="Bird48" parent="TheBirds" instance=ExtResource( 9 )]
+position = Vector2( 124, -56 )
+collision_layer = 1
+
+[node name="Bird49" parent="TheBirds" instance=ExtResource( 9 )]
+position = Vector2( 124, -62 )
+collision_layer = 1
+MAX_SPEED = 20
+FLIGHT_SPEED = 85
+
+[node name="Bird50" parent="TheBirds" instance=ExtResource( 9 )]
+position = Vector2( 123, -59 )
+collision_layer = 1
+
+[node name="Bird51" parent="TheBirds" instance=ExtResource( 9 )]
+position = Vector2( 119, -62 )
+collision_layer = 1
+
+[node name="Bird52" parent="TheBirds" instance=ExtResource( 9 )]
+position = Vector2( 122, -64 )
+collision_layer = 1
+
+[node name="Bird17" parent="TheBirds" instance=ExtResource( 9 )]
+position = Vector2( -91, 128 )
+collision_layer = 1
+MAX_SPEED = 20
+FLIGHT_SPEED = 85
+
+[node name="Bird18" parent="TheBirds" instance=ExtResource( 9 )]
+position = Vector2( -92, 131 )
+collision_layer = 1
+
+[node name="Bird19" parent="TheBirds" instance=ExtResource( 9 )]
+position = Vector2( -96, 128 )
+collision_layer = 1
+
+[node name="Bird20" parent="TheBirds" instance=ExtResource( 9 )]
+position = Vector2( -93, 126 )
+collision_layer = 1
+
+[node name="Bird21" parent="TheBirds" instance=ExtResource( 9 )]
+position = Vector2( -71, 144 )
+collision_layer = 1
+MAX_SPEED = 20
+FLIGHT_SPEED = 85
+
+[node name="Bird22" parent="TheBirds" instance=ExtResource( 9 )]
+position = Vector2( -72, 147 )
+collision_layer = 1
+
+[node name="Bird23" parent="TheBirds" instance=ExtResource( 9 )]
+position = Vector2( -76, 144 )
+collision_layer = 1
+
+[node name="Bird24" parent="TheBirds" instance=ExtResource( 9 )]
+position = Vector2( -73, 142 )
+collision_layer = 1
+
+[node name="Bird25" parent="TheBirds" instance=ExtResource( 9 )]
+position = Vector2( -89, 141 )
+collision_layer = 1
+MAX_SPEED = 20
+FLIGHT_SPEED = 85
+
+[node name="Bird26" parent="TheBirds" instance=ExtResource( 9 )]
+position = Vector2( -90, 144 )
+collision_layer = 1
+
+[node name="Bird27" parent="TheBirds" instance=ExtResource( 9 )]
+position = Vector2( -94, 141 )
+collision_layer = 1
+
+[node name="Bird28" parent="TheBirds" instance=ExtResource( 9 )]
+position = Vector2( -91, 139 )
+collision_layer = 1
 
 [editable path="PlayerTorch"]
 

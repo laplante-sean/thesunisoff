@@ -8,7 +8,8 @@ export(int) var WANDER_TARGET_RANGE = 4
 
 enum {
 	IDLE,
-	WANDER
+	WANDER,
+	PLAYER_DETECTED
 }
 
 var velocity = Vector2.ZERO
@@ -24,12 +25,13 @@ func _ready():
 
 
 func _physics_process(delta):
-
 	match state:
 		IDLE:
 			velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
+			seek_player()
 			check_and_update_state()
 		WANDER:
+			seek_player()
 			check_and_update_state()
 			move_toward_position(wanderController.target_position, delta)
 			sprite.flip_h = velocity.x < 0
@@ -37,8 +39,23 @@ func _physics_process(delta):
 			if global_position.distance_to(wanderController.target_position) <= WANDER_TARGET_RANGE:
 				state = pick_random_state([IDLE, WANDER])
 				wanderController.start_wander_timer(rand_range(1, 3))
+		PLAYER_DETECTED:
+			player_detected(delta)
+			sprite.flip_h = velocity.x < 0
 
 	velocity = move_and_slide(velocity)
+
+
+func player_detected(_delta):
+	# This method should be overidden to customize NPC behavior when near
+	# the player
+	var player = playerDetectionZone.player
+	if player == null:
+		state = IDLE
+
+func seek_player():
+	if playerDetectionZone.can_see_player():
+		state = PLAYER_DETECTED
 
 
 func move_toward_position(pos, delta):

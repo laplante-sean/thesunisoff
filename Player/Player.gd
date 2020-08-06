@@ -22,14 +22,14 @@ onready var hurtbox = $Hurtbox
 onready var animationPlayer = $AnimationPlayer
 onready var blinkAnimationPlayer = $BlinkAnimationPlayer
 onready var animationTree = $AnimationTree
-onready var spellHitbox = $HitboxPivot/SpellHitbox
+onready var spellKnockbackHitbox = $HitboxPivot/SpellKnockbackHitbox
 onready var animationState = animationTree.get("parameters/playback")
 
 
 func _ready():
 	stats.connect("no_health", self, "_on_PlayerStats_no_health")
 	animationTree.active = true
-	spellHitbox.knockback_vector = Vector2.DOWN
+	spellKnockbackHitbox.knockback_vector = Vector2.DOWN
 
 
 func _physics_process(delta):
@@ -47,7 +47,7 @@ func move_state(delta):
 	input_vector = input_vector.normalized()
 
 	if input_vector != Vector2.ZERO:
-		spellHitbox.knockback_vector = input_vector
+		spellKnockbackHitbox.knockback_vector = input_vector
 		animationTree.set("parameters/Idle/blend_position", input_vector)
 		animationTree.set("parameters/Run/blend_position", input_vector)
 		animationTree.set("parameters/Spell/blend_position", input_vector)
@@ -65,6 +65,8 @@ func move_state(delta):
 	elif Input.is_action_just_pressed("cast_spell_360"):
 		animationState.travel("SpellCast360")
 		state = ATTACK
+	elif Input.is_action_just_pressed("throw_potion"):
+		pass
 
 	move()
 

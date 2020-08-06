@@ -79,7 +79,7 @@ tracks/0/keys = {
 "values": [ 11, 12, 13, 14, 15 ]
 }
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=7]
 length = 0.6
 loop = true
 tracks/0/type = "value"
@@ -95,7 +95,7 @@ tracks/0/keys = {
 "values": [ 5, 6, 7, 8, 9, 10 ]
 }
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=8]
 length = 0.6
 loop = true
 tracks/0/type = "value"
@@ -111,7 +111,7 @@ tracks/0/keys = {
 "values": [ 32, 33, 34, 35, 36, 37 ]
 }
 
-[sub_resource type="Animation" id=17]
+[sub_resource type="Animation" id=9]
 length = 0.6
 loop = true
 tracks/0/type = "value"
@@ -127,7 +127,7 @@ tracks/0/keys = {
 "values": [ 38, 39, 40, 41, 42, 43 ]
 }
 
-[sub_resource type="Animation" id=18]
+[sub_resource type="Animation" id=10]
 length = 0.6
 loop = true
 tracks/0/type = "value"
@@ -143,7 +143,7 @@ tracks/0/keys = {
 "values": [ 16, 17, 18, 19, 20, 21 ]
 }
 
-[sub_resource type="Animation" id=19]
+[sub_resource type="Animation" id=11]
 length = 0.7
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -172,7 +172,7 @@ tracks/1/keys = {
 } ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Spell360Hitbox/Collider:disabled")
+tracks/2/path = NodePath("Spell360KnockbackHitbox/Collider:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -190,13 +190,13 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0.1, 0.6 ),
+"times": PoolRealArray( 0, 0.6 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=20]
+[sub_resource type="Animation" id=12]
 length = 0.7
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -225,7 +225,7 @@ tracks/1/keys = {
 } ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Spell360Hitbox/Collider:disabled")
+tracks/2/path = NodePath("Spell360KnockbackHitbox/Collider:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -243,14 +243,13 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0.1, 0.6 ),
+"times": PoolRealArray( 0, 0.6 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=7]
-resource_name = "SpellDown"
+[sub_resource type="Animation" id=13]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -291,7 +290,7 @@ tracks/2/keys = {
 "values": [ 0.0 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("HitboxPivot/SpellHitbox/Collider:disabled")
+tracks/3/path = NodePath("HitboxPivot/SpellKnockbackHitbox/Collider:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -309,14 +308,13 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0.1, 0.4 ),
+"times": PoolRealArray( 0, 0.4 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=8]
-resource_name = "SpellDownAlt"
+[sub_resource type="Animation" id=14]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -357,7 +355,7 @@ tracks/2/keys = {
 "values": [ 0.0 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("HitboxPivot/SpellHitbox/Collider:disabled")
+tracks/3/path = NodePath("HitboxPivot/SpellKnockbackHitbox/Collider:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -375,14 +373,13 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0.1, 0.4 ),
+"times": PoolRealArray( 0, 0.4 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=9]
-resource_name = "SpellLeft"
+[sub_resource type="Animation" id=15]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -423,7 +420,7 @@ tracks/2/keys = {
 "values": [ 90.0 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("HitboxPivot/SpellHitbox/Collider:disabled")
+tracks/3/path = NodePath("HitboxPivot/SpellKnockbackHitbox/Collider:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -441,14 +438,13 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0.1, 0.4 ),
+"times": PoolRealArray( 0, 0.4 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=10]
-resource_name = "SpellLeftAlt"
+[sub_resource type="Animation" id=16]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -489,7 +485,7 @@ tracks/2/keys = {
 "values": [ 90.0 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("HitboxPivot/SpellHitbox/Collider:disabled")
+tracks/3/path = NodePath("HitboxPivot/SpellKnockbackHitbox/Collider:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -507,14 +503,13 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0.1, 0.4 ),
+"times": PoolRealArray( 0, 0.4 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=11]
-resource_name = "SpellRight"
+[sub_resource type="Animation" id=17]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -555,7 +550,7 @@ tracks/2/keys = {
 "values": [ -90.0 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("HitboxPivot/SpellHitbox/Collider:disabled")
+tracks/3/path = NodePath("HitboxPivot/SpellKnockbackHitbox/Collider:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -573,14 +568,13 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0.1, 0.4 ),
+"times": PoolRealArray( 0, 0.4 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=12]
-resource_name = "SpellRightAlt"
+[sub_resource type="Animation" id=18]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -621,7 +615,7 @@ tracks/2/keys = {
 "values": [ -90.0 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("HitboxPivot/SpellHitbox/Collider:disabled")
+tracks/3/path = NodePath("HitboxPivot/SpellKnockbackHitbox/Collider:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -639,14 +633,13 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0.1, 0.4 ),
+"times": PoolRealArray( 0, 0.4 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=13]
-resource_name = "SpellUp"
+[sub_resource type="Animation" id=19]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -687,7 +680,7 @@ tracks/2/keys = {
 "values": [ 180.0 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("HitboxPivot/SpellHitbox/Collider:disabled")
+tracks/3/path = NodePath("HitboxPivot/SpellKnockbackHitbox/Collider:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -705,14 +698,13 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0.1, 0.4 ),
+"times": PoolRealArray( 0, 0.4 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=14]
-resource_name = "SpellUpAlt"
+[sub_resource type="Animation" id=20]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -753,7 +745,7 @@ tracks/2/keys = {
 "values": [ 180.0 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("HitboxPivot/SpellHitbox/Collider:disabled")
+tracks/3/path = NodePath("HitboxPivot/SpellKnockbackHitbox/Collider:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -771,7 +763,7 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0.1, 0.4 ),
+"times": PoolRealArray( 0, 0.4 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
@@ -833,74 +825,74 @@ min_space = Vector2( -1, -1.1 )
 max_space = Vector2( 1, 1.1 )
 blend_mode = 1
 
-[sub_resource type="AnimationNodeAnimation" id=38]
+[sub_resource type="AnimationNodeAnimation" id=28]
 animation = "RunDown"
 
-[sub_resource type="AnimationNodeAnimation" id=39]
+[sub_resource type="AnimationNodeAnimation" id=29]
 animation = "RunRight"
 
-[sub_resource type="AnimationNodeAnimation" id=40]
+[sub_resource type="AnimationNodeAnimation" id=30]
 animation = "RunUp"
 
-[sub_resource type="AnimationNodeAnimation" id=41]
-animation = "RunLeft"
-
-[sub_resource type="AnimationNodeBlendSpace2D" id=42]
-blend_point_0/node = SubResource( 38 )
-blend_point_0/pos = Vector2( 0, 1 )
-blend_point_1/node = SubResource( 39 )
-blend_point_1/pos = Vector2( 1, 0 )
-blend_point_2/node = SubResource( 40 )
-blend_point_2/pos = Vector2( 0, -1 )
-blend_point_3/node = SubResource( 41 )
-blend_point_3/pos = Vector2( -1, 0 )
-blend_mode = 1
-
-[sub_resource type="AnimationNodeAnimation" id=28]
-animation = "SpellRight"
-
-[sub_resource type="AnimationNodeAnimation" id=29]
-animation = "SpellLeft"
-
-[sub_resource type="AnimationNodeAnimation" id=30]
-animation = "SpellDown"
-
 [sub_resource type="AnimationNodeAnimation" id=31]
-animation = "SpellUp"
+animation = "RunLeft"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id=32]
 blend_point_0/node = SubResource( 28 )
-blend_point_0/pos = Vector2( 1, 0 )
+blend_point_0/pos = Vector2( 0, 1 )
 blend_point_1/node = SubResource( 29 )
-blend_point_1/pos = Vector2( -1, 0 )
+blend_point_1/pos = Vector2( 1, 0 )
 blend_point_2/node = SubResource( 30 )
-blend_point_2/pos = Vector2( 0, 1.1 )
+blend_point_2/pos = Vector2( 0, -1 )
 blend_point_3/node = SubResource( 31 )
+blend_point_3/pos = Vector2( -1, 0 )
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id=33]
+animation = "SpellRight"
+
+[sub_resource type="AnimationNodeAnimation" id=34]
+animation = "SpellLeft"
+
+[sub_resource type="AnimationNodeAnimation" id=35]
+animation = "SpellDown"
+
+[sub_resource type="AnimationNodeAnimation" id=36]
+animation = "SpellUp"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=37]
+blend_point_0/node = SubResource( 33 )
+blend_point_0/pos = Vector2( 1, 0 )
+blend_point_1/node = SubResource( 34 )
+blend_point_1/pos = Vector2( -1, 0 )
+blend_point_2/node = SubResource( 35 )
+blend_point_2/pos = Vector2( 0, 1.1 )
+blend_point_3/node = SubResource( 36 )
 blend_point_3/pos = Vector2( 0, -1.1 )
 min_space = Vector2( -1, -1.1 )
 max_space = Vector2( 1, 1.1 )
 blend_mode = 1
 
-[sub_resource type="AnimationNodeAnimation" id=33]
+[sub_resource type="AnimationNodeAnimation" id=38]
 animation = "SpellLeftAlt"
 
-[sub_resource type="AnimationNodeAnimation" id=34]
+[sub_resource type="AnimationNodeAnimation" id=39]
 animation = "SpellDownAlt"
 
-[sub_resource type="AnimationNodeAnimation" id=35]
+[sub_resource type="AnimationNodeAnimation" id=40]
 animation = "SpellUpAlt"
 
-[sub_resource type="AnimationNodeAnimation" id=36]
+[sub_resource type="AnimationNodeAnimation" id=41]
 animation = "SpellRightAlt"
 
-[sub_resource type="AnimationNodeBlendSpace2D" id=37]
-blend_point_0/node = SubResource( 33 )
+[sub_resource type="AnimationNodeBlendSpace2D" id=42]
+blend_point_0/node = SubResource( 38 )
 blend_point_0/pos = Vector2( -1, 0 )
-blend_point_1/node = SubResource( 34 )
+blend_point_1/node = SubResource( 39 )
 blend_point_1/pos = Vector2( 0, 1.1 )
-blend_point_2/node = SubResource( 35 )
+blend_point_2/node = SubResource( 40 )
 blend_point_2/pos = Vector2( 0, -1.1 )
-blend_point_3/node = SubResource( 36 )
+blend_point_3/node = SubResource( 41 )
 blend_point_3/pos = Vector2( 1, 0 )
 min_space = Vector2( -1, -1.1 )
 max_space = Vector2( 1, 1.1 )
@@ -950,11 +942,11 @@ blend_mode = 1
 [sub_resource type="AnimationNodeStateMachine" id=56]
 states/Idle/node = SubResource( 27 )
 states/Idle/position = Vector2( 510, 135 )
-states/Run/node = SubResource( 42 )
+states/Run/node = SubResource( 32 )
 states/Run/position = Vector2( 775, 135 )
-states/Spell/node = SubResource( 32 )
+states/Spell/node = SubResource( 37 )
 states/Spell/position = Vector2( 327, 241 )
-states/SpellAlt/node = SubResource( 37 )
+states/SpellAlt/node = SubResource( 42 )
 states/SpellAlt/position = Vector2( 695, 241 )
 states/SpellCast360/node = SubResource( 47 )
 states/SpellCast360/position = Vector2( 510, 8 )
@@ -964,14 +956,14 @@ graph_offset = Vector2( -169, -72 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=57]
 
-[sub_resource type="CapsuleShape2D" id=60]
+[sub_resource type="CapsuleShape2D" id=58]
 radius = 4.0
 height = 6.0
 
-[sub_resource type="CircleShape2D" id=61]
+[sub_resource type="CircleShape2D" id=59]
 radius = 14.0
 
-[sub_resource type="CapsuleShape2D" id=59]
+[sub_resource type="CapsuleShape2D" id=60]
 radius = 1.0
 height = 2.0
 
@@ -988,7 +980,6 @@ texture = ExtResource( 3 )
 material = SubResource( 1 )
 texture = ExtResource( 2 )
 hframes = 90
-frame = 4
 
 [node name="Collider" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 2 )
@@ -999,20 +990,20 @@ anims/IdleDown = SubResource( 3 )
 anims/IdleLeft = SubResource( 4 )
 anims/IdleRight = SubResource( 5 )
 anims/IdleUp = SubResource( 6 )
-anims/RunDown = SubResource( 15 )
-anims/RunLeft = SubResource( 16 )
-anims/RunRight = SubResource( 17 )
-anims/RunUp = SubResource( 18 )
-anims/Spell360Down = SubResource( 19 )
-anims/Spell360Up = SubResource( 20 )
-anims/SpellDown = SubResource( 7 )
-anims/SpellDownAlt = SubResource( 8 )
-anims/SpellLeft = SubResource( 9 )
-anims/SpellLeftAlt = SubResource( 10 )
-anims/SpellRight = SubResource( 11 )
-anims/SpellRightAlt = SubResource( 12 )
-anims/SpellUp = SubResource( 13 )
-anims/SpellUpAlt = SubResource( 14 )
+anims/RunDown = SubResource( 7 )
+anims/RunLeft = SubResource( 8 )
+anims/RunRight = SubResource( 9 )
+anims/RunUp = SubResource( 10 )
+anims/Spell360Down = SubResource( 11 )
+anims/Spell360Up = SubResource( 12 )
+anims/SpellDown = SubResource( 13 )
+anims/SpellDownAlt = SubResource( 14 )
+anims/SpellLeft = SubResource( 15 )
+anims/SpellLeftAlt = SubResource( 16 )
+anims/SpellRight = SubResource( 17 )
+anims/SpellRightAlt = SubResource( 18 )
+anims/SpellUp = SubResource( 19 )
+anims/SpellUpAlt = SubResource( 20 )
 
 [node name="BlinkAnimationPlayer" type="AnimationPlayer" parent="."]
 anims/StartFlash = SubResource( 21 )
@@ -1035,38 +1026,38 @@ position = Vector2( 0, -4 )
 
 [node name="HitboxPivot" type="Position2D" parent="."]
 
-[node name="SpellHitbox" parent="HitboxPivot" instance=ExtResource( 6 )]
+[node name="SpellKnockbackHitbox" parent="HitboxPivot" instance=ExtResource( 6 )]
 collision_mask = 8
 
-[node name="Collider" parent="HitboxPivot/SpellHitbox" index="0"]
+[node name="Collider" parent="HitboxPivot/SpellKnockbackHitbox" index="0"]
 position = Vector2( 0, 7 )
 rotation = 1.5708
-shape = SubResource( 60 )
+shape = SubResource( 58 )
 disabled = true
 
-[node name="Spell360Hitbox" parent="." instance=ExtResource( 6 )]
+[node name="Spell360KnockbackHitbox" parent="." instance=ExtResource( 6 )]
 collision_mask = 8
 KNOCKBACK_FACTOR = 150
 
-[node name="Collider" parent="Spell360Hitbox" index="0"]
+[node name="Collider" parent="Spell360KnockbackHitbox" index="0"]
 modulate = Color( 1, 1, 1, 0.188235 )
-shape = SubResource( 61 )
+shape = SubResource( 59 )
+disabled = true
 
 [node name="Hurtbox" parent="." instance=ExtResource( 5 )]
 collision_layer = 4
 
 [node name="Collider" parent="Hurtbox" index="0"]
 position = Vector2( 0, 1 )
-shape = SubResource( 59 )
-disabled = true
+shape = SubResource( 60 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
 [connection signal="invincibility_ended" from="Hurtbox" to="." method="_on_Hurtbox_invincibility_ended"]
 [connection signal="invincibility_started" from="Hurtbox" to="." method="_on_Hurtbox_invincibility_started"]
 
-[editable path="HitboxPivot/SpellHitbox"]
+[editable path="HitboxPivot/SpellKnockbackHitbox"]
 
-[editable path="Spell360Hitbox"]
+[editable path="Spell360KnockbackHitbox"]
 
 [editable path="Hurtbox"]
