@@ -7,7 +7,7 @@
 [ext_resource path="res://Enemies/PlayerDetectionZone.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Overlap/SoftCollision.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Enemies/WanderController.tscn" type="PackedScene" id=7]
-[ext_resource path="res://WhiteColor.shader" type="Shader" id=8]
+[ext_resource path="res://Effects/WhiteColor.shader" type="Shader" id=8]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true

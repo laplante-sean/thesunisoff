@@ -1,6 +1,7 @@
 extends KinematicBody2D
+class_name Enemy
 
-const EnemyDeathEffect = preload("res://Effects/EnemyDeathEffect.tscn")
+const DeathEffect = preload("res://Effects/DeathEffect.tscn")
 
 export(int) var ACCELERATION = 100
 export(int) var MAX_SPEED = 30
@@ -95,9 +96,7 @@ func _on_Hurtbox_area_entered(area):
 
 func _on_Stats_no_health():
 	queue_free()
-	var enemyDeathEffect = EnemyDeathEffect.instance()
-	get_parent().add_child(enemyDeathEffect)
-	enemyDeathEffect.global_position = global_position
+	Utils.instance_scene_on_main(DeathEffect, global_position)
 
 
 func _on_Hurtbox_invincibility_started():

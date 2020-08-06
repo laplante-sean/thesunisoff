@@ -10,12 +10,24 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "KinematicBody2D",
+"class": "Enemy",
+"language": "GDScript",
+"path": "res://Enemies/Enemy.gd"
+}, {
+"base": "KinematicBody2D",
 "class": "Player",
 "language": "GDScript",
 "path": "res://Player/Player.gd"
+}, {
+"base": "Node",
+"class": "Stats",
+"language": "GDScript",
+"path": "res://Stats/Stats.gd"
 } ]
 _global_script_class_icons={
-"Player": ""
+"Enemy": "",
+"Player": "",
+"Stats": ""
 }
 
 [application]
@@ -27,6 +39,8 @@ config/icon="res://icon.png"
 [autoload]
 
 PlayerStats="*res://Player/PlayerStats.tscn"
+Utils="*res://Utils/Utils.gd"
+SaveAndLoad="*res://Utils/SaveAndLoad.gd"
 
 [display]
 

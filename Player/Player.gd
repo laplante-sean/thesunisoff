@@ -1,6 +1,8 @@
 extends KinematicBody2D
 class_name Player
 
+const DeathEffect = preload("res://Effects/DeathEffect.tscn")
+
 export(int) var ACCELERATION = 200
 export(int) var MAX_SPEED = 45
 export(int) var FRICTION = 220
@@ -8,8 +10,7 @@ export(float) var INVINCIBILITY_TIME = 0.6
 
 enum {
 	MOVE,
-	ATTACK,
-	DIE
+	ATTACK
 }
 
 var state = MOVE
@@ -37,8 +38,6 @@ func _physics_process(delta):
 			move_state(delta)
 		ATTACK:
 			velocity = Vector2.ZERO
-		DIE:
-			velocity = Vector2.ZERO
 
 
 func move_state(delta):
@@ -54,7 +53,6 @@ func move_state(delta):
 		animationTree.set("parameters/Punch/blend_position", input_vector)
 		animationTree.set("parameters/PunchAlt/blend_position", input_vector)
 		animationTree.set("parameters/SpellCast360/blend_position", input_vector)
-		animationTree.set("parameters/Die/blend_position", input_vector)
 		animationState.travel("Run")
 		velocity = velocity.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta)
 	else:
@@ -92,17 +90,13 @@ func attack_animation_finished():
 	state = MOVE
 
 
-func death_animation_finished():
-	queue_free()
-
-
 func move():
 	velocity = move_and_slide(velocity)
 
 
 func _on_PlayerStats_no_health():
-	animationState.travel("Die")
-	state = DIE
+	queue_free()
+	Utils.instance_scene_on_main(DeathEffect, global_position)
 
 
 func _on_Hurtbox_area_entered(area):

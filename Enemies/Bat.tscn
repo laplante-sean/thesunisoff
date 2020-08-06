@@ -2,8 +2,9 @@
 
 [ext_resource path="res://Enemies/Enemy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Enemies/bat.png" type="Texture" id=2]
-[ext_resource path="res://WhiteColor.shader" type="Shader" id=3]
+[ext_resource path="res://Effects/WhiteColor.shader" type="Shader" id=3]
 [ext_resource path="res://Effects/small-shadow.png" type="Texture" id=4]
+
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
