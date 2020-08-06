@@ -8,7 +8,6 @@ export(int) var MAX_SPEED = 30
 export(int) var FRICTION = 200
 export(int) var WANDER_TARGET_RANGE = 4
 export(int) var SOFT_COLLISION_PUSH_FACTOR = 200
-export(int) var KNOCKBACK_FACTOR = 120
 export(float) var INVICIBILITY_TIME = 0.4
 
 enum {
@@ -89,7 +88,14 @@ func pick_random_state(state_list):
 
 func _on_Hurtbox_area_entered(area):
 	stats.health -= area.damage
-	knockback = area.knockback_vector * KNOCKBACK_FACTOR
+	
+	if area is KnockbackHitbox:
+		if area.knockback_vector == Vector2.ZERO:
+			var knockback_vector = area.global_position.direction_to(global_position)
+			knockback = knockback_vector * area.KNOCKBACK_FACTOR
+		else:
+			knockback = area.knockback_vector * area.KNOCKBACK_FACTOR
+
 	hurtbox.create_hit_effect()
 	hurtbox.start_invincibility(INVICIBILITY_TIME)
 

@@ -5,7 +5,6 @@
 [ext_resource path="res://Effects/WhiteColor.shader" type="Shader" id=3]
 [ext_resource path="res://Effects/medium-shadow.png" type="Texture" id=4]
 
-
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
 shader = ExtResource( 3 )
@@ -67,7 +66,7 @@ radius = 2.0
 height = 2.0
 
 [sub_resource type="CircleShape2D" id=12]
-radius = 21.0
+radius = 24.0
 
 [sub_resource type="CircleShape2D" id=13]
 radius = 2.0

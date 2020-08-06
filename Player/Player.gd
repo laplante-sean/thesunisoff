@@ -14,7 +14,7 @@ enum {
 }
 
 var state = MOVE
-var punch_animation = "Punch" setget set_punch_animation, get_punch_animation
+var spell_animation = "Spell" setget set_spell_animation, get_spell_animation
 var velocity = Vector2.ZERO
 var stats = PlayerStats
 
@@ -22,14 +22,14 @@ onready var hurtbox = $Hurtbox
 onready var animationPlayer = $AnimationPlayer
 onready var blinkAnimationPlayer = $BlinkAnimationPlayer
 onready var animationTree = $AnimationTree
-onready var punchHitbox = $HitboxPivot/PunchHitbox
+onready var spellHitbox = $HitboxPivot/SpellHitbox
 onready var animationState = animationTree.get("parameters/playback")
 
 
 func _ready():
 	stats.connect("no_health", self, "_on_PlayerStats_no_health")
 	animationTree.active = true
-	punchHitbox.knockback_vector = Vector2.DOWN
+	spellHitbox.knockback_vector = Vector2.DOWN
 
 
 func _physics_process(delta):
@@ -47,11 +47,11 @@ func move_state(delta):
 	input_vector = input_vector.normalized()
 
 	if input_vector != Vector2.ZERO:
-		punchHitbox.knockback_vector = input_vector
+		spellHitbox.knockback_vector = input_vector
 		animationTree.set("parameters/Idle/blend_position", input_vector)
 		animationTree.set("parameters/Run/blend_position", input_vector)
-		animationTree.set("parameters/Punch/blend_position", input_vector)
-		animationTree.set("parameters/PunchAlt/blend_position", input_vector)
+		animationTree.set("parameters/Spell/blend_position", input_vector)
+		animationTree.set("parameters/SpellAlt/blend_position", input_vector)
 		animationTree.set("parameters/SpellCast360/blend_position", input_vector)
 		animationState.travel("Run")
 		velocity = velocity.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta)
@@ -59,11 +59,8 @@ func move_state(delta):
 		animationState.travel("Idle")
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 
-	if Input.is_action_just_pressed("punch"):
-		animationState.travel(self.punch_animation)
-		state = ATTACK
-	elif Input.is_action_just_pressed("cast_spell"):
-		animationState.travel(self.punch_animation)
+	if Input.is_action_just_pressed("cast_spell"):
+		animationState.travel(self.spell_animation)
 		state = ATTACK
 	elif Input.is_action_just_pressed("cast_spell_360"):
 		animationState.travel("SpellCast360")
@@ -72,17 +69,17 @@ func move_state(delta):
 	move()
 
 
-func set_punch_animation(value):
-	punch_animation = value
+func set_spell_animation(value):
+	spell_animation = value
 
 
-func get_punch_animation():
+func get_spell_animation():
 	# Auto-alternate the punching animation
-	var ret = punch_animation
-	if ret == "Punch":
-		punch_animation = "PunchAlt"
+	var ret = spell_animation
+	if ret == "Spell":
+		spell_animation = "SpellAlt"
 	else:
-		punch_animation = "Punch"
+		spell_animation = "Spell"
 	return ret
 
 

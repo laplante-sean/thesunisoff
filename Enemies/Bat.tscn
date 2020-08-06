@@ -5,7 +5,6 @@
 [ext_resource path="res://Effects/WhiteColor.shader" type="Shader" id=3]
 [ext_resource path="res://Effects/small-shadow.png" type="Texture" id=4]
 
-
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
 shader = ExtResource( 3 )
@@ -50,11 +49,12 @@ tracks/0/keys = {
 radius = 3.0
 height = 4.0
 
-[sub_resource type="CircleShape2D" id=8]
+[sub_resource type="CapsuleShape2D" id=11]
 radius = 2.0
+height = 2.0
 
 [sub_resource type="CircleShape2D" id=9]
-radius = 20.0
+radius = 32.0156
 
 [sub_resource type="CircleShape2D" id=10]
 radius = 2.0
@@ -70,6 +70,7 @@ material = SubResource( 1 )
 position = Vector2( 0, -4 )
 frames = SubResource( 4 )
 animation = "Animate"
+frame = 1
 playing = true
 
 [node name="Collider" parent="." index="2"]
@@ -84,8 +85,8 @@ position = Vector2( 0, -3 )
 shape = SubResource( 7 )
 
 [node name="Collider" parent="Hitbox" index="0"]
-position = Vector2( 0, -4 )
-shape = SubResource( 8 )
+position = Vector2( 0, -3 )
+shape = SubResource( 11 )
 
 [node name="Collider" parent="PlayerDetectionZone" index="0"]
 modulate = Color( 1, 1, 1, 0.113725 )
