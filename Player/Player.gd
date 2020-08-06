@@ -4,26 +4,31 @@ class_name Player
 export(int) var ACCELERATION = 200
 export(int) var MAX_SPEED = 45
 export(int) var FRICTION = 220
+export(float) var INVINCIBILITY_TIME = 0.6
 
 enum {
 	MOVE,
-	ATTACK
+	ATTACK,
+	DIE
 }
 
 var state = MOVE
 var punch_animation = "Punch" setget set_punch_animation, get_punch_animation
 var velocity = Vector2.ZERO
+var stats = PlayerStats
 
-var MainInstances = ResourceLoader.load("res://maininstances/MainInstances.tres")
-
+onready var hurtbox = $Hurtbox
 onready var animationPlayer = $AnimationPlayer
+onready var blinkAnimationPlayer = $BlinkAnimationPlayer
 onready var animationTree = $AnimationTree
-onready var doublePunchTimer = $DoublePunchTimer
+onready var punchHitbox = $HitboxPivot/PunchHitbox
 onready var animationState = animationTree.get("parameters/playback")
 
 
 func _ready():
+	stats.connect("no_health", self, "_on_PlayerStats_no_health")
 	animationTree.active = true
+	punchHitbox.knockback_vector = Vector2.DOWN
 
 
 func _physics_process(delta):
@@ -31,7 +36,9 @@ func _physics_process(delta):
 		MOVE:
 			move_state(delta)
 		ATTACK:
-			attack_state()
+			velocity = Vector2.ZERO
+		DIE:
+			velocity = Vector2.ZERO
 
 
 func move_state(delta):
@@ -41,6 +48,7 @@ func move_state(delta):
 	input_vector = input_vector.normalized()
 
 	if input_vector != Vector2.ZERO:
+		punchHitbox.knockback_vector = input_vector
 		animationTree.set("parameters/Idle/blend_position", input_vector)
 		animationTree.set("parameters/Run/blend_position", input_vector)
 		animationTree.set("parameters/Punch/blend_position", input_vector)
@@ -80,17 +88,32 @@ func get_punch_animation():
 	return ret
 
 
-func attack_state():
-	velocity = Vector2.ZERO
-
-
 func attack_animation_finished():
 	state = MOVE
 
 
 func death_animation_finished():
-	pass
+	queue_free()
 
 
 func move():
 	velocity = move_and_slide(velocity)
+
+
+func _on_PlayerStats_no_health():
+	animationState.travel("Die")
+	state = DIE
+
+
+func _on_Hurtbox_area_entered(area):
+	stats.health -= area.damage
+	hurtbox.start_invincibility(INVINCIBILITY_TIME)
+	hurtbox.create_hit_effect()
+
+
+func _on_Hurtbox_invincibility_started():
+	blinkAnimationPlayer.play("StartFlash")
+
+
+func _on_Hurtbox_invincibility_ended():
+	blinkAnimationPlayer.play("StopFlash")

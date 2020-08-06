@@ -1,13 +1,35 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Enemies/Enemy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Enemies/bat.png" type="Texture" id=2]
+[ext_resource path="res://WhiteColor.shader" type="Shader" id=3]
+[ext_resource path="res://Effects/small-shadow.png" type="Texture" id=4]
 
-[sub_resource type="CircleShape2D" id=1]
-radius = 3.0
+[sub_resource type="ShaderMaterial" id=4]
+resource_local_to_scene = true
+shader = ExtResource( 3 )
+shader_param/active = false
 
-[sub_resource type="Animation" id=2]
-resource_name = "Fly"
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 8, 8 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 2 )
+region = Rect2( 8, 0, 8, 8 )
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ SubResource( 2 ), SubResource( 3 ) ],
+"loop": true,
+"name": "Animate",
+"speed": 10.0
+} ]
+
+[sub_resource type="CircleShape2D" id=6]
+radius = 2.0
+
+[sub_resource type="Animation" id=7]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -23,15 +45,61 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3 ]
 }
 
+[sub_resource type="CapsuleShape2D" id=8]
+radius = 3.0
+height = 4.0
+
+[sub_resource type="CircleShape2D" id=9]
+radius = 2.0
+
+[sub_resource type="CircleShape2D" id=10]
+radius = 20.0
+
+[sub_resource type="CircleShape2D" id=11]
+radius = 2.0
+
 [node name="Bat" instance=ExtResource( 1 )]
 
-[node name="Sprite" parent="." index="0"]
-texture = ExtResource( 2 )
-hframes = 4
+[node name="AnimatedSprite" parent="." index="0"]
+material = SubResource( 4 )
+position = Vector2( 0, -4 )
+frames = SubResource( 5 )
+animation = "Animate"
+playing = true
 
-[node name="Collider" parent="." index="1"]
-shape = SubResource( 1 )
+[node name="ShadowSprite" parent="." index="1"]
+position = Vector2( 0, -2 )
+texture = ExtResource( 4 )
 
-[node name="AnimationPlayer" parent="." index="2"]
+[node name="Collider" parent="." index="2"]
+shape = SubResource( 6 )
+
+[node name="AnimationPlayer" parent="." index="3"]
 autoplay = "Fly"
-anims/Fly = SubResource( 2 )
+anims/Fly = SubResource( 7 )
+
+[node name="Stats" parent="." index="4"]
+max_health = 3
+
+[node name="Collider" parent="Hurtbox" index="0"]
+position = Vector2( 0, -3 )
+shape = SubResource( 8 )
+
+[node name="Collider" parent="Hitbox" index="0"]
+position = Vector2( 0, -4 )
+shape = SubResource( 9 )
+
+[node name="Collider" parent="PlayerDetectionZone" index="0"]
+modulate = Color( 1, 1, 1, 0.113725 )
+shape = SubResource( 10 )
+
+[node name="Collider" parent="SoftCollision" index="0"]
+shape = SubResource( 11 )
+
+[editable path="Hurtbox"]
+
+[editable path="Hitbox"]
+
+[editable path="PlayerDetectionZone"]
+
+[editable path="SoftCollision"]
