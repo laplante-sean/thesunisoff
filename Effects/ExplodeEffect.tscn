@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://Effects/DeathEffect.gd" type="Script" id=1]
-[ext_resource path="res://Effects/death-effect.png" type="Texture" id=2]
+[ext_resource path="res://Effects/ExplodeEffect.gd" type="Script" id=1]
+[ext_resource path="res://Effects/explode-effect.png" type="Texture" id=2]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 2 )
@@ -47,7 +47,7 @@ animations = [ {
 "speed": 15.0
 } ]
 
-[node name="DeathEffect" type="AnimatedSprite"]
+[node name="ExplodeEffect" type="AnimatedSprite"]
 frames = SubResource( 10 )
 animation = "Animate"
 script = ExtResource( 1 )

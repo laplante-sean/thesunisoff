@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/death-effect.png-56c70ef2598120411ae15f5a89e97f79.stex"
+path="res://.import/explode-effect.png-a6bfb45b456f00497d5182f1ff12caaf.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Effects/death-effect.png"
-dest_files=[ "res://.import/death-effect.png-56c70ef2598120411ae15f5a89e97f79.stex" ]
+source_file="res://Effects/explode-effect.png"
+dest_files=[ "res://.import/explode-effect.png-a6bfb45b456f00497d5182f1ff12caaf.stex" ]
 
 [params]
 

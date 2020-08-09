@@ -1,75 +1,182 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://Player/Projectile.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/fire-ball.png" type="Texture" id=2]
 [ext_resource path="res://Player/ice-ball.png" type="Texture" id=3]
 [ext_resource path="res://Player/Potion.gd" type="Script" id=4]
+[ext_resource path="res://Effects/small-shadow.png" type="Texture" id=5]
 
-[sub_resource type="AtlasTexture" id=1]
+[sub_resource type="AtlasTexture" id=30]
 atlas = ExtResource( 3 )
-region = Rect2( 0, 0, 8, 8 )
+region = Rect2( 0, 0, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=2]
+[sub_resource type="AtlasTexture" id=31]
 atlas = ExtResource( 3 )
-region = Rect2( 8, 0, 8, 8 )
+region = Rect2( 16, 0, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=3]
+[sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 2 )
-region = Rect2( 0, 0, 8, 8 )
+region = Rect2( 0, 0, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=4]
+[sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 2 )
-region = Rect2( 8, 0, 8, 8 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 2 )
+region = Rect2( 112, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 2 )
+region = Rect2( 128, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 2 )
+region = Rect2( 144, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 2 )
+region = Rect2( 32, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 2 )
+region = Rect2( 48, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 2 )
+region = Rect2( 64, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 2 )
+region = Rect2( 80, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 2 )
+region = Rect2( 96, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=32]
+atlas = ExtResource( 3 )
+region = Rect2( 32, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=33]
+atlas = ExtResource( 3 )
+region = Rect2( 48, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=34]
+atlas = ExtResource( 3 )
+region = Rect2( 64, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=35]
+atlas = ExtResource( 3 )
+region = Rect2( 112, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=36]
+atlas = ExtResource( 3 )
+region = Rect2( 128, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=37]
+atlas = ExtResource( 3 )
+region = Rect2( 144, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=38]
+atlas = ExtResource( 3 )
+region = Rect2( 160, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=28]
+atlas = ExtResource( 3 )
+region = Rect2( 80, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=29]
+atlas = ExtResource( 3 )
+region = Rect2( 96, 0, 16, 16 )
 
 [sub_resource type="SpriteFrames" id=5]
 animations = [ {
-"frames": [ SubResource( 1 ), SubResource( 2 ) ],
+"frames": [ SubResource( 30 ), SubResource( 31 ) ],
 "loop": true,
 "name": "Ice",
 "speed": 10.0
 }, {
-"frames": [  ],
-"loop": true,
-"name": "Linger",
-"speed": 10.0
-}, {
-"frames": [  ],
-"loop": false,
-"name": "Explode",
-"speed": 10.0
-}, {
-"frames": [  ],
-"loop": false,
-"name": "Disolve",
-"speed": 10.0
-}, {
-"frames": [ SubResource( 3 ), SubResource( 4 ) ],
+"frames": [ SubResource( 8 ), SubResource( 9 ) ],
 "loop": true,
 "name": "Fire",
 "speed": 10.0
+}, {
+"frames": [ SubResource( 13 ), SubResource( 14 ), SubResource( 15 ) ],
+"loop": false,
+"name": "DisolveFire",
+"speed": 10.0
+}, {
+"frames": [ SubResource( 10 ), SubResource( 11 ), SubResource( 12 ) ],
+"loop": false,
+"name": "IgniteFire",
+"speed": 10.0
+}, {
+"frames": [ SubResource( 16 ), SubResource( 17 ) ],
+"loop": true,
+"name": "LingerFire",
+"speed": 7.0
+}, {
+"frames": [ SubResource( 32 ), SubResource( 33 ), SubResource( 34 ) ],
+"loop": false,
+"name": "IgniteIce",
+"speed": 10.0
+}, {
+"frames": [ SubResource( 35 ), SubResource( 36 ), SubResource( 37 ), SubResource( 38 ) ],
+"loop": false,
+"name": "DisolveIce",
+"speed": 10.0
+}, {
+"frames": [ SubResource( 28 ), SubResource( 29 ) ],
+"loop": true,
+"name": "LingerIce",
+"speed": 0.5
 } ]
 
+[sub_resource type="CircleShape2D" id=7]
+radius = 2.0
+
 [sub_resource type="CircleShape2D" id=6]
+radius = 5.0
 
 [node name="Potion" instance=ExtResource( 1 )]
 script = ExtResource( 4 )
+POTION_TYPE = 1
+FLIGHT_TIME = 0.3
 
-[node name="AnimatedSprite" parent="." index="0"]
+[node name="ShadowSprite" parent="." index="0"]
+position = Vector2( 0, -2 )
+texture = ExtResource( 5 )
+
+[node name="AnimatedSprite" parent="." index="1"]
+position = Vector2( 0, -4 )
 frames = SubResource( 5 )
-animation = "Fire"
-frame = 1
+animation = "LingerIce"
 playing = true
 
-[node name="Collider" parent="Hitbox" index="0"]
-shape = SubResource( 6 )
+[node name="Collider" parent="." index="2"]
+shape = SubResource( 7 )
 
-[node name="LingerTimer" type="Timer" parent="." index="2"]
+[node name="Hitbox" parent="." index="3"]
+collision_mask = 8
+
+[node name="Collider" parent="Hitbox" index="0"]
+position = Vector2( 0, -4 )
+shape = SubResource( 6 )
+disabled = true
+
+[node name="VisibilityNotifier2D" parent="." index="4"]
+visible = false
+
+[node name="LingerTimer" type="Timer" parent="." index="5"]
 wait_time = 5.0
 one_shot = true
 
-[node name="VisibilityNotifier2D" parent="." index="3"]
-visible = false
+[node name="FlightTimer" type="Timer" parent="." index="6"]
+wait_time = 0.5
+one_shot = true
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="timeout" from="LingerTimer" to="." method="_on_LingerTimer_timeout"]
+[connection signal="timeout" from="FlightTimer" to="." method="_on_FlightTimer_timeout"]
 
 [editable path="Hitbox"]

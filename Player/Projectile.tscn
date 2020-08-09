@@ -3,10 +3,15 @@
 [ext_resource path="res://Overlap/Hitbox.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Projectile.gd" type="Script" id=2]
 
-[node name="Projectile" type="Node2D"]
+[node name="Projectile" type="KinematicBody2D"]
+collision_layer = 0
 script = ExtResource( 2 )
 
+[node name="ShadowSprite" type="Sprite" parent="."]
+
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+
+[node name="Collider" type="CollisionShape2D" parent="."]
 
 [node name="Hitbox" parent="." instance=ExtResource( 1 )]
 

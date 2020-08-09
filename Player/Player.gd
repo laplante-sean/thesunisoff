@@ -1,7 +1,7 @@
 extends KinematicBody2D
 class_name Player
 
-const DeathEffect = preload("res://Effects/DeathEffect.tscn")
+const ExplodeEffect = preload("res://Effects/ExplodeEffect.tscn")
 const Potion = preload("res://Player/Potion.tscn")
 
 export(int) var ACCELERATION = 200
@@ -21,6 +21,7 @@ var stats = PlayerStats
 var player_facing = Vector2.DOWN
 
 onready var hurtbox = $Hurtbox
+onready var sprite = $Sprite
 onready var animationPlayer = $AnimationPlayer
 onready var blinkAnimationPlayer = $BlinkAnimationPlayer
 onready var animationTree = $AnimationTree
@@ -124,7 +125,7 @@ func move():
 
 func _on_PlayerStats_no_health():
 	queue_free()
-	Utils.instance_scene_on_main(DeathEffect, global_position)
+	Utils.instance_scene_on_main(ExplodeEffect, sprite.global_position)
 
 
 func _on_Hurtbox_area_entered(area):
