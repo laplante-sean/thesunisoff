@@ -1,0 +1,75 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Player/Projectile.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Player/fire-ball.png" type="Texture" id=2]
+[ext_resource path="res://Player/ice-ball.png" type="Texture" id=3]
+[ext_resource path="res://Player/Potion.gd" type="Script" id=4]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 8, 8 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 3 )
+region = Rect2( 8, 0, 8, 8 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 8, 8 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 2 )
+region = Rect2( 8, 0, 8, 8 )
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ) ],
+"loop": true,
+"name": "Ice",
+"speed": 10.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "Linger",
+"speed": 10.0
+}, {
+"frames": [  ],
+"loop": false,
+"name": "Explode",
+"speed": 10.0
+}, {
+"frames": [  ],
+"loop": false,
+"name": "Disolve",
+"speed": 10.0
+}, {
+"frames": [ SubResource( 3 ), SubResource( 4 ) ],
+"loop": true,
+"name": "Fire",
+"speed": 10.0
+} ]
+
+[sub_resource type="CircleShape2D" id=6]
+
+[node name="Potion" instance=ExtResource( 1 )]
+script = ExtResource( 4 )
+
+[node name="AnimatedSprite" parent="." index="0"]
+frames = SubResource( 5 )
+animation = "Fire"
+frame = 1
+playing = true
+
+[node name="Collider" parent="Hitbox" index="0"]
+shape = SubResource( 6 )
+
+[node name="LingerTimer" type="Timer" parent="." index="2"]
+wait_time = 5.0
+one_shot = true
+
+[node name="VisibilityNotifier2D" parent="." index="3"]
+visible = false
+[connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
+[connection signal="timeout" from="LingerTimer" to="." method="_on_LingerTimer_timeout"]
+
+[editable path="Hitbox"]

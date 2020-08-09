@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=2]
+[gd_scene load_steps=79 format=2]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Player/player.png" type="Texture" id=2]
@@ -769,6 +769,270 @@ tracks/4/keys = {
 "values": [ true, false ]
 }
 
+[sub_resource type="Animation" id=61]
+resource_name = "SwordDown"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 90, 91, 92, 93, 94 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("HitboxPivot/SwordKnockbackHitbox/Collider:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "attack_animation_finished"
+} ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Hurtbox/Collider:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("HitboxPivot:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=63]
+resource_name = "SwordLeft"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 100, 101, 102, 103, 104 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("HitboxPivot:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 90.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Hurtbox/Collider:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("HitboxPivot/SwordKnockbackHitbox/Collider:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.1, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "attack_animation_finished"
+} ]
+}
+
+[sub_resource type="Animation" id=64]
+resource_name = "SwordRight"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 105, 106, 107, 108, 109 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("HitboxPivot:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -90.0 ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "attack_animation_finished"
+} ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Hurtbox/Collider:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("HitboxPivot/SwordKnockbackHitbox/Collider:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.1, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="Animation" id=62]
+resource_name = "SwordUp"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 95, 96, 97, 98, 99 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("HitboxPivot:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 180.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("HitboxPivot/SwordKnockbackHitbox/Collider:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.1, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Hurtbox/Collider:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "attack_animation_finished"
+} ]
+}
+
 [sub_resource type="Animation" id=21]
 length = 0.2
 loop = true
@@ -923,6 +1187,31 @@ min_space = Vector2( -1, -1.1 )
 max_space = Vector2( 1, 1.1 )
 blend_mode = 1
 
+[sub_resource type="AnimationNodeAnimation" id=66]
+animation = "SwordDown"
+
+[sub_resource type="AnimationNodeAnimation" id=67]
+animation = "SwordRight"
+
+[sub_resource type="AnimationNodeAnimation" id=68]
+animation = "SwordUp"
+
+[sub_resource type="AnimationNodeAnimation" id=69]
+animation = "SwordLeft"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=70]
+blend_point_0/node = SubResource( 66 )
+blend_point_0/pos = Vector2( 0, 1.1 )
+blend_point_1/node = SubResource( 67 )
+blend_point_1/pos = Vector2( 1, 0 )
+blend_point_2/node = SubResource( 68 )
+blend_point_2/pos = Vector2( 0, -1.1 )
+blend_point_3/node = SubResource( 69 )
+blend_point_3/pos = Vector2( -1, 0 )
+min_space = Vector2( -1, -1.1 )
+max_space = Vector2( 1, 1.1 )
+blend_mode = 1
+
 [sub_resource type="AnimationNodeStateMachineTransition" id=48]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=49]
@@ -939,6 +1228,10 @@ blend_mode = 1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=55]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=71]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=72]
+
 [sub_resource type="AnimationNodeStateMachine" id=56]
 states/Idle/node = SubResource( 27 )
 states/Idle/position = Vector2( 510, 135 )
@@ -949,19 +1242,25 @@ states/Spell/position = Vector2( 327, 241 )
 states/SpellAlt/node = SubResource( 42 )
 states/SpellAlt/position = Vector2( 695, 241 )
 states/SpellCast360/node = SubResource( 47 )
-states/SpellCast360/position = Vector2( 510, 8 )
-transitions = [ "Idle", "Run", SubResource( 48 ), "Run", "Idle", SubResource( 49 ), "Idle", "Spell", SubResource( 50 ), "SpellAlt", "Idle", SubResource( 51 ), "Spell", "Idle", SubResource( 52 ), "Idle", "SpellAlt", SubResource( 53 ), "SpellCast360", "Idle", SubResource( 54 ), "Idle", "SpellCast360", SubResource( 55 ) ]
+states/SpellCast360/position = Vector2( 327, 8 )
+states/Sword/node = SubResource( 70 )
+states/Sword/position = Vector2( 695, 8 )
+transitions = [ "Idle", "Run", SubResource( 48 ), "Run", "Idle", SubResource( 49 ), "Idle", "Spell", SubResource( 50 ), "SpellAlt", "Idle", SubResource( 51 ), "Spell", "Idle", SubResource( 52 ), "Idle", "SpellAlt", SubResource( 53 ), "SpellCast360", "Idle", SubResource( 54 ), "Idle", "SpellCast360", SubResource( 55 ), "Idle", "Sword", SubResource( 71 ), "Sword", "Idle", SubResource( 72 ) ]
 start_node = "Idle"
 graph_offset = Vector2( -169, -72 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=57]
 
 [sub_resource type="CapsuleShape2D" id=58]
+radius = 4.99999
+height = 4.00002
+
+[sub_resource type="CapsuleShape2D" id=65]
 radius = 4.0
-height = 6.0
+height = 4.0
 
 [sub_resource type="CircleShape2D" id=59]
-radius = 14.0
+radius = 15.0
 
 [sub_resource type="CapsuleShape2D" id=60]
 radius = 1.0
@@ -979,7 +1278,7 @@ texture = ExtResource( 3 )
 [node name="Sprite" type="Sprite" parent="."]
 material = SubResource( 1 )
 texture = ExtResource( 2 )
-hframes = 90
+hframes = 110
 
 [node name="Collider" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 2 )
@@ -1004,6 +1303,10 @@ anims/SpellRight = SubResource( 17 )
 anims/SpellRightAlt = SubResource( 18 )
 anims/SpellUp = SubResource( 19 )
 anims/SpellUpAlt = SubResource( 20 )
+anims/SwordDown = SubResource( 61 )
+anims/SwordLeft = SubResource( 63 )
+anims/SwordRight = SubResource( 64 )
+anims/SwordUp = SubResource( 62 )
 
 [node name="BlinkAnimationPlayer" type="AnimationPlayer" parent="."]
 anims/StartFlash = SubResource( 21 )
@@ -1018,6 +1321,7 @@ parameters/Run/blend_position = Vector2( -0.0413333, 0.871369 )
 parameters/Spell/blend_position = Vector2( 0, 0 )
 parameters/SpellAlt/blend_position = Vector2( -0.0262123, 1.00324 )
 parameters/SpellCast360/blend_position = Vector2( 0, 0 )
+parameters/Sword/blend_position = Vector2( -0.0303782, 1.00489 )
 
 [node name="CameraFollow" type="RemoteTransform2D" parent="."]
 
@@ -1030,9 +1334,19 @@ position = Vector2( 0, -4 )
 collision_mask = 8
 
 [node name="Collider" parent="HitboxPivot/SpellKnockbackHitbox" index="0"]
-position = Vector2( 0, 7 )
+position = Vector2( 0, 6 )
 rotation = 1.5708
 shape = SubResource( 58 )
+disabled = true
+
+[node name="SwordKnockbackHitbox" parent="HitboxPivot" instance=ExtResource( 6 )]
+collision_mask = 8
+KNOCKBACK_FACTOR = 75
+
+[node name="Collider" parent="HitboxPivot/SwordKnockbackHitbox" index="0"]
+position = Vector2( 0, 5 )
+rotation = 1.5708
+shape = SubResource( 65 )
 disabled = true
 
 [node name="Spell360KnockbackHitbox" parent="." instance=ExtResource( 6 )]
@@ -1052,11 +1366,16 @@ position = Vector2( 0, 1 )
 shape = SubResource( 60 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="ThrowPotionTimer" type="Timer" parent="."]
+one_shot = true
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
 [connection signal="invincibility_ended" from="Hurtbox" to="." method="_on_Hurtbox_invincibility_ended"]
 [connection signal="invincibility_started" from="Hurtbox" to="." method="_on_Hurtbox_invincibility_started"]
 
 [editable path="HitboxPivot/SpellKnockbackHitbox"]
+
+[editable path="HitboxPivot/SwordKnockbackHitbox"]
 
 [editable path="Spell360KnockbackHitbox"]
 

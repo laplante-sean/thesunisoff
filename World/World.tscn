@@ -25,6 +25,7 @@ position = Vector2( 16, 59 )
 current = true
 process_mode = 0
 smoothing_enabled = true
+smoothing_speed = 10.0
 
 [node name="PlayerTorch" parent="." instance=ExtResource( 4 )]
 position = Vector2( 16, 55 )
@@ -43,6 +44,7 @@ position = Vector2( 16, 59 )
 
 [node name="AnimationTree" parent="YSortTileMap/Player" index="5"]
 parameters/playback = SubResource( 1 )
+parameters/Sword/blend_position = Vector2( 0, 0 )
 
 [node name="CameraFollow" parent="YSortTileMap/Player" index="6"]
 remote_path = NodePath("../../../Camera2D")
