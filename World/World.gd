@@ -8,6 +8,4 @@ func _ready():
 	# making levels. This ensures it's always
 	# back on for testing
 	theDarkness.visible = true
-	print("**", PlayerStats.max_health)
-	print("**", PlayerStats.health)
 	SaveAndLoad.load_game()

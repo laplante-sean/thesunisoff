@@ -26,7 +26,7 @@ func save_data():
 
 func load_data(stats):
 	self.level = stats.level
-	self.max_health = stats.max_health
+	self.max_health = max(stats.max_health, self.max_health)
 	self.deaths = stats.deaths
 	self.enemies_killed = stats.enemies_killed
 	self.experience = stats.experience

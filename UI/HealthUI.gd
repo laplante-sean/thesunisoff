@@ -22,7 +22,6 @@ func set_max_hearts(value):
 	max_hearts = max(value, 1)
 	self.hearts = min(hearts, max_hearts)
 	heartUIEmpty.rect_size.x = max_hearts * heart_width
-	expBarEmpty.rect_size.x = (max_hearts * heart_width) - 1
 	set_experience_bar_fill()
 
 
