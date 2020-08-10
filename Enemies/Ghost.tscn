@@ -82,7 +82,7 @@ material = SubResource( 1 )
 position = Vector2( 0, -3 )
 frames = SubResource( 7 )
 animation = "Animate"
-frame = 1
+frame = 3
 playing = true
 
 [node name="Collider" parent="." index="2"]
@@ -93,8 +93,9 @@ shape = SubResource( 8 )
 autoplay = "Spook"
 anims/Spook = SubResource( 9 )
 
-[node name="Stats" parent="." index="4"]
+[node name="EnemyStats" parent="." index="4"]
 max_health = 5
+experience_value = 50
 
 [node name="Collider" parent="Hurtbox" index="0"]
 position = Vector2( 0, -2 )

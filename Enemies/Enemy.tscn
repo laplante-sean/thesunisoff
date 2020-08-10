@@ -1,13 +1,13 @@
 [gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Enemies/Enemy.gd" type="Script" id=1]
-[ext_resource path="res://Stats/Stats.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Overlap/Hurtbox.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Overlap/Hitbox.tscn" type="PackedScene" id=4]
 [ext_resource path="res://NPC/PlayerDetectionZone.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Overlap/SoftCollision.tscn" type="PackedScene" id=6]
 [ext_resource path="res://NPC/WanderController.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Effects/WhiteColor.shader" type="Shader" id=8]
+[ext_resource path="res://Enemies/EnemyStats.tscn" type="PackedScene" id=9]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -62,7 +62,7 @@ material = SubResource( 1 )
 anims/StartFlash = SubResource( 2 )
 anims/StopFlash = SubResource( 3 )
 
-[node name="Stats" parent="." instance=ExtResource( 2 )]
+[node name="EnemyStats" parent="." instance=ExtResource( 9 )]
 
 [node name="Hurtbox" parent="." instance=ExtResource( 3 )]
 collision_layer = 8
@@ -75,7 +75,7 @@ collision_mask = 4
 [node name="SoftCollision" parent="." instance=ExtResource( 6 )]
 
 [node name="WanderController" parent="." instance=ExtResource( 7 )]
-[connection signal="no_health" from="Stats" to="." method="_on_Stats_no_health"]
+[connection signal="no_health" from="EnemyStats" to="." method="_on_EnemyStats_no_health"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
 [connection signal="invincibility_ended" from="Hurtbox" to="." method="_on_Hurtbox_invincibility_ended"]
 [connection signal="invincibility_started" from="Hurtbox" to="." method="_on_Hurtbox_invincibility_started"]

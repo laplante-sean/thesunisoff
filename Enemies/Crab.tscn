@@ -113,8 +113,9 @@ autoplay = "Idle"
 anims/Idle = SubResource( 8 )
 anims/Scurry = SubResource( 9 )
 
-[node name="Stats" parent="." index="4"]
+[node name="EnemyStats" parent="." index="4"]
 max_health = 2
+experience_value = 20
 
 [node name="Collider" parent="Hurtbox" index="0"]
 position = Vector2( 0, -4 )

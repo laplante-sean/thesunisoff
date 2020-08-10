@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Stats/Stats.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Enemies/EnemyStats.gd" type="Script" id=2]
+
+[node name="EnemyStats" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+[connection signal="no_health" from="." to="." method="_on_EnemyStats_no_health"]

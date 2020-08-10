@@ -22,7 +22,7 @@ var state = CHASE
 
 onready var hurtbox = $Hurtbox
 onready var sprite = $AnimatedSprite
-onready var stats = $Stats
+onready var stats = $EnemyStats
 onready var playerDetectionZone = $PlayerDetectionZone
 onready var softCollision = $SoftCollision
 onready var wanderController = $WanderController
@@ -87,6 +87,9 @@ func pick_random_state(state_list):
 
 
 func _on_Hurtbox_area_entered(area):
+	if hurtbox.invincible:
+		return
+
 	stats.health -= area.damage
 	
 	if area is KnockbackHitbox:
@@ -100,15 +103,14 @@ func _on_Hurtbox_area_entered(area):
 	hurtbox.start_invincibility(INVICIBILITY_TIME)
 
 
-func _on_Stats_no_health():
-	PlayerStats.enemies_killed += 1
-	queue_free()
-	Utils.instance_scene_on_main(ExplodeEffect, sprite.global_position)
-
-
 func _on_Hurtbox_invincibility_started():
 	animationPlayer.play("StartFlash")
 
 
 func _on_Hurtbox_invincibility_ended():
 	animationPlayer.play("StopFlash")
+
+
+func _on_EnemyStats_no_health():
+	queue_free()
+	Utils.instance_scene_on_main(ExplodeEffect, sprite.global_position)

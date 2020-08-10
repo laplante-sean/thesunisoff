@@ -157,6 +157,9 @@ func _on_PlayerStats_no_health():
 
 
 func _on_Hurtbox_area_entered(area):
+	if hurtbox.invincible:
+		return
+	
 	stats.health -= area.damage
 	hurtbox.start_invincibility(INVINCIBILITY_TIME)
 	hurtbox.create_hit_effect()

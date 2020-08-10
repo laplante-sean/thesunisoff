@@ -2,10 +2,6 @@ extends Node
 
 const SAVE_DATA_PATH = "res://save_data.json"
 
-var default_save_data = {
-	player_stats = PlayerStats.save_data()
-}
-
 
 func save_game():
 	var save_data = {
@@ -16,6 +12,9 @@ func save_game():
 
 func load_game():
 	var save_data = _load_data_from_file()
+	if save_data == null:
+		return  # No save file. Nothing to load
+
 	PlayerStats.load_data(save_data.player_stats)
 
 
@@ -40,7 +39,7 @@ func _load_data_from_file():
 	"""
 	var save_file = File.new()
 	if not save_file.file_exists(SAVE_DATA_PATH):
-		return default_save_data
+		return null
 		
 	save_file.open(SAVE_DATA_PATH, File.READ)
 	var save_data = parse_json(save_file.get_as_text())
