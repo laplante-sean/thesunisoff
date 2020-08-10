@@ -1033,7 +1033,7 @@ tracks/4/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=72]
+[sub_resource type="Animation" id=25]
 resource_name = "ThrowDown"
 length = 0.15
 step = 0.05
@@ -1076,7 +1076,7 @@ tracks/2/keys = {
 "values": [ 0.0 ]
 }
 
-[sub_resource type="Animation" id=71]
+[sub_resource type="Animation" id=26]
 resource_name = "ThrowLeft"
 length = 0.15
 step = 0.05
@@ -1119,7 +1119,7 @@ tracks/2/keys = {
 "values": [ 90.0 ]
 }
 
-[sub_resource type="Animation" id=73]
+[sub_resource type="Animation" id=27]
 resource_name = "ThrowRight"
 length = 0.15
 step = 0.05
@@ -1162,7 +1162,7 @@ tracks/2/keys = {
 "values": [ -90.0 ]
 }
 
-[sub_resource type="Animation" id=74]
+[sub_resource type="Animation" id=28]
 resource_name = "ThrowUp"
 length = 0.15
 step = 0.05
@@ -1205,7 +1205,7 @@ tracks/2/keys = {
 "values": [ 180.0 ]
 }
 
-[sub_resource type="Animation" id=25]
+[sub_resource type="Animation" id=29]
 length = 0.2
 loop = true
 tracks/0/type = "value"
@@ -1221,7 +1221,7 @@ tracks/0/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=26]
+[sub_resource type="Animation" id=30]
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:material:shader_param/active")
@@ -1236,236 +1236,236 @@ tracks/0/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="AnimationNodeAnimation" id=27]
+[sub_resource type="AnimationNodeAnimation" id=31]
 animation = "IdleDown"
 
-[sub_resource type="AnimationNodeAnimation" id=28]
+[sub_resource type="AnimationNodeAnimation" id=32]
 animation = "IdleRight"
 
-[sub_resource type="AnimationNodeAnimation" id=29]
+[sub_resource type="AnimationNodeAnimation" id=33]
 animation = "IdleUp"
 
-[sub_resource type="AnimationNodeAnimation" id=30]
+[sub_resource type="AnimationNodeAnimation" id=34]
 animation = "IdleLeft"
 
-[sub_resource type="AnimationNodeBlendSpace2D" id=31]
-blend_point_0/node = SubResource( 27 )
+[sub_resource type="AnimationNodeBlendSpace2D" id=35]
+blend_point_0/node = SubResource( 31 )
 blend_point_0/pos = Vector2( 0, 1.1 )
-blend_point_1/node = SubResource( 28 )
+blend_point_1/node = SubResource( 32 )
 blend_point_1/pos = Vector2( 1, 0 )
-blend_point_2/node = SubResource( 29 )
+blend_point_2/node = SubResource( 33 )
 blend_point_2/pos = Vector2( 0, -1.1 )
-blend_point_3/node = SubResource( 30 )
+blend_point_3/node = SubResource( 34 )
 blend_point_3/pos = Vector2( -1, 0 )
 min_space = Vector2( -1, -1.1 )
 max_space = Vector2( 1, 1.1 )
 blend_mode = 1
 
-[sub_resource type="AnimationNodeAnimation" id=32]
+[sub_resource type="AnimationNodeAnimation" id=36]
 animation = "RunDown"
 
-[sub_resource type="AnimationNodeAnimation" id=33]
+[sub_resource type="AnimationNodeAnimation" id=37]
 animation = "RunRight"
 
-[sub_resource type="AnimationNodeAnimation" id=34]
+[sub_resource type="AnimationNodeAnimation" id=38]
 animation = "RunUp"
 
-[sub_resource type="AnimationNodeAnimation" id=35]
+[sub_resource type="AnimationNodeAnimation" id=39]
 animation = "RunLeft"
 
-[sub_resource type="AnimationNodeBlendSpace2D" id=36]
-blend_point_0/node = SubResource( 32 )
+[sub_resource type="AnimationNodeBlendSpace2D" id=40]
+blend_point_0/node = SubResource( 36 )
 blend_point_0/pos = Vector2( 0, 1 )
-blend_point_1/node = SubResource( 33 )
+blend_point_1/node = SubResource( 37 )
 blend_point_1/pos = Vector2( 1, 0 )
-blend_point_2/node = SubResource( 34 )
+blend_point_2/node = SubResource( 38 )
 blend_point_2/pos = Vector2( 0, -1 )
-blend_point_3/node = SubResource( 35 )
+blend_point_3/node = SubResource( 39 )
 blend_point_3/pos = Vector2( -1, 0 )
 blend_mode = 1
 
-[sub_resource type="AnimationNodeAnimation" id=37]
+[sub_resource type="AnimationNodeAnimation" id=41]
 animation = "SpellRight"
 
-[sub_resource type="AnimationNodeAnimation" id=38]
+[sub_resource type="AnimationNodeAnimation" id=42]
 animation = "SpellLeft"
 
-[sub_resource type="AnimationNodeAnimation" id=39]
+[sub_resource type="AnimationNodeAnimation" id=43]
 animation = "SpellDown"
 
-[sub_resource type="AnimationNodeAnimation" id=40]
+[sub_resource type="AnimationNodeAnimation" id=44]
 animation = "SpellUp"
 
-[sub_resource type="AnimationNodeBlendSpace2D" id=41]
-blend_point_0/node = SubResource( 37 )
+[sub_resource type="AnimationNodeBlendSpace2D" id=45]
+blend_point_0/node = SubResource( 41 )
 blend_point_0/pos = Vector2( 1, 0 )
-blend_point_1/node = SubResource( 38 )
+blend_point_1/node = SubResource( 42 )
 blend_point_1/pos = Vector2( -1, 0 )
-blend_point_2/node = SubResource( 39 )
+blend_point_2/node = SubResource( 43 )
 blend_point_2/pos = Vector2( 0, 1.1 )
-blend_point_3/node = SubResource( 40 )
+blend_point_3/node = SubResource( 44 )
 blend_point_3/pos = Vector2( 0, -1.1 )
 min_space = Vector2( -1, -1.1 )
 max_space = Vector2( 1, 1.1 )
 blend_mode = 1
 
-[sub_resource type="AnimationNodeAnimation" id=42]
+[sub_resource type="AnimationNodeAnimation" id=46]
 animation = "SpellLeftAlt"
 
-[sub_resource type="AnimationNodeAnimation" id=43]
+[sub_resource type="AnimationNodeAnimation" id=47]
 animation = "SpellDownAlt"
 
-[sub_resource type="AnimationNodeAnimation" id=44]
+[sub_resource type="AnimationNodeAnimation" id=48]
 animation = "SpellUpAlt"
 
-[sub_resource type="AnimationNodeAnimation" id=45]
+[sub_resource type="AnimationNodeAnimation" id=49]
 animation = "SpellRightAlt"
 
-[sub_resource type="AnimationNodeBlendSpace2D" id=46]
-blend_point_0/node = SubResource( 42 )
+[sub_resource type="AnimationNodeBlendSpace2D" id=50]
+blend_point_0/node = SubResource( 46 )
 blend_point_0/pos = Vector2( -1, 0 )
-blend_point_1/node = SubResource( 43 )
+blend_point_1/node = SubResource( 47 )
 blend_point_1/pos = Vector2( 0, 1.1 )
-blend_point_2/node = SubResource( 44 )
+blend_point_2/node = SubResource( 48 )
 blend_point_2/pos = Vector2( 0, -1.1 )
-blend_point_3/node = SubResource( 45 )
+blend_point_3/node = SubResource( 49 )
 blend_point_3/pos = Vector2( 1, 0 )
 min_space = Vector2( -1, -1.1 )
 max_space = Vector2( 1, 1.1 )
 blend_mode = 1
 
-[sub_resource type="AnimationNodeAnimation" id=47]
+[sub_resource type="AnimationNodeAnimation" id=51]
 animation = "Spell360Down"
-
-[sub_resource type="AnimationNodeAnimation" id=48]
-animation = "Spell360Down"
-
-[sub_resource type="AnimationNodeAnimation" id=49]
-animation = "Spell360Up"
-
-[sub_resource type="AnimationNodeAnimation" id=50]
-animation = "Spell360Down"
-
-[sub_resource type="AnimationNodeBlendSpace2D" id=51]
-blend_point_0/node = SubResource( 47 )
-blend_point_0/pos = Vector2( 0, 1.1 )
-blend_point_1/node = SubResource( 48 )
-blend_point_1/pos = Vector2( 1, 0 )
-blend_point_2/node = SubResource( 49 )
-blend_point_2/pos = Vector2( 0, -1.1 )
-blend_point_3/node = SubResource( 50 )
-blend_point_3/pos = Vector2( -1, 0 )
-min_space = Vector2( -1, -1.1 )
-max_space = Vector2( 1, 1.1 )
-blend_mode = 1
 
 [sub_resource type="AnimationNodeAnimation" id=52]
-animation = "SwordDown"
+animation = "Spell360Down"
 
 [sub_resource type="AnimationNodeAnimation" id=53]
-animation = "SwordRight"
+animation = "Spell360Up"
 
 [sub_resource type="AnimationNodeAnimation" id=54]
+animation = "Spell360Down"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=55]
+blend_point_0/node = SubResource( 51 )
+blend_point_0/pos = Vector2( 0, 1.1 )
+blend_point_1/node = SubResource( 52 )
+blend_point_1/pos = Vector2( 1, 0 )
+blend_point_2/node = SubResource( 53 )
+blend_point_2/pos = Vector2( 0, -1.1 )
+blend_point_3/node = SubResource( 54 )
+blend_point_3/pos = Vector2( -1, 0 )
+min_space = Vector2( -1, -1.1 )
+max_space = Vector2( 1, 1.1 )
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id=56]
+animation = "SwordDown"
+
+[sub_resource type="AnimationNodeAnimation" id=57]
+animation = "SwordRight"
+
+[sub_resource type="AnimationNodeAnimation" id=58]
 animation = "SwordUp"
 
-[sub_resource type="AnimationNodeAnimation" id=55]
+[sub_resource type="AnimationNodeAnimation" id=59]
 animation = "SwordLeft"
 
-[sub_resource type="AnimationNodeBlendSpace2D" id=56]
-blend_point_0/node = SubResource( 52 )
+[sub_resource type="AnimationNodeBlendSpace2D" id=60]
+blend_point_0/node = SubResource( 56 )
 blend_point_0/pos = Vector2( 0, 1.1 )
-blend_point_1/node = SubResource( 53 )
+blend_point_1/node = SubResource( 57 )
 blend_point_1/pos = Vector2( 1, 0 )
-blend_point_2/node = SubResource( 54 )
+blend_point_2/node = SubResource( 58 )
 blend_point_2/pos = Vector2( 0, -1.1 )
-blend_point_3/node = SubResource( 55 )
+blend_point_3/node = SubResource( 59 )
 blend_point_3/pos = Vector2( -1, 0 )
 min_space = Vector2( -1, -1.1 )
 max_space = Vector2( 1, 1.1 )
 blend_mode = 1
 
-[sub_resource type="AnimationNodeAnimation" id=75]
+[sub_resource type="AnimationNodeAnimation" id=61]
 animation = "ThrowDown"
 
-[sub_resource type="AnimationNodeAnimation" id=76]
+[sub_resource type="AnimationNodeAnimation" id=62]
 animation = "ThrowRight"
 
-[sub_resource type="AnimationNodeAnimation" id=77]
+[sub_resource type="AnimationNodeAnimation" id=63]
 animation = "ThrowUp"
 
-[sub_resource type="AnimationNodeAnimation" id=78]
+[sub_resource type="AnimationNodeAnimation" id=64]
 animation = "ThrowLeft"
 
-[sub_resource type="AnimationNodeBlendSpace2D" id=79]
-blend_point_0/node = SubResource( 75 )
+[sub_resource type="AnimationNodeBlendSpace2D" id=65]
+blend_point_0/node = SubResource( 61 )
 blend_point_0/pos = Vector2( 0, 1.1 )
-blend_point_1/node = SubResource( 76 )
+blend_point_1/node = SubResource( 62 )
 blend_point_1/pos = Vector2( 1, 0 )
-blend_point_2/node = SubResource( 77 )
+blend_point_2/node = SubResource( 63 )
 blend_point_2/pos = Vector2( 0, -1.1 )
-blend_point_3/node = SubResource( 78 )
+blend_point_3/node = SubResource( 64 )
 blend_point_3/pos = Vector2( -1, 0 )
 min_space = Vector2( -1, -1.1 )
 max_space = Vector2( 1, 1.1 )
 blend_mode = 1
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=57]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=58]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=59]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=60]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=61]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=62]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=63]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=64]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=65]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=66]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=80]
+[sub_resource type="AnimationNodeStateMachineTransition" id=67]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=81]
+[sub_resource type="AnimationNodeStateMachineTransition" id=68]
 
-[sub_resource type="AnimationNodeStateMachine" id=67]
-states/Idle/node = SubResource( 31 )
+[sub_resource type="AnimationNodeStateMachineTransition" id=69]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=70]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=71]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=72]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=73]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=74]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=75]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=76]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=77]
+
+[sub_resource type="AnimationNodeStateMachine" id=78]
+states/Idle/node = SubResource( 35 )
 states/Idle/position = Vector2( 510, 135 )
-states/Run/node = SubResource( 36 )
+states/Run/node = SubResource( 40 )
 states/Run/position = Vector2( 775, 135 )
-states/Spell/node = SubResource( 41 )
+states/Spell/node = SubResource( 45 )
 states/Spell/position = Vector2( 327, 241 )
-states/SpellAlt/node = SubResource( 46 )
+states/SpellAlt/node = SubResource( 50 )
 states/SpellAlt/position = Vector2( 695, 241 )
-states/SpellCast360/node = SubResource( 51 )
+states/SpellCast360/node = SubResource( 55 )
 states/SpellCast360/position = Vector2( 327, 8 )
-states/Sword/node = SubResource( 56 )
+states/Sword/node = SubResource( 60 )
 states/Sword/position = Vector2( 695, 8 )
-states/Throw/node = SubResource( 79 )
+states/Throw/node = SubResource( 65 )
 states/Throw/position = Vector2( 510, 8 )
-transitions = [ "Idle", "Run", SubResource( 57 ), "Run", "Idle", SubResource( 58 ), "Idle", "Spell", SubResource( 59 ), "SpellAlt", "Idle", SubResource( 60 ), "Spell", "Idle", SubResource( 61 ), "Idle", "SpellAlt", SubResource( 62 ), "SpellCast360", "Idle", SubResource( 63 ), "Idle", "SpellCast360", SubResource( 64 ), "Idle", "Sword", SubResource( 65 ), "Sword", "Idle", SubResource( 66 ), "Idle", "Throw", SubResource( 80 ), "Throw", "Idle", SubResource( 81 ) ]
+transitions = [ "Idle", "Run", SubResource( 66 ), "Run", "Idle", SubResource( 67 ), "Idle", "Spell", SubResource( 68 ), "SpellAlt", "Idle", SubResource( 69 ), "Spell", "Idle", SubResource( 70 ), "Idle", "SpellAlt", SubResource( 71 ), "SpellCast360", "Idle", SubResource( 72 ), "Idle", "SpellCast360", SubResource( 73 ), "Idle", "Sword", SubResource( 74 ), "Sword", "Idle", SubResource( 75 ), "Idle", "Throw", SubResource( 76 ), "Throw", "Idle", SubResource( 77 ) ]
 start_node = "Idle"
 graph_offset = Vector2( -169, -72 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=68]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=79]
 
-[sub_resource type="CapsuleShape2D" id=82]
+[sub_resource type="CapsuleShape2D" id=80]
 radius = 4.99999
 height = 4.00002
 
-[sub_resource type="CapsuleShape2D" id=83]
+[sub_resource type="CapsuleShape2D" id=81]
 radius = 4.0
 height = 4.0
 
-[sub_resource type="CircleShape2D" id=69]
+[sub_resource type="CircleShape2D" id=82]
 radius = 15.0
 
-[sub_resource type="CapsuleShape2D" id=70]
+[sub_resource type="CapsuleShape2D" id=83]
 radius = 1.0
 height = 2.0
 
@@ -1511,19 +1511,19 @@ anims/SwordDown = SubResource( 21 )
 anims/SwordLeft = SubResource( 22 )
 anims/SwordRight = SubResource( 23 )
 anims/SwordUp = SubResource( 24 )
-anims/ThrowDown = SubResource( 72 )
-anims/ThrowLeft = SubResource( 71 )
-anims/ThrowRight = SubResource( 73 )
-anims/ThrowUp = SubResource( 74 )
+anims/ThrowDown = SubResource( 25 )
+anims/ThrowLeft = SubResource( 26 )
+anims/ThrowRight = SubResource( 27 )
+anims/ThrowUp = SubResource( 28 )
 
 [node name="BlinkAnimationPlayer" type="AnimationPlayer" parent="."]
-anims/StartFlash = SubResource( 25 )
-anims/StopFlash = SubResource( 26 )
+anims/StartFlash = SubResource( 29 )
+anims/StopFlash = SubResource( 30 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 67 )
+tree_root = SubResource( 78 )
 anim_player = NodePath("../AnimationPlayer")
-parameters/playback = SubResource( 68 )
+parameters/playback = SubResource( 79 )
 parameters/Idle/blend_position = Vector2( -0.034098, 0.910979 )
 parameters/Run/blend_position = Vector2( -0.0413333, 0.871369 )
 parameters/Spell/blend_position = Vector2( -0.0278983, 0.900477 )
@@ -1538,6 +1538,7 @@ parameters/Throw/blend_position = Vector2( -0.0266584, 0.952983 )
 position = Vector2( 0, -4 )
 
 [node name="Pivot" type="Position2D" parent="."]
+position = Vector2( 0, 1 )
 
 [node name="SpellKnockbackHitbox" parent="Pivot" instance=ExtResource( 6 )]
 collision_mask = 8
@@ -1545,7 +1546,7 @@ collision_mask = 8
 [node name="Collider" parent="Pivot/SpellKnockbackHitbox" index="0"]
 position = Vector2( 0, 6 )
 rotation = 1.5708
-shape = SubResource( 82 )
+shape = SubResource( 80 )
 disabled = true
 
 [node name="SwordKnockbackHitbox" parent="Pivot" instance=ExtResource( 6 )]
@@ -1555,10 +1556,10 @@ KNOCKBACK_FACTOR = 75
 [node name="Collider" parent="Pivot/SwordKnockbackHitbox" index="0"]
 position = Vector2( 0, 5 )
 rotation = 1.5708
-shape = SubResource( 83 )
+shape = SubResource( 81 )
 
 [node name="PotionSpawn" type="Position2D" parent="Pivot"]
-position = Vector2( 0, 5 )
+position = Vector2( 0, 2 )
 
 [node name="Spell360KnockbackHitbox" parent="." instance=ExtResource( 6 )]
 collision_mask = 8
@@ -1566,7 +1567,7 @@ KNOCKBACK_FACTOR = 150
 
 [node name="Collider" parent="Spell360KnockbackHitbox" index="0"]
 modulate = Color( 1, 1, 1, 0.188235 )
-shape = SubResource( 69 )
+shape = SubResource( 82 )
 disabled = true
 
 [node name="Hurtbox" parent="." instance=ExtResource( 5 )]
@@ -1574,7 +1575,7 @@ collision_layer = 4
 
 [node name="Collider" parent="Hurtbox" index="0"]
 position = Vector2( 0, 1 )
-shape = SubResource( 70 )
+shape = SubResource( 83 )
 disabled = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
