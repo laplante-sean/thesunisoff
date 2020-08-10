@@ -101,6 +101,7 @@ func _on_Hurtbox_area_entered(area):
 
 
 func _on_Stats_no_health():
+	PlayerStats.enemies_killed += 1
 	queue_free()
 	Utils.instance_scene_on_main(ExplodeEffect, sprite.global_position)
 

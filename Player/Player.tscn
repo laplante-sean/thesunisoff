@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=2]
+[gd_scene load_steps=90 format=2]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Player/player.png" type="Texture" id=2]
@@ -278,7 +278,7 @@ tracks/1/keys = {
 } ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("HitboxPivot:rotation_degrees")
+tracks/2/path = NodePath("Pivot:rotation_degrees")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -290,7 +290,7 @@ tracks/2/keys = {
 "values": [ 0.0 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("HitboxPivot/SpellKnockbackHitbox/Collider:disabled")
+tracks/3/path = NodePath("Pivot/SpellKnockbackHitbox/Collider:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -343,7 +343,7 @@ tracks/1/keys = {
 } ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("HitboxPivot:rotation_degrees")
+tracks/2/path = NodePath("Pivot:rotation_degrees")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -355,7 +355,7 @@ tracks/2/keys = {
 "values": [ 0.0 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("HitboxPivot/SpellKnockbackHitbox/Collider:disabled")
+tracks/3/path = NodePath("Pivot/SpellKnockbackHitbox/Collider:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -408,7 +408,7 @@ tracks/1/keys = {
 } ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("HitboxPivot:rotation_degrees")
+tracks/2/path = NodePath("Pivot:rotation_degrees")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -420,7 +420,7 @@ tracks/2/keys = {
 "values": [ 90.0 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("HitboxPivot/SpellKnockbackHitbox/Collider:disabled")
+tracks/3/path = NodePath("Pivot/SpellKnockbackHitbox/Collider:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -473,7 +473,7 @@ tracks/1/keys = {
 } ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("HitboxPivot:rotation_degrees")
+tracks/2/path = NodePath("Pivot:rotation_degrees")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -485,7 +485,7 @@ tracks/2/keys = {
 "values": [ 90.0 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("HitboxPivot/SpellKnockbackHitbox/Collider:disabled")
+tracks/3/path = NodePath("Pivot/SpellKnockbackHitbox/Collider:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -538,7 +538,7 @@ tracks/1/keys = {
 } ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("HitboxPivot:rotation_degrees")
+tracks/2/path = NodePath("Pivot:rotation_degrees")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -550,7 +550,7 @@ tracks/2/keys = {
 "values": [ -90.0 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("HitboxPivot/SpellKnockbackHitbox/Collider:disabled")
+tracks/3/path = NodePath("Pivot/SpellKnockbackHitbox/Collider:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -603,7 +603,7 @@ tracks/1/keys = {
 } ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("HitboxPivot:rotation_degrees")
+tracks/2/path = NodePath("Pivot:rotation_degrees")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -615,7 +615,7 @@ tracks/2/keys = {
 "values": [ -90.0 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("HitboxPivot/SpellKnockbackHitbox/Collider:disabled")
+tracks/3/path = NodePath("Pivot/SpellKnockbackHitbox/Collider:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -668,7 +668,7 @@ tracks/1/keys = {
 } ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("HitboxPivot:rotation_degrees")
+tracks/2/path = NodePath("Pivot:rotation_degrees")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -680,7 +680,7 @@ tracks/2/keys = {
 "values": [ 180.0 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("HitboxPivot/SpellKnockbackHitbox/Collider:disabled")
+tracks/3/path = NodePath("Pivot/SpellKnockbackHitbox/Collider:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -733,7 +733,7 @@ tracks/1/keys = {
 } ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("HitboxPivot:rotation_degrees")
+tracks/2/path = NodePath("Pivot:rotation_degrees")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -745,7 +745,7 @@ tracks/2/keys = {
 "values": [ 180.0 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("HitboxPivot/SpellKnockbackHitbox/Collider:disabled")
+tracks/3/path = NodePath("Pivot/SpellKnockbackHitbox/Collider:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -785,7 +785,7 @@ tracks/0/keys = {
 "values": [ 90, 91, 92, 93, 94 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("HitboxPivot/SwordKnockbackHitbox/Collider:disabled")
+tracks/1/path = NodePath("Pivot/SwordKnockbackHitbox/Collider:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -823,7 +823,7 @@ tracks/3/keys = {
 "values": [ true, false ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("HitboxPivot:rotation_degrees")
+tracks/4/path = NodePath("Pivot:rotation_degrees")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -851,7 +851,7 @@ tracks/0/keys = {
 "values": [ 100, 101, 102, 103, 104 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("HitboxPivot:rotation_degrees")
+tracks/1/path = NodePath("Pivot:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -875,7 +875,7 @@ tracks/2/keys = {
 "values": [ true, false ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("HitboxPivot/SwordKnockbackHitbox/Collider:disabled")
+tracks/3/path = NodePath("Pivot/SwordKnockbackHitbox/Collider:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -917,7 +917,7 @@ tracks/0/keys = {
 "values": [ 105, 106, 107, 108, 109 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("HitboxPivot:rotation_degrees")
+tracks/1/path = NodePath("Pivot:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -955,7 +955,7 @@ tracks/3/keys = {
 "values": [ true, false ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("HitboxPivot/SwordKnockbackHitbox/Collider:disabled")
+tracks/4/path = NodePath("Pivot/SwordKnockbackHitbox/Collider:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -983,7 +983,7 @@ tracks/0/keys = {
 "values": [ 95, 96, 97, 98, 99 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("HitboxPivot:rotation_degrees")
+tracks/1/path = NodePath("Pivot:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -995,7 +995,7 @@ tracks/1/keys = {
 "values": [ 180.0 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("HitboxPivot/SwordKnockbackHitbox/Collider:disabled")
+tracks/2/path = NodePath("Pivot/SwordKnockbackHitbox/Collider:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -1031,6 +1031,178 @@ tracks/4/keys = {
 "args": [  ],
 "method": "attack_animation_finished"
 } ]
+}
+
+[sub_resource type="Animation" id=72]
+resource_name = "ThrowDown"
+length = 0.15
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 116, 117, 118 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "attack_animation_finished"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Pivot:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=71]
+resource_name = "ThrowLeft"
+length = 0.15
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 110, 111, 112 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "attack_animation_finished"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Pivot:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 90.0 ]
+}
+
+[sub_resource type="Animation" id=73]
+resource_name = "ThrowRight"
+length = 0.15
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 113, 114, 115 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "attack_animation_finished"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Pivot:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -90.0 ]
+}
+
+[sub_resource type="Animation" id=74]
+resource_name = "ThrowUp"
+length = 0.15
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 119, 120, 121 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "attack_animation_finished"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Pivot:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 180.0 ]
 }
 
 [sub_resource type="Animation" id=25]
@@ -1212,6 +1384,31 @@ min_space = Vector2( -1, -1.1 )
 max_space = Vector2( 1, 1.1 )
 blend_mode = 1
 
+[sub_resource type="AnimationNodeAnimation" id=75]
+animation = "ThrowDown"
+
+[sub_resource type="AnimationNodeAnimation" id=76]
+animation = "ThrowRight"
+
+[sub_resource type="AnimationNodeAnimation" id=77]
+animation = "ThrowUp"
+
+[sub_resource type="AnimationNodeAnimation" id=78]
+animation = "ThrowLeft"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=79]
+blend_point_0/node = SubResource( 75 )
+blend_point_0/pos = Vector2( 0, 1.1 )
+blend_point_1/node = SubResource( 76 )
+blend_point_1/pos = Vector2( 1, 0 )
+blend_point_2/node = SubResource( 77 )
+blend_point_2/pos = Vector2( 0, -1.1 )
+blend_point_3/node = SubResource( 78 )
+blend_point_3/pos = Vector2( -1, 0 )
+min_space = Vector2( -1, -1.1 )
+max_space = Vector2( 1, 1.1 )
+blend_mode = 1
+
 [sub_resource type="AnimationNodeStateMachineTransition" id=57]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=58]
@@ -1232,6 +1429,10 @@ blend_mode = 1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=66]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=80]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=81]
+
 [sub_resource type="AnimationNodeStateMachine" id=67]
 states/Idle/node = SubResource( 31 )
 states/Idle/position = Vector2( 510, 135 )
@@ -1245,24 +1446,26 @@ states/SpellCast360/node = SubResource( 51 )
 states/SpellCast360/position = Vector2( 327, 8 )
 states/Sword/node = SubResource( 56 )
 states/Sword/position = Vector2( 695, 8 )
-transitions = [ "Idle", "Run", SubResource( 57 ), "Run", "Idle", SubResource( 58 ), "Idle", "Spell", SubResource( 59 ), "SpellAlt", "Idle", SubResource( 60 ), "Spell", "Idle", SubResource( 61 ), "Idle", "SpellAlt", SubResource( 62 ), "SpellCast360", "Idle", SubResource( 63 ), "Idle", "SpellCast360", SubResource( 64 ), "Idle", "Sword", SubResource( 65 ), "Sword", "Idle", SubResource( 66 ) ]
+states/Throw/node = SubResource( 79 )
+states/Throw/position = Vector2( 510, 8 )
+transitions = [ "Idle", "Run", SubResource( 57 ), "Run", "Idle", SubResource( 58 ), "Idle", "Spell", SubResource( 59 ), "SpellAlt", "Idle", SubResource( 60 ), "Spell", "Idle", SubResource( 61 ), "Idle", "SpellAlt", SubResource( 62 ), "SpellCast360", "Idle", SubResource( 63 ), "Idle", "SpellCast360", SubResource( 64 ), "Idle", "Sword", SubResource( 65 ), "Sword", "Idle", SubResource( 66 ), "Idle", "Throw", SubResource( 80 ), "Throw", "Idle", SubResource( 81 ) ]
 start_node = "Idle"
 graph_offset = Vector2( -169, -72 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=68]
 
-[sub_resource type="CapsuleShape2D" id=69]
+[sub_resource type="CapsuleShape2D" id=82]
 radius = 4.99999
 height = 4.00002
 
-[sub_resource type="CapsuleShape2D" id=70]
+[sub_resource type="CapsuleShape2D" id=83]
 radius = 4.0
 height = 4.0
 
-[sub_resource type="CircleShape2D" id=71]
+[sub_resource type="CircleShape2D" id=69]
 radius = 15.0
 
-[sub_resource type="CapsuleShape2D" id=72]
+[sub_resource type="CapsuleShape2D" id=70]
 radius = 1.0
 height = 2.0
 
@@ -1278,7 +1481,8 @@ texture = ExtResource( 3 )
 [node name="Sprite" type="Sprite" parent="."]
 material = SubResource( 1 )
 texture = ExtResource( 2 )
-hframes = 110
+hframes = 122
+frame = 90
 
 [node name="Collider" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 2 )
@@ -1307,6 +1511,10 @@ anims/SwordDown = SubResource( 21 )
 anims/SwordLeft = SubResource( 22 )
 anims/SwordRight = SubResource( 23 )
 anims/SwordUp = SubResource( 24 )
+anims/ThrowDown = SubResource( 72 )
+anims/ThrowLeft = SubResource( 71 )
+anims/ThrowRight = SubResource( 73 )
+anims/ThrowUp = SubResource( 74 )
 
 [node name="BlinkAnimationPlayer" type="AnimationPlayer" parent="."]
 anims/StartFlash = SubResource( 25 )
@@ -1316,38 +1524,41 @@ anims/StopFlash = SubResource( 26 )
 tree_root = SubResource( 67 )
 anim_player = NodePath("../AnimationPlayer")
 parameters/playback = SubResource( 68 )
-parameters/Idle/blend_position = Vector2( -0.0373333, 0.972199 )
+parameters/Idle/blend_position = Vector2( -0.034098, 0.910979 )
 parameters/Run/blend_position = Vector2( -0.0413333, 0.871369 )
-parameters/Spell/blend_position = Vector2( 0, 0 )
+parameters/Spell/blend_position = Vector2( -0.0278983, 0.900477 )
 parameters/SpellAlt/blend_position = Vector2( -0.0262123, 1.00324 )
-parameters/SpellCast360/blend_position = Vector2( 0, 0 )
+parameters/SpellCast360/blend_position = Vector2( -0.0402976, 0.92673 )
 parameters/Sword/blend_position = Vector2( -0.0303782, 1.00489 )
+parameters/Throw/blend_position = Vector2( -0.0266584, 0.952983 )
 
 [node name="CameraFollow" type="RemoteTransform2D" parent="."]
 
 [node name="LightFollow" type="RemoteTransform2D" parent="."]
 position = Vector2( 0, -4 )
 
-[node name="HitboxPivot" type="Position2D" parent="."]
+[node name="Pivot" type="Position2D" parent="."]
 
-[node name="SpellKnockbackHitbox" parent="HitboxPivot" instance=ExtResource( 6 )]
+[node name="SpellKnockbackHitbox" parent="Pivot" instance=ExtResource( 6 )]
 collision_mask = 8
 
-[node name="Collider" parent="HitboxPivot/SpellKnockbackHitbox" index="0"]
+[node name="Collider" parent="Pivot/SpellKnockbackHitbox" index="0"]
 position = Vector2( 0, 6 )
 rotation = 1.5708
-shape = SubResource( 69 )
+shape = SubResource( 82 )
 disabled = true
 
-[node name="SwordKnockbackHitbox" parent="HitboxPivot" instance=ExtResource( 6 )]
+[node name="SwordKnockbackHitbox" parent="Pivot" instance=ExtResource( 6 )]
 collision_mask = 8
 KNOCKBACK_FACTOR = 75
 
-[node name="Collider" parent="HitboxPivot/SwordKnockbackHitbox" index="0"]
+[node name="Collider" parent="Pivot/SwordKnockbackHitbox" index="0"]
 position = Vector2( 0, 5 )
 rotation = 1.5708
-shape = SubResource( 70 )
-disabled = true
+shape = SubResource( 83 )
+
+[node name="PotionSpawn" type="Position2D" parent="Pivot"]
+position = Vector2( 0, 5 )
 
 [node name="Spell360KnockbackHitbox" parent="." instance=ExtResource( 6 )]
 collision_mask = 8
@@ -1355,7 +1566,7 @@ KNOCKBACK_FACTOR = 150
 
 [node name="Collider" parent="Spell360KnockbackHitbox" index="0"]
 modulate = Color( 1, 1, 1, 0.188235 )
-shape = SubResource( 71 )
+shape = SubResource( 69 )
 disabled = true
 
 [node name="Hurtbox" parent="." instance=ExtResource( 5 )]
@@ -1363,7 +1574,8 @@ collision_layer = 4
 
 [node name="Collider" parent="Hurtbox" index="0"]
 position = Vector2( 0, 1 )
-shape = SubResource( 72 )
+shape = SubResource( 70 )
+disabled = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
@@ -1373,9 +1585,9 @@ one_shot = true
 [connection signal="invincibility_ended" from="Hurtbox" to="." method="_on_Hurtbox_invincibility_ended"]
 [connection signal="invincibility_started" from="Hurtbox" to="." method="_on_Hurtbox_invincibility_started"]
 
-[editable path="HitboxPivot/SpellKnockbackHitbox"]
+[editable path="Pivot/SpellKnockbackHitbox"]
 
-[editable path="HitboxPivot/SwordKnockbackHitbox"]
+[editable path="Pivot/SwordKnockbackHitbox"]
 
 [editable path="Spell360KnockbackHitbox"]
 

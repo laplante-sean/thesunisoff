@@ -8,3 +8,4 @@ func _ready():
 	# making levels. This ensures it's always
 	# back on for testing
 	theDarkness.visible = true
+	SaveAndLoad.load_game()

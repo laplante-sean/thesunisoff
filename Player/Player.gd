@@ -11,7 +11,8 @@ export(float) var INVINCIBILITY_TIME = 0.6
 
 enum PlayerState {
 	MOVE,
-	ATTACK
+	ATTACK,
+	THROW
 }
 
 var state = PlayerState.MOVE
@@ -25,13 +26,14 @@ onready var sprite = $Sprite
 onready var animationPlayer = $AnimationPlayer
 onready var blinkAnimationPlayer = $BlinkAnimationPlayer
 onready var animationTree = $AnimationTree
-onready var spellKnockbackHitbox = $HitboxPivot/SpellKnockbackHitbox
-onready var swordKnockbackHitbox = $HitboxPivot/SwordKnockbackHitbox
+onready var spellKnockbackHitbox = $Pivot/SpellKnockbackHitbox
+onready var swordKnockbackHitbox = $Pivot/SwordKnockbackHitbox
 onready var hurtboxCollider = $Hurtbox/Collider
-onready var spellKnockbackCollider = $HitboxPivot/SpellKnockbackHitbox/Collider
-onready var swordKnockbackCollider = $HitboxPivot/SwordKnockbackHitbox/Collider
+onready var spellKnockbackCollider = $Pivot/SpellKnockbackHitbox/Collider
+onready var swordKnockbackCollider = $Pivot/SwordKnockbackHitbox/Collider
 onready var spell360KnockbackCollider = $Spell360KnockbackHitbox/Collider
 onready var throwPotionTimer = $ThrowPotionTimer
+onready var potionSpawn = $Pivot/PotionSpawn
 onready var animationState = animationTree.get("parameters/playback")
 
 
@@ -46,6 +48,9 @@ func _ready():
 	spellKnockbackCollider.disabled = true
 	swordKnockbackCollider.disabled = true
 	spell360KnockbackCollider.disabled = true
+	
+	# We start facing down
+	set_facing(player_facing)
 
 
 func _physics_process(delta):
@@ -54,6 +59,21 @@ func _physics_process(delta):
 			move_state(delta)
 		PlayerState.ATTACK:
 			velocity = Vector2.ZERO
+		PlayerState.THROW:
+			velocity = Vector2.ZERO
+
+
+func set_facing(vec):
+	player_facing = vec
+	spellKnockbackHitbox.knockback_vector = vec
+	swordKnockbackHitbox.knockback_vector = vec
+	animationTree.set("parameters/Idle/blend_position", vec)
+	animationTree.set("parameters/Run/blend_position", vec)
+	animationTree.set("parameters/Spell/blend_position", vec)
+	animationTree.set("parameters/SpellAlt/blend_position", vec)
+	animationTree.set("parameters/SpellCast360/blend_position", vec)
+	animationTree.set("parameters/Sword/blend_position", vec)
+	animationTree.set("parameters/Throw/blend_position", vec)
 
 
 func move_state(delta):
@@ -63,15 +83,7 @@ func move_state(delta):
 	input_vector = input_vector.normalized()
 
 	if input_vector != Vector2.ZERO:
-		player_facing = input_vector
-		spellKnockbackHitbox.knockback_vector = input_vector
-		swordKnockbackHitbox.knockback_vector = input_vector
-		animationTree.set("parameters/Idle/blend_position", input_vector)
-		animationTree.set("parameters/Run/blend_position", input_vector)
-		animationTree.set("parameters/Spell/blend_position", input_vector)
-		animationTree.set("parameters/SpellAlt/blend_position", input_vector)
-		animationTree.set("parameters/SpellCast360/blend_position", input_vector)
-		animationTree.set("parameters/Sword/blend_position", input_vector)
+		set_facing(input_vector)
 		animationState.travel("Run")
 		velocity = velocity.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta)
 	else:
@@ -85,9 +97,11 @@ func move_state(delta):
 		animationState.travel("SpellCast360")
 		state = PlayerState.ATTACK
 	elif Input.is_action_just_pressed("throw_potion") and throwPotionTimer.time_left == 0:
-		#animationState.travel("Throw") TODO
-		throw_potion()
-		#state = PlayerState.ATTACK
+		if Input.is_action_pressed("throw_behind_modifier"):
+			throw_potion(true)
+		else:
+			animationState.travel("Throw")
+			state = PlayerState.THROW
 	elif Input.is_action_just_pressed("sword_attack"):
 		animationState.travel("Sword")
 		state = PlayerState.ATTACK
@@ -95,9 +109,21 @@ func move_state(delta):
 	move()
 
 
-func throw_potion():
-	var potion = Utils.instance_scene_on_main(Potion, global_position)
-	potion.velocity = player_facing
+func throw_potion(behind=false):
+	var direction = player_facing
+	var pos = potionSpawn.global_position
+
+	if behind:
+		direction *= -1
+		pos = global_position
+
+	var potion = Utils.instance_scene_on_main(Potion, pos)
+	
+	if behind:
+		potion.FLIGHT_TIME = 0.05
+		potion.SPEED /= 3
+	
+	potion.velocity = direction
 	throwPotionTimer.start()
 
 
@@ -116,6 +142,8 @@ func get_spell_animation():
 
 
 func attack_animation_finished():
+	if state == PlayerState.THROW:
+		throw_potion()
 	state = PlayerState.MOVE
 
 

@@ -50,13 +50,16 @@ animations = [ {
 radius = 1.0
 
 [sub_resource type="CircleShape2D" id=9]
-radius = 13.0
+radius = 12.0
 
 [node name="Bird" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
 ACCELERATION = 50
-MAX_SPEED = 10
+MAX_SPEED = 20
 FRICTION = 100
+
+[node name="ShadowSprite" parent="." index="0"]
+position = Vector2( 0, -2 )
 
 [node name="AnimatedSprite" parent="." index="1"]
 position = Vector2( 0, -3 )
@@ -70,15 +73,13 @@ shape = SubResource( 8 )
 [node name="WanderController" parent="." index="3"]
 wander_range = 5
 
-[node name="PlayerDetectionZone" parent="." index="4"]
-modulate = Color( 1, 1, 1, 0.329412 )
-
 [node name="Collider" parent="PlayerDetectionZone" index="0"]
+modulate = Color( 1, 1, 1, 0.180392 )
 shape = SubResource( 9 )
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="." index="5"]
-position = Vector2( -1.78814e-07, -1 )
-scale = Vector2( 0.3, 0.3 )
+position = Vector2( 0, -0.5 )
+scale = Vector2( 0.5, 0.45 )
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
 
 [editable path="PlayerDetectionZone"]

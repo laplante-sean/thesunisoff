@@ -2,6 +2,7 @@ extends Node
 class_name Stats
 
 export(int) var max_health = 1 setget set_max_health
+
 var health = max_health setget set_health
 
 signal no_health

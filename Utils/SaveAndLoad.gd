@@ -2,10 +2,24 @@ extends Node
 
 const SAVE_DATA_PATH = "res://save_data.json"
 
-var default_save_data = {}
+var default_save_data = {
+	player_stats = PlayerStats.save_data()
+}
 
 
-func save_data_to_file(save_data):
+func save_game():
+	var save_data = {
+		player_stats = PlayerStats.save_data()
+	}
+	_save_data_to_file(save_data)
+
+
+func load_game():
+	var save_data = _load_data_from_file()
+	PlayerStats.load_data(save_data.player_stats)
+
+
+func _save_data_to_file(save_data):
 	"""
 	Write a file with the current save data
 	
@@ -18,7 +32,7 @@ func save_data_to_file(save_data):
 	save_file.close()
 
 
-func load_data_from_file():
+func _load_data_from_file():
 	"""
 	Load save data from our save location
 	
