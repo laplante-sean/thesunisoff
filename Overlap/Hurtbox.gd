@@ -1,4 +1,5 @@
 extends Area2D
+class_name Hurtbox
 
 const HitEffect = preload("res://Effects/HitEffect.tscn")
 
@@ -8,6 +9,7 @@ onready var timer = $Timer
 
 signal invincibility_started
 signal invincibility_ended
+signal take_damage(area)
 
 
 func set_invincible(value):
@@ -29,3 +31,8 @@ func create_hit_effect():
 
 func _on_Timer_timeout():
 	self.invincible = false
+
+
+func _on_Hurtbox_area_entered(area):
+	if area is Hitbox and not self.invincible:
+		emit_signal("take_damage", area)

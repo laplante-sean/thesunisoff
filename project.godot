@@ -10,14 +10,29 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "KinematicBody2D",
+"class": "CollectibleItem",
+"language": "GDScript",
+"path": "res://Items/CollectibleItem.gd"
+}, {
+"base": "KinematicBody2D",
 "class": "Enemy",
 "language": "GDScript",
 "path": "res://Enemies/Enemy.gd"
 }, {
 "base": "Area2D",
-"class": "KnockbackHitbox",
+"class": "Hitbox",
 "language": "GDScript",
-"path": "res://Overlap/KnockbackHitbox.gd"
+"path": "res://Overlap/Hitbox.gd"
+}, {
+"base": "Area2D",
+"class": "Hurtbox",
+"language": "GDScript",
+"path": "res://Overlap/Hurtbox.gd"
+}, {
+"base": "StaticBody2D",
+"class": "InteractibleObject",
+"language": "GDScript",
+"path": "res://Objects/InteractibleObject.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "NPC",
@@ -35,8 +50,11 @@ _global_script_classes=[ {
 "path": "res://Stats/Stats.gd"
 } ]
 _global_script_class_icons={
+"CollectibleItem": "",
 "Enemy": "",
-"KnockbackHitbox": "",
+"Hitbox": "",
+"Hurtbox": "",
+"InteractibleObject": "",
 "NPC": "",
 "Player": "",
 "Stats": ""
@@ -156,6 +174,8 @@ throw_behind_modifier={
 2d_physics/layer_5="Enemy"
 2d_physics/layer_6="SoftCollisions"
 2d_physics/layer_7="NPCs"
+2d_physics/layer_8="Interactible"
+2d_physics/layer_9="CollectibleItems"
 
 [rendering]
 

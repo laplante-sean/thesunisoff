@@ -5,9 +5,11 @@ var deaths = 0
 var total_experience = 0
 var level = 1 setget set_level
 var experience = 0 setget set_experience
+var money = 100 setget set_money
 
 var next_level_exp_threshold = 100
 
+signal money_changed(value)
 signal experience_changed(value)
 signal level_changed(value)
 
@@ -20,7 +22,8 @@ func save_data():
 		deaths = self.deaths,
 		level = self.level,
 		experience = self.experience,
-		total_experience = self.total_experience
+		total_experience = self.total_experience,
+		money = self.money
 	}
 
 
@@ -31,12 +34,18 @@ func load_data(stats):
 	self.enemies_killed = stats.enemies_killed
 	self.experience = stats.experience
 	self.total_experience = stats.total_experience
+	self.money = stats.money
 	if stats.health != 0:
 		self.health = stats.health
 
 
+func set_money(value):
+	money = max(value, 0)
+	emit_signal("money_changed", money)
+
+
 func set_level(value):
-	level = value
+	level = max(value, 0)
 	next_level_exp_threshold = 100 + ((level - 1) * 10)
 	emit_signal("level_changed", level)
 
@@ -58,4 +67,8 @@ func collect_experience(amount):
 
 func _on_PlayerStats_no_health():
 	self.deaths += 1
+	SaveAndLoad.save_game()
+
+
+func _on_PlayerStats_level_changed(value):
 	SaveAndLoad.save_game()

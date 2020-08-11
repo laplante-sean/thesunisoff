@@ -6,4 +6,5 @@
 [node name="PlayerStats" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 max_health = 4
+[connection signal="level_changed" from="." to="." method="_on_PlayerStats_level_changed"]
 [connection signal="no_health" from="." to="." method="_on_PlayerStats_no_health"]

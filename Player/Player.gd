@@ -7,6 +7,7 @@ const Potion = preload("res://Player/Potion.tscn")
 export(int) var ACCELERATION = 200
 export(int) var MAX_SPEED = 45
 export(int) var FRICTION = 220
+export(int) var INTERACT_DISTANCE = 4
 export(float) var INVINCIBILITY_TIME = 0.6
 
 enum PlayerState {
@@ -26,28 +27,29 @@ onready var sprite = $Sprite
 onready var animationPlayer = $AnimationPlayer
 onready var blinkAnimationPlayer = $BlinkAnimationPlayer
 onready var animationTree = $AnimationTree
-onready var spellKnockbackHitbox = $Pivot/SpellKnockbackHitbox
-onready var swordKnockbackHitbox = $Pivot/SwordKnockbackHitbox
+onready var spellHitbox = $Pivot/SpellHitbox
+onready var swordHitbox = $Pivot/SwordHitbox
 onready var hurtboxCollider = $Hurtbox/Collider
-onready var spellKnockbackCollider = $Pivot/SpellKnockbackHitbox/Collider
-onready var swordKnockbackCollider = $Pivot/SwordKnockbackHitbox/Collider
-onready var spell360KnockbackCollider = $Spell360KnockbackHitbox/Collider
+onready var spellCollider = $Pivot/SpellHitbox/Collider
+onready var swordCollider = $Pivot/SwordHitbox/Collider
+onready var spell360Collider = $Spell360Hitbox/Collider
 onready var throwPotionTimer = $ThrowPotionTimer
 onready var potionSpawn = $Pivot/PotionSpawn
+onready var interactionRay = $InteractionRay
 onready var animationState = animationTree.get("parameters/playback")
 
 
 func _ready():
 	stats.connect("no_health", self, "_on_PlayerStats_no_health")
 	animationTree.active = true
-	spellKnockbackHitbox.knockback_vector = Vector2.DOWN
-	swordKnockbackHitbox.knockback_vector = Vector2.DOWN
+	spellHitbox.knockback_vector = Vector2.DOWN
+	swordHitbox.knockback_vector = Vector2.DOWN
 	
 	# set the correct initial states for colliders
 	hurtboxCollider.disabled = false
-	spellKnockbackCollider.disabled = true
-	swordKnockbackCollider.disabled = true
-	spell360KnockbackCollider.disabled = true
+	spellCollider.disabled = true
+	swordCollider.disabled = true
+	spell360Collider.disabled = true
 	
 	# We start facing down
 	set_facing(player_facing)
@@ -65,8 +67,9 @@ func _physics_process(delta):
 
 func set_facing(vec):
 	player_facing = vec
-	spellKnockbackHitbox.knockback_vector = vec
-	swordKnockbackHitbox.knockback_vector = vec
+	spellHitbox.knockback_vector = vec
+	swordHitbox.knockback_vector = vec
+	interactionRay.cast_to = vec * INTERACT_DISTANCE
 	animationTree.set("parameters/Idle/blend_position", vec)
 	animationTree.set("parameters/Run/blend_position", vec)
 	animationTree.set("parameters/Spell/blend_position", vec)
@@ -105,6 +108,8 @@ func move_state(delta):
 	elif Input.is_action_just_pressed("sword_attack"):
 		animationState.travel("Sword")
 		state = PlayerState.ATTACK
+	elif Input.is_action_just_pressed("interact"):
+		interact()
 
 	move()
 
@@ -125,6 +130,12 @@ func throw_potion(behind=false):
 	
 	potion.velocity = direction
 	throwPotionTimer.start()
+
+
+func interact():
+	var object = interactionRay.get_collider()
+	if object != null and object is InteractibleObject:
+		object.interact()
 
 
 func set_spell_animation(value):
@@ -156,18 +167,21 @@ func _on_PlayerStats_no_health():
 	Utils.instance_scene_on_main(ExplodeEffect, sprite.global_position)
 
 
-func _on_Hurtbox_area_entered(area):
-	if hurtbox.invincible:
-		return
-	
-	stats.health -= area.damage
-	hurtbox.start_invincibility(INVINCIBILITY_TIME)
-	hurtbox.create_hit_effect()
-
-
 func _on_Hurtbox_invincibility_started():
 	blinkAnimationPlayer.play("StartFlash")
 
 
 func _on_Hurtbox_invincibility_ended():
 	blinkAnimationPlayer.play("StopFlash")
+
+
+func _on_Hurtbox_take_damage(area):
+	stats.health -= area.DAMAGE
+	hurtbox.start_invincibility(INVINCIBILITY_TIME)
+	hurtbox.create_hit_effect()
+
+
+func _on_ItemCollector_body_entered(body):
+	if body is CollectibleItem:
+		body.collect()
+		body.queue_free()

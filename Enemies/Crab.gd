@@ -3,9 +3,9 @@ extends "res://Enemies/Enemy.gd"
 
 func _physics_process(delta):
 	match state:
-		IDLE:
+		EnemyState.IDLE:
 			sprite.animation = "Idle"
-		WANDER:
+		EnemyState.WANDER:
 			sprite.animation = "Scurry"
-		CHASE:
+		EnemyState.CHASE:
 			sprite.animation = "Scurry"

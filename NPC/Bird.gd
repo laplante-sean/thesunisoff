@@ -8,9 +8,9 @@ var fly_direction = Vector2.ZERO
 
 func _physics_process(delta):
 	match state:
-		IDLE:
+		NPCState.IDLE:
 			sprite.animation = "Idle"
-		WANDER:
+		NPCState.WANDER:
 			sprite.animation = "Walk"
 
 
