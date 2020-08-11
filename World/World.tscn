@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://World/World.gd" type="Script" id=1]
 [ext_resource path="res://World/YSortTileMap.tscn" type="PackedScene" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://NPC/Bird.tscn" type="PackedScene" id=9]
 [ext_resource path="res://UI/UI.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Objects/Chest.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Items/Key.tscn" type="PackedScene" id=12]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=1]
 
@@ -244,6 +245,13 @@ position = Vector2( 113, 46 )
 
 [node name="Bird20" parent="TheBirds" instance=ExtResource( 9 )]
 position = Vector2( 116, 44 )
+
+[node name="Items" type="Node" parent="."]
+
+[node name="Key" parent="Items" instance=ExtResource( 12 )]
+position = Vector2( 31, 30 )
+STARTING_STATE = 1
+KEY_TYPE = 1
 
 [editable path="PlayerTorch"]
 

@@ -74,6 +74,36 @@ func collect_item(item_data):
 	emit_signal("collected_item", item_data)
 
 
+func use_item(item_id, params={}):
+	if not str(item_id) in self.inventory:
+		return null
+
+	var matched_items = self.inventory[str(item_id)]
+	var matched_item = null
+	var matched_item_idx = 0
+
+	for idx in range(len(matched_items)):
+		var item = matched_items[idx]
+		var found = true
+		
+		for key in params.keys():
+			var check = params[key]
+			if not key in item or check != item[key]:
+				found = false
+				break
+	
+		if found:
+			matched_item = item
+			matched_item_idx = idx
+			break
+
+	if matched_item != null:
+		self.inventory[str(item_id)].remove(matched_item_idx)
+		return matched_item
+
+	return null
+
+
 func collect_experience(amount):
 	self.experience += amount
 	self.total_experience += amount

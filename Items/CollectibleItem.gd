@@ -14,6 +14,7 @@ export(int) var WANDER_TARGET_RANGE = 4
 export(int) var ITEM_ID = 0  # This must be set in sub-classes to the
 							 # correct item ID if IS_MONEY is false
 export(bool) var IS_MONEY = false
+export(ItemState) var STARTING_STATE = ItemState.WANDER
 
 var velocity = Vector2.ZERO
 var state = ItemState.WANDER
@@ -25,12 +26,14 @@ onready var sprite = $Sprite
 
 
 func _ready():
+	state = STARTING_STATE
 	var target_vector = Vector2(
 		rand_range(-WANDER_RANGE, WANDER_RANGE),
 		rand_range(-WANDER_RANGE, WANDER_RANGE)
 	)
 	target = position + target_vector
 	collider.disabled = true
+
 
 func _physics_process(delta):
 	match state:

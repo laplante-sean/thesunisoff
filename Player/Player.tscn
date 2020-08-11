@@ -1454,7 +1454,7 @@ graph_offset = Vector2( -169, -72 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=79]
 
-[sub_resource type="CapsuleShape2D" id=85]
+[sub_resource type="CapsuleShape2D" id=80]
 radius = 5.0
 height = 4.0
 
@@ -1552,7 +1552,7 @@ ENABLE_KNOCKBACK = true
 [node name="Collider" parent="Pivot/SpellHitbox" index="0"]
 position = Vector2( 0, 6 )
 rotation = 1.5708
-shape = SubResource( 85 )
+shape = SubResource( 80 )
 disabled = true
 
 [node name="SwordHitbox" parent="Pivot" instance=ExtResource( 6 )]

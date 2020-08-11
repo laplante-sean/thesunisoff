@@ -134,8 +134,16 @@ func throw_potion(behind=false):
 
 func interact():
 	var object = interactionRay.get_collider()
-	if object != null and object is InteractibleObject:
-		object.interact()
+	if object == null or not object is InteractibleObject:
+		return
+
+	if object is Chest and object.is_locked():
+		var item = stats.use_item(ItemUtils.get_item_id("Key"), {key_type=Key.KeyType.CHEST})
+		if item != null:
+			print("Used 1 chest key to unlock the chest!")
+			object.unlock()
+
+	object.interact()
 
 
 func set_spell_animation(value):

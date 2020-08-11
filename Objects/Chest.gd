@@ -1,4 +1,5 @@
 extends "res://Objects/InteractibleObject.gd"
+class_name Chest
 
 enum ChestState {
 	LOCKED,
@@ -18,6 +19,14 @@ onready var animationPlayer = $AnimationPlayer
 
 func _ready():
 	self.state = STARTING_STATE
+
+
+func is_locked():
+	return state == ChestState.LOCKED
+
+
+func unlock():
+	state = ChestState.UNLOCKED
 
 
 func set_state(value):
