@@ -182,6 +182,17 @@ func _on_Hurtbox_take_damage(area):
 
 
 func _on_ItemCollector_body_entered(body):
+	var data = null
 	if body is CollectibleItem:
-		body.collect()
-		body.queue_free()
+		data = body.collect()
+	
+	if data == null:
+		print("Error: No data collected from item: ", body)
+		return
+		
+	if body.IS_MONEY:
+		stats.money += data.value
+	else:
+		stats.collect_item(data)
+	
+	body.queue_free()

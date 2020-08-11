@@ -1,6 +1,9 @@
 extends CollectibleItem
 
+export(int) var VALUE = 1
+
 
 func collect():
-	print("Collect a coin")
-	PlayerStats.money += 1
+	var data = .collect()
+	data["value"] = VALUE
+	return data

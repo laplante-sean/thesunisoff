@@ -71,6 +71,7 @@ config/icon="res://icon.png"
 PlayerStats="*res://Player/PlayerStats.tscn"
 Utils="*res://Utils/Utils.gd"
 SaveAndLoad="*res://Utils/SaveAndLoad.gd"
+ItemUtils="*res://Items/ItemUtils.gd"
 
 [display]
 
@@ -176,6 +177,7 @@ throw_behind_modifier={
 2d_physics/layer_7="NPCs"
 2d_physics/layer_8="Interactible"
 2d_physics/layer_9="CollectibleItems"
+2d_physics/layer_10="WorldObjects"
 
 [rendering]
 

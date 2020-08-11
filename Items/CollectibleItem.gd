@@ -11,6 +11,9 @@ export(int) var MAX_SPEED = 5
 export(int) var ACCELERATION = 5
 export(int) var WANDER_RANGE = 10
 export(int) var WANDER_TARGET_RANGE = 4
+export(int) var ITEM_ID = 0  # This must be set in sub-classes to the
+							 # correct item ID if IS_MONEY is false
+export(bool) var IS_MONEY = false
 
 var velocity = Vector2.ZERO
 var state = ItemState.WANDER
@@ -54,13 +57,14 @@ func seek_player():
 func move_toward_position(pos, delta):
 	var direction = global_position.direction_to(pos)
 	velocity = velocity.move_toward(direction * MAX_SPEED, ACCELERATION * delta)
-	position += velocity
+	move_and_collide(velocity)
 
 
 func collect():
 	"""
-	Sub-classes must implement collect to update the
-	PlayerStats with the result of collecting the item
+	Sub-classes CAN override this (but don't have to) if they need to
+	store additional information with the item in the player's inventory
 	"""
-	print("Collecting ", self)
-
+	return {
+		item_id = ITEM_ID
+	}

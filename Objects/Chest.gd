@@ -1,13 +1,14 @@
 extends "res://Objects/InteractibleObject.gd"
 
-const Coin = preload("res://Items/Coin.tscn")
-
 enum ChestState {
 	LOCKED,
 	UNLOCKED,
 	OPEN
 }
 
+# This will be an array of strings where each string is a tuple
+# of item_id,quantity
+export(Array, String) var CONTENTS = []
 export(ChestState) var STARTING_STATE = ChestState.LOCKED
 
 var state = ChestState.LOCKED setget set_state
@@ -32,8 +33,6 @@ func set_state(value):
 
 
 func interact():
-	print("Interact with chest!")
-	
 	match state:
 		ChestState.LOCKED:
 			print("Sorry, the chest is locked. You need a key")
@@ -46,6 +45,11 @@ func interact():
 func _on_AnimationPlayer_animation_finished(anim_name):
 	self.state = ChestState.OPEN
 	
-	# TODO - Somehow have chests with different items
-	for i in range(int(rand_range(10, 20))):
-		Utils.instance_scene_on_main(Coin, global_position)
+	for item in CONTENTS:
+		item = item.strip_edges()
+		var item_info = item.split(",", false, 2)
+		var item_id = int(item_info[0].strip_edges())
+		var item_quantity = int(item_info[1].strip_edges())
+	
+		for i in range(item_quantity):
+			ItemUtils.instance_item_on_main(item_id, global_position)
