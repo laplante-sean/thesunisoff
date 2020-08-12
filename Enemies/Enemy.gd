@@ -13,7 +13,8 @@ export(float) var INVICIBILITY_TIME = 0.4
 enum EnemyState {
 	IDLE,
 	WANDER,
-	CHASE
+	CHASE,
+	ATTACK
 }
 
 var velocity = Vector2.ZERO
@@ -26,10 +27,12 @@ onready var stats = $EnemyStats
 onready var playerDetectionZone = $PlayerDetectionZone
 onready var softCollision = $SoftCollision
 onready var wanderController = $WanderController
-onready var animationPlayer = $AnimationPlayer
+onready var blinkAnimationPlayer = $BlinkAnimationPlayer
 
 
 func _ready():
+	var mat = sprite.get_material()
+	mat.set_shader_param("active", false)
 	state = pick_random_state([EnemyState.IDLE, EnemyState.WANDER])
 
 
@@ -46,7 +49,6 @@ func _physics_process(delta):
 			seek_player()
 			check_and_update_state()
 			move_toward_position(wanderController.target_position, delta)
-			sprite.flip_h = velocity.x < 0
 
 			if global_position.distance_to(wanderController.target_position) <= WANDER_TARGET_RANGE:
 				state = pick_random_state([EnemyState.IDLE, EnemyState.WANDER])
@@ -54,15 +56,36 @@ func _physics_process(delta):
 		EnemyState.CHASE:
 			var player = playerDetectionZone.player
 			if player != null:
-				move_toward_position(player.global_position, delta)
+				chase(player, delta)
 			else:
 				state = EnemyState.IDLE
-			sprite.flip_h = velocity.x < 0
+		EnemyState.ATTACK:
+			var player = playerDetectionZone.player
+			if player != null:
+				attack(player, delta)
+				chase(player, delta)
+			else:
+				state = EnemyState.IDLE
 
 	if softCollision.is_colliding():
 		velocity += softCollision.get_push_vector() * delta * SOFT_COLLISION_PUSH_FACTOR
 
 	velocity = move_and_slide(velocity)
+	sprite.flip_h = velocity.x < 0
+
+
+func attack(player, delta):
+	# Override to implement
+	pass
+
+
+func chase(player, delta):
+	# Override to change
+	move_toward_position(player.global_position, delta)
+	if global_position.distance_to(player.global_position) <= WANDER_TARGET_RANGE:
+		state = EnemyState.ATTACK
+	else:
+		state = EnemyState.CHASE
 
 
 func seek_player():
@@ -71,6 +94,11 @@ func seek_player():
 
 
 func move_toward_position(pos, delta):
+	if global_position.distance_to(pos) <= WANDER_TARGET_RANGE and state == EnemyState.CHASE:
+		state = EnemyState.ATTACK
+	elif state == EnemyState.ATTACK:
+		state = EnemyState.CHASE
+	
 	var direction = global_position.direction_to(pos)
 	velocity = velocity.move_toward(direction * MAX_SPEED, ACCELERATION * delta)
 
@@ -87,11 +115,11 @@ func pick_random_state(state_list):
 
 
 func _on_Hurtbox_invincibility_started():
-	animationPlayer.play("StartFlash")
+	blinkAnimationPlayer.play("StartFlash")
 
 
 func _on_Hurtbox_invincibility_ended():
-	animationPlayer.play("StopFlash")
+	blinkAnimationPlayer.play("StopFlash")
 
 
 func _on_EnemyStats_no_health():
