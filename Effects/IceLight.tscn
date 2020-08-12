@@ -4,3 +4,4 @@
 
 [node name="IceLight" type="Light2D"]
 texture = ExtResource( 1 )
+shadow_enabled = true
