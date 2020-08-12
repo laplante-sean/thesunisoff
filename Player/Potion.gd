@@ -1,6 +1,8 @@
 extends "res://Player/Projectile.gd"
 
 const ExplodeEffect = preload("res://Effects/ExplodeEffect.tscn")
+const FireLight = preload("res://Effects/FireLight.tscn")   # For fire potion
+const IceLight = preload("res://Effects/IceLight.tscn")      # For ice potion
 
 enum PotionType { 
 	FIRE,
@@ -16,7 +18,7 @@ enum PotionState {
 }
 
 export(PotionType) var POTION_TYPE = PotionType.FIRE
-export(float) var FLIGHT_TIME = 0.2
+export(float) var FLIGHT_TIME = 0.3
 export(int) var IMPACT_RADIUS = 5
 export(float) var LINGER_TIME = 5
 
@@ -29,6 +31,7 @@ var disolve_animation = "DisolveFire"
 onready var lingerTimer = $LingerTimer
 onready var flightTimer = $FlightTimer
 onready var hitboxCollider = $Hitbox/Collider
+onready var hitbox = $Hitbox
 
 
 func _ready():
@@ -38,17 +41,25 @@ func _ready():
 	flightTimer.wait_time = FLIGHT_TIME
 	flightTimer.start()
 
+	var lighting = null
+
 	match POTION_TYPE:
 		PotionType.FIRE:
 			fly_animation = "Fire"
 			ignite_animation = "IgniteFire"
 			linger_animation = "LingerFire"
 			disolve_animation = "DisolveFire"
+			lighting = FireLight.instance()
+			hitbox.MOVEMENT_BUF = 0.75
 		PotionType.ICE:
 			fly_animation = "Ice"
 			ignite_animation = "IgniteIce"
 			linger_animation = "LingerIce"
 			disolve_animation = "DisolveIce"
+			lighting = IceLight.instance()
+			hitbox.MOVEMENT_BUF = 0.2
+	
+	add_child(lighting)
 
 
 func _physics_process(delta):

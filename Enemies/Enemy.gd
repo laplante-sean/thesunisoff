@@ -17,6 +17,8 @@ enum EnemyState {
 	ATTACK
 }
 
+var pre_buf_max_speed = MAX_SPEED
+var movement_buffed = false
 var velocity = Vector2.ZERO
 var knockback = Vector2.ZERO
 var state = EnemyState.CHASE
@@ -137,5 +139,17 @@ func _on_Hurtbox_take_damage(area):
 		else:
 			knockback = area.knockback_vector * area.KNOCKBACK_FACTOR
 
+	if area.MOVEMENT_BUF < 1 and not movement_buffed:
+		# This area slows an enemy down
+		pre_buf_max_speed = MAX_SPEED
+		MAX_SPEED *= area.MOVEMENT_BUF
+		movement_buffed = true
+
 	hurtbox.create_hit_effect()
 	hurtbox.start_invincibility(INVICIBILITY_TIME)
+
+
+func _on_Hurtbox_end_movement_buf(area):
+	# Restore full movement
+	MAX_SPEED = pre_buf_max_speed
+	movement_buffed = false

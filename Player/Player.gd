@@ -54,6 +54,9 @@ func _ready():
 	# We start facing down
 	set_facing(player_facing)
 
+	var mat = sprite.get_material()
+	mat.set_shader_param("active", false)
+
 
 func _physics_process(delta):
 	match state:
