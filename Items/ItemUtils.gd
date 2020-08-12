@@ -1,18 +1,19 @@
 extends Node
 
-const Coin = preload("res://Items/Coin.tscn")
-const Key = preload("res://Items/Key.tscn")
+const CoinScene = preload("res://Items/Coin.tscn")
+const KeyScene = preload("res://Items/Key.tscn")
 
 var items = [
-	Coin,  # ID == 0
-	Key,   # ID == 1
+	CoinScene,  # ID == 0
+	KeyScene,   # ID == 1
 ]
 
+var item_name_map = {}
 
-var item_name_map = {
-	Coin = 0,
-	Key = 1
-}
+
+func _ready():
+	item_name_map["Coin"] = 0
+	item_name_map["Key"] = 1
 
 
 func instance_item_on_main(item_id, position=Vector2.ZERO):

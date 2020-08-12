@@ -1,4 +1,5 @@
 extends CollectibleItem
+class_name Coin
 
 export(int) var VALUE = 1
 
