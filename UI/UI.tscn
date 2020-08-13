@@ -18,3 +18,4 @@ margin_bottom = 7.0
 text = "99"
 
 [node name="DialogBox" parent="." instance=ExtResource( 4 )]
+visible = false

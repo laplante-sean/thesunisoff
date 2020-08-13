@@ -12,6 +12,12 @@ onready var label = $Label
 onready var sprite = $AnimatedSprite
 
 
+func _ready():
+	label.text = ""
+	label.autowrap = true
+	label.max_lines_visible = 3
+
+
 func _process(delta):
 	if len(display_message) == 0:
 		visible = false
