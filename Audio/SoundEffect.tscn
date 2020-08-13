@@ -1,0 +1,7 @@
+[gd_scene format=2]
+
+[node name="SoundEffect" type="AudioStreamPlayer2D"]
+volume_db = -10.0
+autoplay = true
+max_distance = 20.0
+[connection signal="finished" from="." to="." method="queue_free"]

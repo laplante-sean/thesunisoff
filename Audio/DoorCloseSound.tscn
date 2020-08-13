@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Audio/door-close.ogg" type="AudioStream" id=1]
+[ext_resource path="res://Audio/SoundEffect.tscn" type="PackedScene" id=2]
+
+[node name="DoorCloseSound" instance=ExtResource( 2 )]
+stream = ExtResource( 1 )

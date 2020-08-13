@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/chest-close.ogg-e3d0901725238d43b75c5044004e60a3.oggstr"
+
+[deps]
+
+source_file="res://Audio/chest-close.ogg"
+dest_files=[ "res://.import/chest-close.ogg-e3d0901725238d43b75c5044004e60a3.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

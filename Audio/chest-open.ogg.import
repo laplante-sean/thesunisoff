@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/chest-open.ogg-e4a633bf7e52ab2b29befd0162218d82.oggstr"
+
+[deps]
+
+source_file="res://Audio/chest-open.ogg"
+dest_files=[ "res://.import/chest-open.ogg-e4a633bf7e52ab2b29befd0162218d82.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

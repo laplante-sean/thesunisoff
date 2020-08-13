@@ -23,5 +23,3 @@ animations = [ {
 frames = SubResource( 3 )
 animation = "Animate"
 script = ExtResource( 2 )
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

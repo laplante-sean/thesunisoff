@@ -1,6 +1,9 @@
 extends InteractibleObject
 class_name Chest
 
+const ChestOpenSound = preload("res://Audio/ChestOpenSound.tscn")
+const ChestCloseSound = preload("res://Audio/ChestCloseSound.tscn")
+
 enum ChestState {
 	LOCKED,
 	UNLOCKED,
@@ -48,12 +51,18 @@ func interact():
 				"Sorry, the chest is locked. You need a chest key." + 
 				"They're goldish/yellow.")
 		ChestState.UNLOCKED:
+			Utils.instance_scene_on_main(ChestOpenSound, global_position)
 			animationPlayer.play("Open")
 		ChestState.OPEN:
-			Utils.say_dialog("This chest is already open!")
+			Utils.instance_scene_on_main(ChestCloseSound, global_position)
+			animationPlayer.play_backwards("Open")
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):
+	if self.state == ChestState.OPEN:
+		self.state = ChestState.UNLOCKED
+		return
+
 	self.state = ChestState.OPEN
 	
 	for item in CONTENTS:
@@ -64,3 +73,5 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 	
 		for i in range(item_quantity):
 			ItemUtils.instance_item_on_main(item_id, global_position)
+
+	CONTENTS = []

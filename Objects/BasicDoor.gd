@@ -1,6 +1,9 @@
 extends InteractibleObject
 class_name Door
 
+const DoorOpenSound = preload("res://Audio/DoorOpenSound.tscn")
+const DoorCloseSound = preload("res://Audio/DoorCloseSound.tscn")
+
 enum DoorState {
 	LOCKED,
 	UNLOCKED,
@@ -47,6 +50,8 @@ func interact():
 		DoorState.LOCKED:
 			Utils.say_dialog("The door is locked")
 		DoorState.UNLOCKED:
+			Utils.instance_scene_on_main(DoorOpenSound, global_position)
 			self.state = DoorState.OPEN
 		DoorState.OPEN:
+			Utils.instance_scene_on_main(DoorCloseSound, global_position)
 			self.state = DoorState.UNLOCKED

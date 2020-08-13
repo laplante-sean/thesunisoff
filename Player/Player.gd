@@ -36,6 +36,8 @@ onready var spell360Collider = $Spell360Hitbox/Collider
 onready var throwPotionTimer = $ThrowPotionTimer
 onready var potionSpawn = $Pivot/PotionSpawn
 onready var interactionRay = $InteractionRay
+onready var footstepsFloor = $FootstepsFloor
+onready var footstepsGrass = $FootstepsGrass
 onready var animationState = animationTree.get("parameters/playback")
 
 
@@ -82,6 +84,17 @@ func set_facing(vec):
 	animationTree.set("parameters/Throw/blend_position", vec)
 
 
+func play_walking_sound():
+	# TODO: Check what surface we're on
+	if not footstepsGrass.is_playing():
+		footstepsGrass.play()
+
+
+func stop_walking_sound():
+	footstepsGrass.stop()
+	footstepsFloor.stop()
+
+
 func move_state(delta):
 	var input_vector = Vector2.ZERO
 	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
@@ -90,9 +103,11 @@ func move_state(delta):
 
 	if input_vector != Vector2.ZERO:
 		set_facing(input_vector)
+		play_walking_sound()
 		animationState.travel("Run")
 		velocity = velocity.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta)
 	else:
+		stop_walking_sound()
 		animationState.travel("Idle")
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 
