@@ -2,6 +2,8 @@ extends StaticBody2D
 class_name InteractibleObject
 
 onready var sprite = $Sprite
+onready var collider = $Collider
+onready var occluder = $LightOccluder2D
 
 
 func interact():

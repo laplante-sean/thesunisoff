@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Objects/InteractibleObject.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Objects/basic-door.png" type="Texture" id=2]
+[ext_resource path="res://Objects/BasicDoor.gd" type="Script" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 4, 2 )
+
+[sub_resource type="OccluderPolygon2D" id=2]
+polygon = PoolVector2Array( 4, -3, 4, -3, -4, -3, -4, -3 )
+
+[node name="BasicDoor" instance=ExtResource( 1 )]
+collision_layer = 641
+script = ExtResource( 3 )
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource( 2 )
+hframes = 3
+
+[node name="Collider" parent="." index="1"]
+position = Vector2( 0, 2 )
+shape = SubResource( 1 )
+
+[node name="LightOccluder2D" parent="." index="2"]
+occluder = SubResource( 2 )

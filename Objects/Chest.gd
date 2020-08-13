@@ -1,4 +1,4 @@
-extends "res://Objects/InteractibleObject.gd"
+extends InteractibleObject
 class_name Chest
 
 enum ChestState {
@@ -22,11 +22,11 @@ func _ready():
 
 
 func is_locked():
-	return state == ChestState.LOCKED
+	return self.state == ChestState.LOCKED
 
 
 func unlock():
-	state = ChestState.UNLOCKED
+	self.state = ChestState.UNLOCKED
 
 
 func set_state(value):
@@ -42,7 +42,7 @@ func set_state(value):
 
 
 func interact():
-	match state:
+	match self.state:
 		ChestState.LOCKED:
 			Utils.say_dialog(
 				"Sorry, the chest is locked. You need a chest key." + 

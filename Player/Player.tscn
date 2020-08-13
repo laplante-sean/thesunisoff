@@ -1477,6 +1477,7 @@ position = Vector2( 0, -4 )
 collision_layer = 2
 collision_mask = 513
 script = ExtResource( 1 )
+INTERACT_DISTANCE = 6
 
 [node name="ShadowSprite" type="Sprite" parent="."]
 position = Vector2( 0, 2 )

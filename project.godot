@@ -9,7 +9,7 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "StaticBody2D",
+"base": "InteractibleObject",
 "class": "Chest",
 "language": "GDScript",
 "path": "res://Objects/Chest.gd"
@@ -23,6 +23,11 @@ _global_script_classes=[ {
 "class": "CollectibleItem",
 "language": "GDScript",
 "path": "res://Items/CollectibleItem.gd"
+}, {
+"base": "InteractibleObject",
+"class": "Door",
+"language": "GDScript",
+"path": "res://Objects/BasicDoor.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "Enemy",
@@ -68,6 +73,7 @@ _global_script_class_icons={
 "Chest": "",
 "Coin": "",
 "CollectibleItem": "",
+"Door": "",
 "Enemy": "",
 "Hitbox": "",
 "Hurtbox": "",
