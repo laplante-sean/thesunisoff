@@ -44,11 +44,13 @@ func set_state(value):
 func interact():
 	match state:
 		ChestState.LOCKED:
-			print("Sorry, the chest is locked. You need a key")
+			Utils.say_dialog(
+				"Sorry, the chest is locked. You need a chest key." + 
+				"They're goldish/yellow.")
 		ChestState.UNLOCKED:
 			animationPlayer.play("Open")
 		ChestState.OPEN:
-			print("Already open")
+			Utils.say_dialog("This chest is already open!")
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):

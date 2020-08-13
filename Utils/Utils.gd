@@ -16,3 +16,14 @@ func instance_scene_on_main(packed_scene, position=Vector2.ZERO):
 	instance.global_position = position
 	main.add_child(instance)
 	return instance
+
+
+func get_main_instances():
+	return ResourceLoader.load("res://Utils/MainInstances.tres")
+
+
+func say_dialog(message):
+	var MainInstances = get_main_instances()
+	var dialog = MainInstances.dialog
+	if dialog != null:
+		dialog.say(message)

@@ -22,9 +22,11 @@ var movement_buffed = false
 var velocity = Vector2.ZERO
 var knockback = Vector2.ZERO
 var state = EnemyState.CHASE
+var health_bar_scale_x = 1
 
 onready var hurtbox = $Hurtbox
 onready var sprite = $AnimatedSprite
+onready var healthBar = $HealthBarSprite
 onready var stats = $EnemyStats
 onready var playerDetectionZone = $PlayerDetectionZone
 onready var softCollision = $SoftCollision
@@ -33,6 +35,7 @@ onready var blinkAnimationPlayer = $BlinkAnimationPlayer
 
 
 func _ready():
+	health_bar_scale_x = healthBar.scale.x
 	var mat = sprite.get_material()
 	mat.set_shader_param("active", false)
 	state = pick_random_state([EnemyState.IDLE, EnemyState.WANDER])
@@ -131,6 +134,9 @@ func _on_EnemyStats_no_health():
 
 func _on_Hurtbox_take_damage(area):
 	stats.health -= area.DAMAGE
+	
+	var rem_health_factor = float(stats.health) / float(stats.max_health)
+	healthBar.scale.x = rem_health_factor * health_bar_scale_x
 	
 	if area.ENABLE_KNOCKBACK:
 		if area.knockback_vector == Vector2.ZERO:

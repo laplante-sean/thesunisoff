@@ -59,24 +59,28 @@ radius = 3.0
 
 [node name="Crab" instance=ExtResource( 1 )]
 script = ExtResource( 5 )
-INVICIBILITY_TIME = 0.4
 
-[node name="ShadowSprite" parent="." index="0"]
+[node name="HealthBarSprite" parent="." index="0"]
+position = Vector2( -4, -10 )
+scale = Vector2( 8, 1 )
+
+[node name="ShadowSprite" parent="." index="1"]
 position = Vector2( 0, -2 )
 texture = ExtResource( 4 )
 
-[node name="AnimatedSprite" parent="." index="1"]
+[node name="AnimatedSprite" parent="." index="2"]
 material = SubResource( 1 )
 position = Vector2( 0, -4 )
 frames = SubResource( 6 )
 animation = "Idle"
+frame = 1
 playing = true
 
-[node name="Collider" parent="." index="2"]
+[node name="Collider" parent="." index="3"]
 position = Vector2( 0, -3 )
 shape = SubResource( 7 )
 
-[node name="EnemyStats" parent="." index="4"]
+[node name="EnemyStats" parent="." index="5"]
 max_health = 2
 experience_value = 20
 

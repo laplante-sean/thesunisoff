@@ -44,26 +44,24 @@ radius = 32.0156
 radius = 2.0
 
 [node name="Bat" instance=ExtResource( 1 )]
-ACCELERATION = 100
-MAX_SPEED = 30
-FRICTION = 200
-WANDER_TARGET_RANGE = 4
-SOFT_COLLISION_PUSH_FACTOR = 200
-INVICIBILITY_TIME = 0.4
 
-[node name="ShadowSprite" parent="." index="0"]
+[node name="HealthBarSprite" parent="." index="0"]
+visible = false
+position = Vector2( -1.5, -9 )
+scale = Vector2( 3, 1 )
+
+[node name="ShadowSprite" parent="." index="1"]
 position = Vector2( 0, -2 )
 texture = ExtResource( 4 )
 
-[node name="AnimatedSprite" parent="." index="1"]
+[node name="AnimatedSprite" parent="." index="2"]
 material = SubResource( 1 )
 position = Vector2( 0, -4 )
 frames = SubResource( 4 )
 animation = "Animate"
-frame = 1
 playing = true
 
-[node name="Collider" parent="." index="2"]
+[node name="Collider" parent="." index="3"]
 shape = SubResource( 5 )
 
 [node name="Collider" parent="Hurtbox" index="0"]

@@ -31,7 +31,7 @@ region = Rect2( 24, 0, 8, 8 )
 atlas = ExtResource( 1 )
 region = Rect2( 32, 0, 8, 8 )
 
-[sub_resource type="SpriteFrames" id=12]
+[sub_resource type="SpriteFrames" id=7]
 animations = [ {
 "frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
 "loop": true,
@@ -39,24 +39,24 @@ animations = [ {
 "speed": 7.0
 } ]
 
-[sub_resource type="CircleShape2D" id=13]
+[sub_resource type="CircleShape2D" id=8]
 radius = 4.0
 
-[sub_resource type="CapsuleShape2D" id=14]
+[sub_resource type="CapsuleShape2D" id=9]
 radius = 4.0
 height = 8.0
 
-[sub_resource type="CapsuleShape2D" id=15]
+[sub_resource type="CapsuleShape2D" id=10]
 radius = 3.0
 height = 2.0
 
-[sub_resource type="CircleShape2D" id=16]
+[sub_resource type="CircleShape2D" id=11]
 radius = 50.01
 
-[sub_resource type="CircleShape2D" id=17]
+[sub_resource type="CircleShape2D" id=12]
 radius = 4.0
 
-[sub_resource type="Animation" id=18]
+[sub_resource type="Animation" id=13]
 resource_name = "Hover"
 loop = true
 tracks/0/type = "value"
@@ -79,52 +79,55 @@ MAX_SPEED = 22
 FRICTION = 175
 MIN_DISTANCE_TO_PLAYER = 28
 
-[node name="ShadowSprite" parent="." index="0"]
+[node name="HealthBarSprite" parent="." index="0"]
+position = Vector2( -4, -15 )
+scale = Vector2( 8, 1 )
+
+[node name="ShadowSprite" parent="." index="1"]
 position = Vector2( 0, -2 )
 texture = ExtResource( 4 )
 
-[node name="AnimatedSprite" parent="." index="1"]
+[node name="AnimatedSprite" parent="." index="2"]
 material = SubResource( 1 )
 position = Vector2( 0, -9 )
-frames = SubResource( 12 )
+frames = SubResource( 7 )
 animation = "Idle"
-frame = 4
 playing = true
 
-[node name="Collider" parent="." index="2"]
-shape = SubResource( 13 )
+[node name="Collider" parent="." index="3"]
+shape = SubResource( 8 )
 
-[node name="EnemyStats" parent="." index="4"]
+[node name="EnemyStats" parent="." index="5"]
 max_health = 3
 experience_value = 30
 
 [node name="Collider" parent="Hurtbox" index="0"]
 position = Vector2( 0, -5 )
-shape = SubResource( 14 )
+shape = SubResource( 9 )
 
 [node name="Collider" parent="Hitbox" index="0"]
 position = Vector2( 0, -3 )
-shape = SubResource( 15 )
+shape = SubResource( 10 )
 
-[node name="PlayerDetectionZone" parent="." index="7"]
+[node name="PlayerDetectionZone" parent="." index="8"]
 modulate = Color( 1, 1, 1, 0.227451 )
 
 [node name="Collider" parent="PlayerDetectionZone" index="0"]
-shape = SubResource( 16 )
+shape = SubResource( 11 )
 
 [node name="Collider" parent="SoftCollision" index="0"]
-shape = SubResource( 17 )
-
-[node name="WanderController" parent="." index="9"]
-wander_range = 32
+shape = SubResource( 12 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="10"]
 autoplay = "Hover"
-anims/Hover = SubResource( 18 )
+anims/Hover = SubResource( 13 )
 
 [node name="AttackTimer" type="Timer" parent="." index="11"]
 wait_time = 3.0
 one_shot = true
+
+[node name="WanderController" parent="." index="12"]
+wander_range = 32
 
 [editable path="Hurtbox"]
 

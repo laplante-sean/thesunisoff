@@ -143,7 +143,7 @@ func interact():
 	if object is Chest and object.is_locked():
 		var item = stats.use_item(ItemUtils.get_item_id("Key"), {key_type=Key.KeyType.CHEST})
 		if item != null:
-			print("Used 1 chest key to unlock the chest!")
+			Utils.say_dialog("Used 1 chest key to unlock the chest!")
 			object.unlock()
 
 	object.interact()
