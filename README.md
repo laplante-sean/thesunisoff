@@ -12,5 +12,11 @@ See [wiki](https://github.com/vix597/labyrinthjogger/wiki)
 
 ## Credits
 
-* Art, font, and some audio from: https://kenney.nl
-* Level up audio by timbeek.com from: https://timbeek.itch.io/casual-soundfx-pack
+* Art, font, and audio from [Kenney Assets](https://kenney.nl)
+  * Walls, grass, trees, chests, tables, chairs, inspiration for the main character, all the enemies, etc.
+  * Main game font
+  * Several audio clips:
+    * Coin sounds, key pickup sounds, door open/close sound. Chest open/close sound, etc.
+* Audio by timbeek.com from [timbeek.itch.io](https://timbeek.itch.io/casual-soundfx-pack)
+  * Level up sound
+  * Fire/Ice potion pickup sound
