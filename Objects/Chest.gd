@@ -3,6 +3,7 @@ class_name Chest
 
 const ChestOpenSound = preload("res://Audio/ChestOpenSound.tscn")
 const ChestCloseSound = preload("res://Audio/ChestCloseSound.tscn")
+const LockedDoorSound = preload("res://Audio/LockedDoorSound.tscn")
 
 enum ChestState {
 	LOCKED,
@@ -47,9 +48,8 @@ func set_state(value):
 func interact():
 	match self.state:
 		ChestState.LOCKED:
-			Utils.say_dialog(
-				"Sorry, the chest is locked. You need a chest key." + 
-				"They're goldish/yellow.")
+			Utils.instance_scene_on_main(LockedDoorSound, global_position)
+			Utils.say_dialog("Sorry, the chest is locked.")
 		ChestState.UNLOCKED:
 			Utils.instance_scene_on_main(ChestOpenSound, global_position)
 			animationPlayer.play("Open")

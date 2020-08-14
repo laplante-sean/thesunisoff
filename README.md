@@ -9,3 +9,8 @@ See the releases for an executable download. Also available at [itch.io](https:/
 ## Future
 
 See [wiki](https://github.com/vix597/labyrinthjogger/wiki)
+
+## Credits
+
+* Art, font, and some audio from: https://kenney.nl
+* Level up audio by timbeek.com from: https://timbeek.itch.io/casual-soundfx-pack

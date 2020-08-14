@@ -43,6 +43,7 @@ func _physics_process(delta):
 				state = ItemState.STATIONARY
 		ItemState.STATIONARY:
 			collider.disabled = false
+			velocity = Vector2.ZERO
 			seek_player()
 		ItemState.CHASE:
 			var player = playerDetectionZone.player

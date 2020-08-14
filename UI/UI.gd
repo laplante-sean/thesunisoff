@@ -10,3 +10,5 @@ func _ready():
 	healthUI.visible = true
 	if not SHOW_PLAYER_LEVEL:
 		currentLevelUI.visible = false
+	else:
+		currentLevelUI.visible = true

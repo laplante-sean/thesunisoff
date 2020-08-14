@@ -3,17 +3,20 @@ class_name Player
 
 const ExplodeEffect = preload("res://Effects/ExplodeEffect.tscn")
 const Potion = preload("res://Player/Potion.tscn")
+const LevelUpSound = preload("res://Audio/LevelUpSound.tscn")
 
 export(int) var ACCELERATION = 200
 export(int) var MAX_SPEED = 45
 export(int) var FRICTION = 220
 export(int) var INTERACT_DISTANCE = 4
 export(float) var INVINCIBILITY_TIME = 0.6
+export(float) var LEVEL_UP_INVINCIBILITY_TIME = 5
 
 enum PlayerState {
 	MOVE,
 	ATTACK,
-	THROW
+	THROW,
+	SUCCESS
 }
 
 var state = PlayerState.MOVE
@@ -37,27 +40,32 @@ onready var throwPotionTimer = $ThrowPotionTimer
 onready var potionSpawn = $Pivot/PotionSpawn
 onready var interactionRay = $InteractionRay
 onready var footstepsFloor = $FootstepsFloor
-onready var footstepsGrass = $FootstepsGrass
+onready var particles = $Particles2D
 onready var animationState = animationTree.get("parameters/playback")
 
 
 func _ready():
 	stats.connect("no_health", self, "_on_PlayerStats_no_health")
+	stats.connect("level_up", self, "_on_PlayerStats_level_up")
 	animationTree.active = true
 	spellHitbox.knockback_vector = Vector2.DOWN
 	swordHitbox.knockback_vector = Vector2.DOWN
 	
 	# set the correct initial states for colliders
-	hurtboxCollider.disabled = false
-	spellCollider.disabled = true
-	swordCollider.disabled = true
-	spell360Collider.disabled = true
+	reset_colliders()
 	
 	# We start facing down
 	set_facing(player_facing)
 
 	var mat = sprite.get_material()
 	mat.set_shader_param("active", false)
+
+
+func reset_colliders():
+	hurtboxCollider.disabled = false
+	spellCollider.disabled = true
+	swordCollider.disabled = true
+	spell360Collider.disabled = true
 
 
 func _physics_process(delta):
@@ -67,6 +75,8 @@ func _physics_process(delta):
 		PlayerState.ATTACK:
 			velocity = Vector2.ZERO
 		PlayerState.THROW:
+			velocity = Vector2.ZERO
+		PlayerState.SUCCESS:
 			velocity = Vector2.ZERO
 
 
@@ -82,16 +92,15 @@ func set_facing(vec):
 	animationTree.set("parameters/SpellCast360/blend_position", vec)
 	animationTree.set("parameters/Sword/blend_position", vec)
 	animationTree.set("parameters/Throw/blend_position", vec)
+	animationTree.set("parameters/Success/blend_position", vec)
 
 
 func play_walking_sound():
-	# TODO: Check what surface we're on
-	if not footstepsGrass.is_playing():
-		footstepsGrass.play()
+	if not footstepsFloor.is_playing():
+		footstepsFloor.play()
 
 
 func stop_walking_sound():
-	footstepsGrass.stop()
 	footstepsFloor.stop()
 
 
@@ -189,6 +198,15 @@ func attack_animation_finished():
 	state = PlayerState.MOVE
 
 
+func success_animation_finished():
+	reset_colliders()  # Level up can happen mid-attack leaving our hitboxes on
+	state = PlayerState.MOVE
+
+
+func level_up_explosion():
+	particles.emitting = true
+
+
 func move():
 	velocity = move_and_slide(velocity)
 
@@ -196,6 +214,14 @@ func move():
 func _on_PlayerStats_no_health():
 	queue_free()
 	Utils.instance_scene_on_main(ExplodeEffect, sprite.global_position)
+
+
+func _on_PlayerStats_level_up():
+	print("Level up")
+	state = PlayerState.SUCCESS
+	animationState.travel("Success")
+	hurtbox.start_invincibility(LEVEL_UP_INVINCIBILITY_TIME)
+	Utils.instance_scene_on_main(LevelUpSound, global_position)
 
 
 func _on_Hurtbox_invincibility_started():

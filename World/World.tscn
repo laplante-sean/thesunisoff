@@ -51,6 +51,7 @@ position = Vector2( 8, 75 )
 
 [node name="AnimationTree" parent="YSortTileMap/Player" index="5"]
 parameters/playback = SubResource( 1 )
+parameters/Success/blend_position = Vector2( 0, 0 )
 parameters/Sword/blend_position = Vector2( 0, 0 )
 parameters/Throw/blend_position = Vector2( 0, 0 )
 

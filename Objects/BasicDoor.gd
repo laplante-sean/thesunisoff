@@ -3,6 +3,7 @@ class_name Door
 
 const DoorOpenSound = preload("res://Audio/DoorOpenSound.tscn")
 const DoorCloseSound = preload("res://Audio/DoorCloseSound.tscn")
+const LockedDoorSound = preload("res://Audio/LockedDoorSound.tscn")
 
 enum DoorState {
 	LOCKED,
@@ -48,6 +49,7 @@ func set_state(value):
 func interact():
 	match self.state:
 		DoorState.LOCKED:
+			Utils.instance_scene_on_main(LockedDoorSound, global_position)
 			Utils.say_dialog("The door is locked")
 		DoorState.UNLOCKED:
 			Utils.instance_scene_on_main(DoorOpenSound, global_position)

@@ -10,6 +10,7 @@ var max_lines_visible = 0
 onready var characterTimer = $CharacterTimer
 onready var label = $Label
 onready var sprite = $AnimatedSprite
+onready var clickSound = $ClickSound
 
 
 func _ready():
@@ -37,6 +38,8 @@ func _process(delta):
 		sprite.visible = false
 
 	if Input.is_action_just_pressed("ui_accept") and current_message != null:
+		clickSound.play()
+		
 		if len(display_message) < len(current_message) and characterTimer.time_left > 0:
 			display_message = current_message
 		elif len(display_message) < len(current_message):

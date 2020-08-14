@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://UI/DialogBox.gd" type="Script" id=1]
 [ext_resource path="res://UI/dialog-box.png" type="Texture" id=2]
 [ext_resource path="res://UI/dialog-continues.png" type="Texture" id=3]
+[ext_resource path="res://Audio/dialog-continue-click.ogg" type="AudioStream" id=4]
 
 [sub_resource type="DynamicFontData" id=1]
 antialiased = false
@@ -82,4 +83,8 @@ frames = SubResource( 7 )
 animation = "Animate"
 playing = true
 centered = false
+
+[node name="ClickSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -5.0
 [connection signal="timeout" from="CharacterTimer" to="." method="_on_CharacterTimer_timeout"]

@@ -14,6 +14,7 @@ signal money_changed(value)
 signal collected_item(item_data)
 signal experience_changed(value)
 signal level_changed(value)
+signal level_up
 
 
 func save_data():
@@ -49,17 +50,23 @@ func set_money(value):
 
 
 func set_level(value):
-	level = max(value, 0)
+	value = max(value, 0)
+	level = clamp(value, 0, 99)
 	next_level_exp_threshold = 100 + ((level - 1) * 10)
 	emit_signal("level_changed", level)
 
 
 func set_experience(value):
+	var leveled_up = false
 	experience = value
 	
-	if experience >= next_level_exp_threshold:
+	while experience >= next_level_exp_threshold:
+		experience -= next_level_exp_threshold
 		self.level += 1
-		experience = 0
+		
+		if not leveled_up:
+			emit_signal("level_up")
+			leveled_up = true
 
 	emit_signal("experience_changed", experience)
 
