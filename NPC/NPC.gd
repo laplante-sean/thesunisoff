@@ -5,6 +5,10 @@ export(int) var ACCELERATION = 100
 export(int) var MAX_SPEED = 30
 export(int) var FRICTION = 200
 export(int) var WANDER_TARGET_RANGE = 4
+export(bool) var INTERACT_WITH_QUESTION = false
+export(String) var INTERACTION_TEXT = ""
+export(String) var INTERACTION_Q_POSITIVE_RESPONSE = ""
+export(String) var INTERACTION_Q_NEGATIVE_RESPONSE = ""
 
 enum NPCState {
 	IDLE,
@@ -22,6 +26,7 @@ onready var wanderController = $WanderController
 
 func _ready():
 	state = pick_random_state([NPCState.IDLE, NPCState.WANDER])
+	Events.connect("yesno_answer", self, "_on_Events_yesno_answer")
 
 
 func _physics_process(delta):
@@ -72,3 +77,20 @@ func check_and_update_state():
 func pick_random_state(state_list):
 	state_list.shuffle()
 	return state_list.pop_front()
+
+
+func interact():
+	if len(INTERACTION_TEXT) > 0 and not INTERACT_WITH_QUESTION:
+		Utils.say_dialog(INTERACTION_TEXT)
+	elif len(INTERACTION_TEXT) > 0 and INTERACT_WITH_QUESTION:
+		Utils.ask_dialog(INTERACTION_TEXT)
+
+
+func _on_Events_yesno_answer(question, answer):
+	if question != INTERACTION_TEXT:
+		return
+
+	if answer:
+		Utils.call_deferred("say_dialog", INTERACTION_Q_POSITIVE_RESPONSE)
+	else:
+		Utils.call_deferred("say_dialog", INTERACTION_Q_NEGATIVE_RESPONSE)

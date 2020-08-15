@@ -1580,7 +1580,6 @@ texture = ExtResource( 3 )
 material = SubResource( 2 )
 texture = ExtResource( 2 )
 hframes = 125
-frame = 124
 
 [node name="Collider" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 2 )

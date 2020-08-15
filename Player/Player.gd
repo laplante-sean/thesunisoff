@@ -4,6 +4,7 @@ class_name Player
 const ExplodeEffect = preload("res://Effects/ExplodeEffect.tscn")
 const Potion = preload("res://Player/Potion.tscn")
 const LevelUpSound = preload("res://Audio/LevelUpSound.tscn")
+const SwipeSound = preload("res://Audio/SwipeSound.tscn")
 
 export(int) var ACCELERATION = 200
 export(int) var MAX_SPEED = 45
@@ -77,10 +78,13 @@ func _physics_process(delta):
 		PlayerState.MOVE:
 			move_state(delta)
 		PlayerState.ATTACK:
+			stop_walking_sound()
 			velocity = Vector2.ZERO
 		PlayerState.THROW:
+			stop_walking_sound()
 			velocity = Vector2.ZERO
 		PlayerState.SUCCESS:
+			stop_walking_sound()
 			velocity = Vector2.ZERO
 
 
@@ -138,6 +142,7 @@ func move_state(delta):
 			state = PlayerState.THROW
 	elif Input.is_action_just_pressed("sword_attack"):
 		animationState.travel("Sword")
+		Utils.instance_scene_on_main(SwipeSound, global_position)
 		state = PlayerState.ATTACK
 	elif Input.is_action_just_pressed("interact"):
 		interact()
@@ -165,7 +170,8 @@ func throw_potion(behind=false):
 
 func interact():
 	var object = interactionRay.get_collider()
-	if object == null or not object is InteractibleObject:
+	if object == null or (not object is InteractibleObject and not object is NPC):
+		print("No interaction on ", object)
 		return
 	if queued_locked_interactible != null:
 		return

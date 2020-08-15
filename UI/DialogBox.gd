@@ -40,7 +40,7 @@ func _process(delta):
 	else:
 		sprite.visible = false
 
-	if current_message != null and len(display_message) == len(current_message) and max_lines_visible == max_lines and is_question:
+	if current_message != null and len(display_message) == len(current_message) and max_lines_visible >= max_lines and is_question:
 		yesnobox.visible = true
 
 		if Input.is_action_just_pressed("ui_up"):
@@ -102,6 +102,10 @@ func close():
 
 
 func _on_CharacterTimer_timeout():
+	if current_message == null:
+		characterTimer.stop()
+		return
+
 	var idx = clamp(len(display_message), 0, len(current_message))
 	if idx == len(current_message):
 		characterTimer.stop()

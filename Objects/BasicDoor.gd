@@ -28,20 +28,33 @@ func unlock():
 	self.state = DoorState.UNLOCKED
 
 
+func enable_collide():
+	# Do it this way instead of disabling the collision
+	# shape so that interaction still works. For a door,
+	# that means we can open and close it.
+	set_collision_layer_bit(0, true)  # World layer
+	set_collision_layer_bit(9, true)  # WorldObjects layer
+
+
+func disable_collide():
+	set_collision_layer_bit(0, false)  # World layer
+	set_collision_layer_bit(9, false)  # WorldObjects layer
+
+
 func set_state(value):
 	state = value
 	
 	match state:
 		DoorState.LOCKED:
-			collider.disabled = false
+			enable_collide()
 			occluder.light_mask = 1
 			sprite.frame = 0
 		DoorState.UNLOCKED:
-			collider.disabled = false
+			enable_collide()
 			occluder.light_mask = 1
 			sprite.frame = 1
 		DoorState.OPEN:
-			collider.disabled = true
+			disable_collide()
 			occluder.light_mask = 0
 			sprite.frame = 2
 

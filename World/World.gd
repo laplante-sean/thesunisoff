@@ -12,8 +12,9 @@ var MainInstances = Utils.get_main_instances()
 var currentLevelPath = null
 var currentLevel = null
 
-onready var camera = $Camera2D
+onready var camera = $Camera
 onready var theDarkness = $TheDarkness
+onready var playerTorch = $PlayerTorch
 onready var uiDialogBox = $UI/DialogBox
 
 
@@ -44,6 +45,9 @@ func _physics_process(_delta):
 		zoom_out()
 	if Input.is_action_just_pressed("reset_camera") and ZOOMING_ENABLED:
 		reset_zoom()
+		
+	if Input.is_action_just_pressed("light"):
+		playerTorch.visible = !playerTorch.visible
 
 
 func zoom_in():
