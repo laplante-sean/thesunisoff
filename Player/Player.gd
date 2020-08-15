@@ -24,7 +24,10 @@ var spell_animation = "Spell" setget set_spell_animation, get_spell_animation
 var velocity = Vector2.ZERO
 var stats = PlayerStats
 var player_facing = Vector2.DOWN
+var queued_locked_interactible = null
 
+onready var cameraFollow = $CameraFollow
+onready var lightFollow = $LightFollow
 onready var hurtbox = $Hurtbox
 onready var sprite = $Sprite
 onready var animationPlayer = $AnimationPlayer
@@ -45,6 +48,7 @@ onready var animationState = animationTree.get("parameters/playback")
 
 
 func _ready():
+	Events.connect("yesno_answer", self, "_on_Events_yesno_answer")
 	stats.connect("no_health", self, "_on_PlayerStats_no_health")
 	stats.connect("level_up", self, "_on_PlayerStats_level_up")
 	animationTree.active = true
@@ -163,20 +167,38 @@ func interact():
 	var object = interactionRay.get_collider()
 	if object == null or not object is InteractibleObject:
 		return
+	if queued_locked_interactible != null:
+		return
 
 	if object is Chest and object.is_locked():
-		var item = stats.use_item(ItemUtils.get_item_id("Key"), {key_type=Key.KeyType.CHEST})
-		if item != null:
-			Utils.say_dialog("Used 1 chest key to unlock the chest!")
-			object.unlock()
-	if object is Door and object.is_locked():
-		var item = stats.use_item(ItemUtils.get_item_id("Key"), {key_type=Key.KeyType.DOOR})
-		if item != null:
-			Utils.say_dialog("Used 1 door key to unlock the door!")
-			object.unlock()
+		if stats.has_item(ItemUtils.get_item_id("ChestKey")):
+			queued_locked_interactible = object
+			Utils.ask_dialog("Use 1 chest key to unlock the chest?")
+			return
+	elif object is Door and object.is_locked():
+		if stats.has_item(ItemUtils.get_item_id("DoorKey")):
+			queued_locked_interactible = object
+			Utils.ask_dialog("Use 1 door key to unlock the door?")
+			return
 
 	object.interact()
 
+
+func _on_Events_yesno_answer(question, answer):
+	if queued_locked_interactible == null:
+		return
+	
+	if queued_locked_interactible is Chest and answer:
+		stats.use_item(ItemUtils.get_item_id("ChestKey"))
+		queued_locked_interactible.unlock()
+	elif queued_locked_interactible is Door and answer:
+		stats.use_item(ItemUtils.get_item_id("DoorKey"))
+		queued_locked_interactible.unlock()
+		
+	if answer:
+		queued_locked_interactible.interact()
+	
+	queued_locked_interactible = null
 
 func set_spell_animation(value):
 	spell_animation = value

@@ -7,6 +7,11 @@ func save_game():
 	var save_data = {
 		player_stats = PlayerStats.save_data()
 	}
+	
+	var current_level = Utils.get_current_level()
+	if current_level != null:
+		save_data[current_level.LEVEL_ID] = current_level.save_data()
+	
 	_save_data_to_file(save_data)
 
 
@@ -16,6 +21,10 @@ func load_game():
 		return  # No save file. Nothing to load
 
 	PlayerStats.load_data(save_data.player_stats)
+
+	var current_level = Utils.get_current_level()
+	if current_level != null and save_data.has(current_level.LEVEL_ID):
+		current_level.load_data(save_data[current_level.LEVEL_ID])
 
 
 func _save_data_to_file(save_data):

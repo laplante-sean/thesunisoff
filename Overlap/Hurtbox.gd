@@ -35,6 +35,7 @@ func create_hit_effect():
 
 func _on_Hurtbox_area_entered(area):
 	if area is Hitbox:
+		print("Hurtbox area entered!")
 		inside_hitbox = area
 
 		if not self.invincible:

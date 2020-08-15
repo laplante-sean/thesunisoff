@@ -7,6 +7,7 @@ var level = 1 setget set_level
 var experience = 0 setget set_experience
 var money = 0 setget set_money
 var inventory = {}
+var first_time = true
 
 var next_level_exp_threshold = 100
 
@@ -27,7 +28,7 @@ func save_data():
 		experience = self.experience,
 		total_experience = self.total_experience,
 		money = self.money,
-		inventory = self.inventory
+		inventory = self.inventory,
 	}
 
 
@@ -40,6 +41,7 @@ func load_data(stats):
 	self.total_experience = stats.total_experience
 	self.money = stats.money
 	self.inventory = stats.inventory
+	self.first_time = false
 	if stats.health != 0:
 		self.health = stats.health
 
@@ -111,6 +113,35 @@ func use_item(item_id, params={}):
 	return null
 
 
+func has_item(item_id, params={}):
+	if not str(item_id) in self.inventory:
+		return false
+
+	var matched_items = self.inventory[str(item_id)]
+	var matched_item = null
+	var matched_item_idx = 0
+
+	for idx in range(len(matched_items)):
+		var item = matched_items[idx]
+		var found = true
+		
+		for key in params.keys():
+			var check = params[key]
+			if not key in item or check != item[key]:
+				found = false
+				break
+	
+		if found:
+			matched_item = item
+			matched_item_idx = idx
+			break
+
+	if matched_item != null:
+		return true
+
+	return false
+
+
 func collect_experience(amount):
 	self.experience += amount
 	self.total_experience += amount
@@ -118,8 +149,5 @@ func collect_experience(amount):
 
 func _on_PlayerStats_no_health():
 	self.deaths += 1
-	SaveAndLoad.save_game()
-
-
-func _on_PlayerStats_level_changed(value):
+	self.health = max_health
 	SaveAndLoad.save_game()

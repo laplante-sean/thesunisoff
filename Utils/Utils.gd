@@ -22,8 +22,20 @@ func get_main_instances():
 	return ResourceLoader.load("res://Utils/MainInstances.tres")
 
 
+func get_current_level():
+	var MainInstances = get_main_instances()
+	return MainInstances.current_level
+
+
 func say_dialog(message):
 	var MainInstances = get_main_instances()
 	var dialog = MainInstances.dialog
 	if dialog != null:
 		dialog.say(message)
+
+
+func ask_dialog(question):
+	var MainInstances = get_main_instances()
+	var dialog = MainInstances.dialog
+	if dialog != null:
+		dialog.ask(question)
