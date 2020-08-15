@@ -12,6 +12,7 @@ radius = 16.0
 
 [node name="DoorKey" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
+ITEM_ID = 1
 KEY_TYPE = 1
 
 [node name="Sprite" parent="." index="0"]

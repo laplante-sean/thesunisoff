@@ -12,6 +12,8 @@ radius = 16.0
 
 [node name="IcePotion" instance=ExtResource( 2 )]
 script = ExtResource( 1 )
+ITEM_ID = 4
+POTION_TYPE = 1
 
 [node name="Sprite" parent="." index="0"]
 position = Vector2( 0, -1 )
