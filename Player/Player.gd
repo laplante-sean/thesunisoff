@@ -2,7 +2,7 @@ extends KinematicBody2D
 class_name Player
 
 const ExplodeEffect = preload("res://Effects/ExplodeEffect.tscn")
-const Potion = preload("res://Player/Potion.tscn")
+const ProjectilePotionScene = preload("res://Player/ProjectilePotion.tscn")
 const LevelUpSound = preload("res://Audio/LevelUpSound.tscn")
 const SwipeSound = preload("res://Audio/SwipeSound.tscn")
 
@@ -12,6 +12,8 @@ export(int) var FRICTION = 220
 export(int) var INTERACT_DISTANCE = 4
 export(float) var INVINCIBILITY_TIME = 0.6
 export(float) var LEVEL_UP_INVINCIBILITY_TIME = 5
+export(int) var SPELL_360_MAGIC_COST = 100
+export(int) var SPELL_MAGIC_COST = 50
 
 enum PlayerState {
 	MOVE,
@@ -20,6 +22,15 @@ enum PlayerState {
 	SUCCESS
 }
 
+
+enum EquipedPotion {
+	NONE,
+	HEALTH,
+	FIRE,
+	ICE
+}
+
+var potion = EquipedPotion.NONE setget set_potion
 var state = PlayerState.MOVE
 var spell_animation = "Spell" setget set_spell_animation, get_spell_animation
 var velocity = Vector2.ZERO
@@ -74,6 +85,14 @@ func reset_colliders():
 
 
 func _physics_process(delta):
+	if self.potion == EquipedPotion.NONE:
+		if PlayerStats.has_item(ItemUtils.get_item_id("HealthPotion")):
+			self.potion = EquipedPotion.HEALTH
+		elif PlayerStats.has_item(ItemUtils.get_item_id("FirePotion")):
+			self.potion = EquipedPotion.FIRE
+		elif PlayerStats.has_item(ItemUtils.get_item_id("IcePotion")):
+			self.potion = EquipedPotion.ICE
+	
 	match state:
 		PlayerState.MOVE:
 			move_state(delta)
@@ -103,6 +122,11 @@ func set_facing(vec):
 	animationTree.set("parameters/Success/blend_position", vec)
 
 
+func set_potion(value):
+	potion = value
+	Events.emit_signal("equip_potion", value)
+
+
 func play_walking_sound():
 	if not footstepsFloor.is_playing():
 		footstepsFloor.play()
@@ -128,13 +152,15 @@ func move_state(delta):
 		animationState.travel("Idle")
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 
-	if Input.is_action_just_pressed("cast_spell"):
+	if Input.is_action_just_pressed("cast_spell") and PlayerStats.magic >= SPELL_MAGIC_COST:
+		PlayerStats.magic -= SPELL_MAGIC_COST
 		animationState.travel(self.spell_animation)
 		state = PlayerState.ATTACK
-	elif Input.is_action_just_pressed("cast_spell_360"):
+	elif Input.is_action_just_pressed("cast_spell_360") and PlayerStats.magic >= SPELL_360_MAGIC_COST:
+		PlayerStats.magic -= SPELL_360_MAGIC_COST
 		animationState.travel("SpellCast360")
 		state = PlayerState.ATTACK
-	elif Input.is_action_just_pressed("throw_potion") and throwPotionTimer.time_left == 0:
+	elif Input.is_action_just_pressed("throw_potion") and throwPotionTimer.time_left == 0 and potion != EquipedPotion.NONE:
 		if Input.is_action_pressed("throw_behind_modifier"):
 			throw_potion(true)
 		else:
@@ -146,11 +172,49 @@ func move_state(delta):
 		state = PlayerState.ATTACK
 	elif Input.is_action_just_pressed("interact"):
 		interact()
+	elif Input.is_action_just_pressed("equip_health") and PlayerStats.has_item(ItemUtils.get_item_id("HealthPotion")):
+		self.potion = EquipedPotion.HEALTH
+	elif Input.is_action_just_pressed("equip_fire") and PlayerStats.has_item(ItemUtils.get_item_id("FirePotion")):
+		self.potion = EquipedPotion.FIRE
+	elif Input.is_action_just_pressed("equip_ice") and PlayerStats.has_item(ItemUtils.get_item_id("IcePotion")):
+		self.potion = EquipedPotion.ICE
+	elif Input.is_action_just_pressed("inventory"):
+		PlayerStats.describe_inventory()
 
 	move()
 
 
 func throw_potion(behind=false):
+	var throw_type = Potion.PotionType.FIRE
+	
+	match self.potion:
+		EquipedPotion.NONE:
+			return
+		EquipedPotion.HEALTH:
+			if PlayerStats.health < PlayerStats.max_health:
+				var health_potion = PlayerStats.use_item(ItemUtils.get_item_id("HealthPotion"))
+				if health_potion == null:
+					return
+				PlayerStats.health += health_potion.restore_health_points
+
+			if not PlayerStats.has_item(ItemUtils.get_item_id("HealthPotion")):
+				self.potion = EquipedPotion.NONE
+			return
+		EquipedPotion.FIRE:
+			var fire_potion = PlayerStats.use_item(ItemUtils.get_item_id("FirePotion"))
+			if fire_potion == null:
+				return
+			throw_type = Potion.PotionType.FIRE
+			if not PlayerStats.has_item(ItemUtils.get_item_id("FirePotion")):
+				self.potion = EquipedPotion.NONE
+		EquipedPotion.ICE:
+			var ice_potion = PlayerStats.use_item(ItemUtils.get_item_id("IcePotion"))
+			if ice_potion == null:
+				return
+			throw_type = Potion.PotionType.ICE
+			if not PlayerStats.has_item(ItemUtils.get_item_id("IcePotion")):
+				self.potion = EquipedPotion.NONE
+	
 	var direction = player_facing
 	var pos = potionSpawn.global_position
 
@@ -158,13 +222,14 @@ func throw_potion(behind=false):
 		direction *= -1
 		pos = global_position
 
-	var potion = Utils.instance_scene_on_main(Potion, pos)
+	var potion_instance = Utils.instance_scene_on_main(ProjectilePotionScene, pos)
+	potion_instance.type = throw_type
 	
 	if behind:
-		potion.FLIGHT_TIME = 0.05
-		potion.SPEED /= 3
+		potion_instance.FLIGHT_TIME = 0.05
+		potion_instance.SPEED /= 3
 	
-	potion.velocity = direction
+	potion_instance.velocity = direction
 	throwPotionTimer.start()
 
 

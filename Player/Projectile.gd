@@ -1,4 +1,5 @@
 extends KinematicBody2D
+class_name Projectile
 
 export(int) var SPEED = 55
 

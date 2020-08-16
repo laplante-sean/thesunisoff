@@ -1,13 +1,9 @@
-extends "res://Player/Projectile.gd"
+extends Projectile
+class_name ProjectilePotion
 
 const ExplodeEffect = preload("res://Effects/ExplodeEffect.tscn")
 const FireLight = preload("res://Effects/FireLight.tscn")   # For fire potion
 const IceLight = preload("res://Effects/IceLight.tscn")      # For ice potion
-
-enum PotionType { 
-	FIRE,
-	ICE
-}
 
 enum PotionState {
 	FLY,
@@ -17,16 +13,17 @@ enum PotionState {
 	DISOLVE
 }
 
-export(PotionType) var POTION_TYPE = PotionType.FIRE
 export(float) var FLIGHT_TIME = 0.3
 export(int) var IMPACT_RADIUS = 5
 export(float) var LINGER_TIME = 5
 
 var state = PotionState.FLY
+var type = Potion.PotionType.FIRE setget set_type
 var fly_animation = "Fire"
 var ignite_animation = "IgniteFire"
 var linger_animation = "LingerFire"
 var disolve_animation = "DisolveFire"
+var lighting = null
 
 onready var lingerTimer = $LingerTimer
 onready var flightTimer = $FlightTimer
@@ -41,17 +38,22 @@ func _ready():
 	flightTimer.wait_time = FLIGHT_TIME
 	flightTimer.start()
 
-	var lighting = null
 
-	match POTION_TYPE:
-		PotionType.FIRE:
+func set_type(value):
+	type = value
+
+	if lighting != null:
+		lighting.queue_free()
+
+	match type:
+		Potion.PotionType.FIRE:
 			fly_animation = "Fire"
 			ignite_animation = "IgniteFire"
 			linger_animation = "LingerFire"
 			disolve_animation = "DisolveFire"
 			lighting = FireLight.instance()
 			hitbox.MOVEMENT_BUF = 0.75
-		PotionType.ICE:
+		Potion.PotionType.ICE:
 			fly_animation = "Ice"
 			ignite_animation = "IgniteIce"
 			linger_animation = "LingerIce"

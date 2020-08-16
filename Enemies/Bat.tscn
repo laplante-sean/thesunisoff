@@ -59,6 +59,7 @@ material = SubResource( 1 )
 position = Vector2( 0, -4 )
 frames = SubResource( 4 )
 animation = "Animate"
+frame = 1
 playing = true
 
 [node name="Collider" parent="." index="3"]
@@ -78,6 +79,10 @@ shape = SubResource( 8 )
 
 [node name="Collider" parent="SoftCollision" index="0"]
 shape = SubResource( 9 )
+
+[node name="VisibilityEnabler2D" parent="." index="11"]
+position = Vector2( -4.76837e-07, -1.90735e-06 )
+scale = Vector2( 3.3, 3.3 )
 
 [editable path="Hurtbox"]
 

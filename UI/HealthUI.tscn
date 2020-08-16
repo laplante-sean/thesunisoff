@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://UI/HealthUI.gd" type="Script" id=1]
 [ext_resource path="res://UI/health-heart-full.png" type="Texture" id=2]
 [ext_resource path="res://UI/health-heart-empty.png" type="Texture" id=3]
 [ext_resource path="res://UI/exp-bar-full.png" type="Texture" id=4]
 [ext_resource path="res://UI/exp-bar-empty.png" type="Texture" id=5]
+[ext_resource path="res://UI/magic-bar-full.png" type="Texture" id=6]
 
 [node name="HealthUI" type="Control"]
 modulate = Color( 1, 1, 1, 0.882353 )
@@ -51,3 +52,30 @@ margin_bottom = 8.0
 texture = ExtResource( 4 )
 expand = true
 stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MagicBarEmpty" type="TextureRect" parent="."]
+margin_left = 1.0
+margin_top = 8.0
+margin_right = 15.0
+margin_bottom = 9.0
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MagicBarFull" type="TextureRect" parent="."]
+margin_left = 1.0
+margin_top = 8.0
+margin_right = 13.0
+margin_bottom = 9.0
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}

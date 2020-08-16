@@ -81,11 +81,18 @@ collision_mask = 4
 [node name="SoftCollision" parent="." instance=ExtResource( 6 )]
 
 [node name="WanderController" parent="." instance=ExtResource( 7 )]
+
+[node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="."]
+modulate = Color( 1, 1, 1, 0.266667 )
+position = Vector2( 1.2517e-06, 0.5 )
+scale = Vector2( 2, 1.95 )
 [connection signal="no_health" from="EnemyStats" to="." method="_on_EnemyStats_no_health"]
 [connection signal="end_movement_buf" from="Hurtbox" to="." method="_on_Hurtbox_end_movement_buf"]
 [connection signal="invincibility_ended" from="Hurtbox" to="." method="_on_Hurtbox_invincibility_ended"]
 [connection signal="invincibility_started" from="Hurtbox" to="." method="_on_Hurtbox_invincibility_started"]
 [connection signal="take_damage" from="Hurtbox" to="." method="_on_Hurtbox_take_damage"]
+[connection signal="screen_entered" from="VisibilityEnabler2D" to="." method="_on_VisibilityEnabler2D_screen_entered"]
+[connection signal="screen_exited" from="VisibilityEnabler2D" to="." method="_on_VisibilityEnabler2D_screen_exited"]
 
 [editable path="Hurtbox"]
 

@@ -6,4 +6,13 @@
 [node name="PlayerStats" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 max_health = 4
+
+[node name="MagicRegenTimer" type="Timer" parent="." index="0"]
+wait_time = 5.0
+one_shot = true
+
+[node name="MagicRegenRate" type="Timer" parent="." index="1"]
+wait_time = 0.25
 [connection signal="no_health" from="." to="." method="_on_PlayerStats_no_health"]
+[connection signal="timeout" from="MagicRegenTimer" to="." method="_on_MagicRegenTimer_timeout"]
+[connection signal="timeout" from="MagicRegenRate" to="." method="_on_MagicRegenRate_timeout"]

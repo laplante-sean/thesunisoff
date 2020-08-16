@@ -25,6 +25,7 @@ onready var wanderController = $WanderController
 
 
 func _ready():
+	set_physics_process(false)
 	state = pick_random_state([NPCState.IDLE, NPCState.WANDER])
 	Events.connect("yesno_answer", self, "_on_Events_yesno_answer")
 
@@ -94,3 +95,11 @@ func _on_Events_yesno_answer(question, answer):
 		Utils.call_deferred("say_dialog", INTERACTION_Q_POSITIVE_RESPONSE)
 	else:
 		Utils.call_deferred("say_dialog", INTERACTION_Q_NEGATIVE_RESPONSE)
+
+
+func _on_VisibilityEnabler2D_screen_entered():
+	set_physics_process(true)
+
+
+func _on_VisibilityEnabler2D_screen_exited():
+	set_physics_process(false)

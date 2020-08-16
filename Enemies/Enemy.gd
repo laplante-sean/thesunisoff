@@ -35,6 +35,7 @@ onready var blinkAnimationPlayer = $BlinkAnimationPlayer
 
 
 func _ready():
+	set_physics_process(false)
 	health_bar_scale_x = healthBar.scale.x
 	var mat = sprite.get_material()
 	mat.set_shader_param("active", false)
@@ -159,3 +160,11 @@ func _on_Hurtbox_end_movement_buf(area):
 	# Restore full movement
 	MAX_SPEED = pre_buf_max_speed
 	movement_buffed = false
+
+
+func _on_VisibilityEnabler2D_screen_entered():
+	set_physics_process(true)
+
+
+func _on_VisibilityEnabler2D_screen_exited():
+	set_physics_process(false)

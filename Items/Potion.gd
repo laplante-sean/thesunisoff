@@ -5,7 +5,8 @@ const PickupPotionSound = preload("res://Audio/PickupPotionSound.tscn")
 
 enum PotionType {
 	FIRE,
-	ICE
+	ICE,
+	HEALTH
 }
 
 export(PotionType) var POTION_TYPE = PotionType.FIRE

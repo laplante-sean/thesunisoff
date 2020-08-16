@@ -18,6 +18,7 @@ func save_game():
 func load_game():
 	var save_data = _load_data_from_file()
 	if save_data == null:
+		Events.emit_signal("no_save_data")
 		return  # No save file. Nothing to load
 
 	PlayerStats.load_data(save_data.player_stats)

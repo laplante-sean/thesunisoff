@@ -13,31 +13,31 @@ shader_param/active = false
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 2 )
-region = Rect2( 0, 0, 8, 8 )
+region = Rect2( 16, 0, 8, 8 )
 
 [sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 2 )
-region = Rect2( 8, 0, 8, 8 )
+region = Rect2( 24, 0, 8, 8 )
 
 [sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 2 )
-region = Rect2( 16, 0, 8, 8 )
+region = Rect2( 0, 0, 8, 8 )
 
 [sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 2 )
-region = Rect2( 24, 0, 8, 8 )
+region = Rect2( 8, 0, 8, 8 )
 
 [sub_resource type="SpriteFrames" id=6]
 animations = [ {
 "frames": [ SubResource( 2 ), SubResource( 3 ) ],
 "loop": true,
-"name": "Idle",
-"speed": 7.0
+"name": "Scurry",
+"speed": 10.0
 }, {
 "frames": [ SubResource( 4 ), SubResource( 5 ) ],
 "loop": true,
-"name": "Scurry",
-"speed": 10.0
+"name": "Idle",
+"speed": 7.0
 } ]
 
 [sub_resource type="CircleShape2D" id=7]
@@ -73,6 +73,7 @@ material = SubResource( 1 )
 position = Vector2( 0, -4 )
 frames = SubResource( 6 )
 animation = "Idle"
+frame = 1
 playing = true
 
 [node name="Collider" parent="." index="3"]
@@ -98,6 +99,10 @@ shape = SubResource( 10 )
 [node name="Collider" parent="SoftCollision" index="0"]
 position = Vector2( 0, -3 )
 shape = SubResource( 11 )
+
+[node name="VisibilityEnabler2D" parent="." index="11"]
+position = Vector2( 9.53674e-07, -1.66893e-06 )
+scale = Vector2( 3.3, 3.3 )
 
 [editable path="Hurtbox"]
 

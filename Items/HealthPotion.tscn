@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Items/CollectibleItem.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Items/HealthPotion.gd" type="Script" id=2]
+[ext_resource path="res://Items/health-potion.png" type="Texture" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 2.0
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 16.0
+
+[node name="HealthPotion" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+ITEM_ID = 5
+POTION_TYPE = 2
+
+[node name="Sprite" parent="." index="0"]
+position = Vector2( 0, -2 )
+texture = ExtResource( 3 )
+
+[node name="Collider" parent="." index="1"]
+shape = SubResource( 1 )
+
+[node name="Collider" parent="PlayerDetectionZone" index="0"]
+shape = SubResource( 2 )
+
+[editable path="PlayerDetectionZone"]

@@ -1,0 +1,60 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://UI/EquipmentUI.gd" type="Script" id=1]
+[ext_resource path="res://Items/health-potion.png" type="Texture" id=2]
+[ext_resource path="res://Items/fire-potion.png" type="Texture" id=3]
+[ext_resource path="res://Items/ice-potion.png" type="Texture" id=4]
+[ext_resource path="res://UI/item-bar.png" type="Texture" id=5]
+
+[node name="EquipmentUI" type="Control"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -22.0
+margin_right = -14.0
+margin_bottom = 8.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthPotion" type="TextureRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -2.0
+margin_bottom = -2.0
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FirePotion" type="TextureRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -2.0
+margin_bottom = -2.0
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="IcePotion" type="TextureRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -2.0
+margin_bottom = -2.0
+texture = ExtResource( 4 )
+
+[node name="ItemBar" type="TextureRect" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -1.0
+margin_right = -7.0
+texture = ExtResource( 5 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}

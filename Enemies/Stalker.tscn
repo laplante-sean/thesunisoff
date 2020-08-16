@@ -92,6 +92,7 @@ material = SubResource( 1 )
 position = Vector2( 0, -9 )
 frames = SubResource( 7 )
 animation = "Idle"
+frame = 1
 playing = true
 
 [node name="Collider" parent="." index="3"]
@@ -128,6 +129,10 @@ one_shot = true
 
 [node name="WanderController" parent="." index="12"]
 wander_range = 32
+
+[node name="VisibilityEnabler2D" parent="." index="13"]
+position = Vector2( 1, 0.499997 )
+scale = Vector2( 5.3, 5.15 )
 
 [editable path="Hurtbox"]
 

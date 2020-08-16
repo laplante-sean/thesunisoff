@@ -1,0 +1,90 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://NPC/ShopKeep.gd" type="Script" id=1]
+[ext_resource path="res://NPC/NPC.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Effects/medium-shadow.png" type="Texture" id=3]
+[ext_resource path="res://NPC/shop-keep.png" type="Texture" id=4]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 8, 8 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 4 )
+region = Rect2( 8, 0, 8, 8 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 4 )
+region = Rect2( 16, 0, 8, 8 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 4 )
+region = Rect2( 24, 0, 8, 8 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 4 )
+region = Rect2( 32, 0, 8, 8 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 4 )
+region = Rect2( 40, 0, 8, 8 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 4 )
+region = Rect2( 48, 0, 8, 8 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 4 )
+region = Rect2( 56, 0, 8, 8 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 4 )
+region = Rect2( 64, 0, 8, 8 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 4 )
+region = Rect2( 72, 0, 8, 8 )
+
+[sub_resource type="SpriteFrames" id=11]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ) ],
+"loop": true,
+"name": "Walk",
+"speed": 7.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=12]
+extents = Vector2( 4, 2 )
+
+[node name="ShopKeep" instance=ExtResource( 2 )]
+collision_layer = 193
+collision_mask = 513
+script = ExtResource( 1 )
+ACCELERATION = 75
+MAX_SPEED = 10
+FRICTION = 125
+
+[node name="ShadowSprite" parent="." index="0"]
+position = Vector2( 0, -2 )
+texture = ExtResource( 3 )
+
+[node name="AnimatedSprite" parent="." index="1"]
+position = Vector2( 0, -4 )
+frames = SubResource( 11 )
+animation = "Idle"
+frame = 1
+playing = true
+
+[node name="Collider" parent="." index="2"]
+position = Vector2( 0, -2 )
+shape = SubResource( 12 )
+
+[node name="WanderController" parent="." index="3"]
+wander_range = 12
+
+[editable path="PlayerDetectionZone"]

@@ -9,6 +9,7 @@ onready var ySortTileMap = $YSortTileMap
 
 
 func _ready():
+	Events.connect("no_save_data", self, "_on_Events_no_save_data")
 	PlayerStats.connect("no_health", self, "_on_PlayerStats_no_health")
 	spawn()
 
@@ -26,11 +27,44 @@ func _on_PlayerStats_no_health():
 	call_deferred("spawn")
 
 
+func _on_Events_no_save_data():
+	call_deferred("trigger_spawners")
+
+
+func trigger_spawners():
+	for child in ySortTileMap.get_children():
+		if child is NPCSpawner:
+			child.spawn()
+
+
 func save_data():
-	return {
-		level_id = LEVEL_ID
+	var data = {
+		level_id = LEVEL_ID,
+		enemy_spawners = [],
+		chests = []
 	}
+	
+	for child in ySortTileMap.get_children():
+		if child is NPCSpawner:
+			data.enemy_spawners.append(child.save_data())
+		if child is Chest and not child.IGNORE_SAVE:
+			data.chests.append(child.save_data())
+	
+	return data
 
 
 func load_data(data):
-	pass  # Override to load
+	for child in ySortTileMap.get_children():
+		if child is NPCSpawner:
+			for spawner in data.enemy_spawners:
+				var pos = Vector2(spawner.pos.x, spawner.pos.y)
+				if child.global_position == pos:
+					child.load_data(spawner)
+					break
+		elif child is Chest:
+			for chest in data.chests:
+				var pos = Vector2(chest.pos.x, chest.pos.y)
+				if child.global_position == pos:
+					child.load_data(chest)
+					break
+

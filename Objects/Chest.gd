@@ -15,6 +15,8 @@ enum ChestState {
 # of item_id,quantity
 export(Array, String) var CONTENTS = []
 export(ChestState) var STARTING_STATE = ChestState.LOCKED
+export(bool) var RANDOM_CHEST = false
+export(bool) var IGNORE_SAVE = false
 
 var state = ChestState.LOCKED setget set_state
 
@@ -23,6 +25,31 @@ onready var animationPlayer = $AnimationPlayer
 
 func _ready():
 	self.state = STARTING_STATE
+	
+	if RANDOM_CHEST:
+		CONTENTS = []
+		var num_potions = int(rand_range(1, 3))
+		var num_coins = int(rand_range(20, 100))
+		
+		CONTENTS.append("{id},{quantity}".format({
+			"id": ItemUtils.get_item_id("Coin"),
+			"quantity": num_coins
+		}))
+		
+		for idx in range(num_potions):
+			var potion_chance = int(rand_range(0, 100))
+			var potion_item = null
+
+			if potion_chance > 50 and potion_chance < 80:
+				potion_item = "FirePotion"
+			elif potion_chance > 80:
+				potion_item = "IcePotion"
+			else:
+				potion_item = "HealthPotion"
+			
+			CONTENTS.append("{id},1".format(
+				{"id": ItemUtils.get_item_id(potion_item)}
+			))
 
 
 func is_locked():
@@ -75,3 +102,19 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 			ItemUtils.instance_item_on_main(item_id, global_position)
 
 	CONTENTS = []
+
+
+func save_data():
+	return {
+		pos = {
+			x = global_position.x,
+			y = global_position.y
+		},
+		contents = CONTENTS
+	}
+
+
+func load_data(data):
+	CONTENTS = []
+	for item in data.contents:
+		CONTENTS.append(item)
