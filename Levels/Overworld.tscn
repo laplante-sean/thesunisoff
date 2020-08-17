@@ -52,22 +52,22 @@ STARTING_STATE = 1
 RANDOM_CHEST = true
 
 [node name="EarthChest" parent="YSortTileMap" index="7" instance=ExtResource( 4 )]
-position = Vector2( -100, 227 )
+position = Vector2( -100, 230 )
 STARTING_STATE = 1
 RANDOM_CHEST = true
 
 [node name="AirChest" parent="YSortTileMap" index="8" instance=ExtResource( 4 )]
-position = Vector2( 201, 225 )
+position = Vector2( 201, 229 )
 STARTING_STATE = 1
 RANDOM_CHEST = true
 
 [node name="AirChest2" parent="YSortTileMap" index="9" instance=ExtResource( 4 )]
-position = Vector2( 187, 225 )
+position = Vector2( 188, 229 )
 STARTING_STATE = 1
 RANDOM_CHEST = true
 
 [node name="EarthChest2" parent="YSortTileMap" index="10" instance=ExtResource( 4 )]
-position = Vector2( -171, 226 )
+position = Vector2( -171, 229 )
 STARTING_STATE = 1
 RANDOM_CHEST = true
 
