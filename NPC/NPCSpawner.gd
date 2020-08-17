@@ -8,6 +8,8 @@ export(bool) var RESPAWN_ONCE_DEAD = true  # respawn when all are dead
 export(bool) var DEFEATABLE = false
 export(int) var SPREAD_RADIUS = 12
 
+signal defeated
+
 var dead = 0
 var spawn = 0
 var defeated = false
@@ -40,8 +42,10 @@ func _on_NPC_tree_exited():
 		call_deferred("spawn_one")
 	else:
 		dead += 1
-		if dead == spawn and DEFEATABLE:
-			defeated = true
+		if dead == spawn:
+			if DEFEATABLE:
+				defeated = true
+			emit_signal("defeated")
 
 
 func save_data():
@@ -56,6 +60,8 @@ func save_data():
 
 func load_data(data):
 	defeated = data.defeated
+	if defeated:
+		emit_signal("defeated")
 
 
 func _on_VisibilityEnabler2D_screen_entered():

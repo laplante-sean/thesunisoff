@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://World/World.gd" type="Script" id=1]
+[ext_resource path="res://Menus/YouWin.tscn" type="PackedScene" id=2]
 [ext_resource path="res://UI/UI.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Effects/FireLight.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Audio/ForestSounds.tscn" type="PackedScene" id=17]
@@ -8,6 +9,8 @@
 [node name="World" type="Node2D"]
 script = ExtResource( 1 )
 ZOOMING_ENABLED = true
+
+[node name="YouWin" parent="." instance=ExtResource( 2 )]
 
 [node name="UI" parent="." instance=ExtResource( 10 )]
 

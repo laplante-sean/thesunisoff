@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://UI/DialogBox.gd" type="Script" id=1]
 [ext_resource path="res://UI/dialog-box.png" type="Texture" id=2]
 [ext_resource path="res://UI/dialog-continues.png" type="Texture" id=3]
 [ext_resource path="res://Audio/dialog-continue-click.ogg" type="AudioStream" id=4]
 [ext_resource path="res://UI/yes-no-box.png" type="Texture" id=5]
+[ext_resource path="res://UI/shop-ui.png" type="Texture" id=6]
 
 [sub_resource type="DynamicFontData" id=1]
 antialiased = false
@@ -49,12 +50,19 @@ size = 7
 extra_spacing_top = -1
 font_data = SubResource( 8 )
 
+[sub_resource type="DynamicFontData" id=10]
+antialiased = false
+font_path = "res://Fonts/KenneyMini.ttf"
+
+[sub_resource type="DynamicFont" id=11]
+size = 7
+extra_spacing_top = -2
+font_data = SubResource( 10 )
+
 [node name="DialogBox" type="Control"]
 pause_mode = 2
-anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -40.0
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -90,10 +98,9 @@ wait_time = 0.05
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 visible = false
-position = Vector2( 58, 38 )
+position = Vector2( 58, 62 )
 frames = SubResource( 7 )
 animation = "Animate"
-frame = 2
 playing = true
 centered = false
 
@@ -103,7 +110,7 @@ volume_db = -5.0
 
 [node name="YesNoBox" type="Sprite" parent="."]
 visible = false
-position = Vector2( 52, 8 )
+position = Vector2( 52, 32 )
 texture = ExtResource( 5 )
 hframes = 2
 frame = 1
@@ -127,6 +134,60 @@ margin_bottom = 8.0
 custom_fonts/font = SubResource( 9 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "No"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ShopSelection" type="Sprite" parent="."]
+visible = false
+position = Vector2( 16, 20 )
+texture = ExtResource( 6 )
+hframes = 4
+
+[node name="HealthLabel" type="Label" parent="ShopSelection"]
+margin_left = -11.0
+margin_top = -17.0
+margin_right = 16.0
+margin_bottom = -10.0
+custom_fonts/font = SubResource( 11 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Health"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FireLabel" type="Label" parent="ShopSelection"]
+margin_left = -11.0
+margin_top = -8.0
+margin_right = 16.0
+margin_bottom = -1.0
+custom_fonts/font = SubResource( 11 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Fire"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="IceLabel" type="Label" parent="ShopSelection"]
+margin_left = -11.0
+margin_top = 1.0
+margin_right = 16.0
+margin_bottom = 8.0
+custom_fonts/font = SubResource( 11 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Ice"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Exit" type="Label" parent="ShopSelection"]
+margin_left = -11.0
+margin_top = 10.0
+margin_right = 16.0
+margin_bottom = 17.0
+custom_fonts/font = SubResource( 11 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Exit"
 __meta__ = {
 "_edit_use_anchors_": false
 }

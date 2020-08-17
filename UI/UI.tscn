@@ -11,7 +11,7 @@
 script = ExtResource( 3 )
 
 [node name="HealthUI" parent="." instance=ExtResource( 1 )]
-modulate = Color( 1, 1, 1, 0.882353 )
+visible = false
 
 [node name="CurrentLevelUI" parent="." instance=ExtResource( 2 )]
 visible = false

@@ -12,3 +12,8 @@ script = ExtResource( 3 )
 [node name="YSortTileMap" parent="." instance=ExtResource( 2 )]
 
 [node name="SpawnPoint" type="Position2D" parent="."]
+
+[node name="DeathWaitTime" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+[connection signal="timeout" from="DeathWaitTime" to="." method="_on_DeathWaitTime_timeout"]

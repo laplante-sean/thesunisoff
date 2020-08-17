@@ -70,3 +70,18 @@ func interact():
 		DoorState.OPEN:
 			Utils.instance_scene_on_main(DoorCloseSound, global_position)
 			self.state = DoorState.UNLOCKED
+
+
+func save_data():
+	return {
+		pos = {
+			x = global_position.x,
+			y = global_position.y
+		},
+		state = self.state
+	}
+
+
+func load_data(data):
+	if self.state == DoorState.LOCKED and data.state != DoorState.LOCKED:
+		unlock()

@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Levels/Level.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Levels/LevelPortal.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Levels/Dungeon.gd" type="Script" id=3]
+[ext_resource path="res://Objects/Sign.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Objects/Chest.tscn" type="PackedScene" id=5]
+
+[node name="EarthDungeon" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+LEVEL_ID = "earth_dungeon"
+
+[node name="TileMap" parent="." index="0"]
+tile_data = PoolIntArray( 196596, 4, 0, 196597, 4, 0, 196598, 4, 0, 196599, 4, 0, 196600, 4, 0, 196601, 4, 0, 196602, 4, 0, 196603, 4, 0, 196604, 4, 0, 262132, 4, 0, 262133, 4, 0, 262134, 4, 0, 262135, 4, 0, 262136, 4, 0, 262137, 4, 0, 262138, 4, 0, 262139, 4, 0, 262140, 4, 0, 327668, 4, 0, 327669, 4, 0, 327670, 4, 0, 327671, 4, 0, 327672, 4, 0, 327673, 4, 0, 327674, 4, 0, 327675, 4, 0, 327676, 4, 0, 393204, 4, 0, 393205, 4, 0, 393206, 4, 0, 393207, 4, 0, 393208, 4, 0, 393209, 4, 0, 393210, 4, 0, 393211, 4, 0, 393212, 4, 0, 458740, 4, 0, 458741, 1, 0, 458742, 4, 0, 458743, 4, 0, 458744, 4, 0, 458745, 4, 0, 458746, 4, 0, 458747, 4, 0, 458748, 4, 0, 524276, 4, 0, 524277, 4, 0, 524278, 4, 0, 524279, 4, 0, 524280, 4, 0, 524281, 4, 0, 524282, 4, 0, 524283, 4, 0, 524284, 4, 0 )
+
+[node name="YSortTileMap" parent="." index="1"]
+tile_data = PoolIntArray( 131060, 0, 0, 131061, 0, 1, 131062, 0, 1, 131063, 0, 1, 131064, 0, 1, 131065, 0, 1, 131066, 0, 1, 131067, 0, 1, 131068, 0, 3, 196596, 0, 65536, 196604, 0, 65539, 262132, 0, 65536, 262140, 0, 65539, 327668, 0, 65536, 327676, 0, 65539, 393204, 0, 65536, 393208, 2, 131080, 393209, 2, 131080, 393210, 2, 131080, 393211, 2, 131080, 393212, 0, 65539, 458740, 0, 65536, 458744, 2, 131079, 458745, 2, 131079, 458746, 2, 131079, 458747, 2, 131079, 458748, 0, 65539, 524276, 0, 65536, 524280, 2, 131080, 524281, 2, 131080, 524282, 2, 131080, 524283, 2, 131080, 524284, 0, 65539, 589812, 0, 327682, 589813, 0, 262146, 589814, 0, 262146, 589815, 0, 262146, 589816, 0, 262146, 589817, 0, 262146, 589818, 0, 262146, 589819, 0, 262146, 589820, 0, 327683 )
+
+[node name="Sign" parent="YSortTileMap" index="0" instance=ExtResource( 4 )]
+position = Vector2( -54, 27 )
+message = "I ran out of time. So this amulet is for free."
+
+[node name="Chest" parent="YSortTileMap" index="1" instance=ExtResource( 5 )]
+position = Vector2( -46, 27 )
+CONTENTS = [ "9,1" ]
+STARTING_STATE = 1
+
+[node name="SpawnPoint" parent="." index="2"]
+position = Vector2( -81, 29 )
+
+[node name="LevelPortal" parent="." index="3" instance=ExtResource( 2 )]
+position = Vector2( -90, 19 )
+next_level_path = "res://Levels/Overworld.tscn"
+STAIRS_UP = true

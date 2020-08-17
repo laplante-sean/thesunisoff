@@ -1689,7 +1689,6 @@ disabled = true
 stream = ExtResource( 7 )
 volume_db = -20.0
 pitch_scale = 0.85
-autoplay = true
 
 [node name="ThrowPotionTimer" type="Timer" parent="."]
 one_shot = true

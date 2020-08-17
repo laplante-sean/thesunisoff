@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=2]
+[gd_scene load_steps=65 format=2]
 
 [ext_resource path="res://World/walls.png" type="Texture" id=1]
 [ext_resource path="res://World/Nature.png" type="Texture" id=2]
@@ -172,16 +172,19 @@ points = PoolVector2Array( 1, 4, 7, 4, 7, 8, 1, 8 )
 [sub_resource type="ConvexPolygonShape2D" id=56]
 points = PoolVector2Array( 1, 5, 7, 5, 6, 8, 2, 8 )
 
-[sub_resource type="ConvexPolygonShape2D" id=58]
+[sub_resource type="ConvexPolygonShape2D" id=57]
 points = PoolVector2Array( 1, 0, 7, 0, 7, 8, 1, 8 )
 
-[sub_resource type="ConvexPolygonShape2D" id=59]
+[sub_resource type="ConvexPolygonShape2D" id=58]
 points = PoolVector2Array( 1, 7, 7, 7, 7, 8, 1, 8 )
 
-[sub_resource type="ConvexPolygonShape2D" id=60]
+[sub_resource type="ConvexPolygonShape2D" id=59]
 points = PoolVector2Array( 1, 0, 7, 0, 7, 1, 1, 1 )
 
-[sub_resource type="TileSet" id=57]
+[sub_resource type="ConvexPolygonShape2D" id=60]
+points = PoolVector2Array( 1, 4, 7, 4, 7, 8, 1, 8 )
+
+[sub_resource type="TileSet" id=61]
 0/name = "walls.png 0"
 0/texture = ExtResource( 1 )
 0/tex_offset = Vector2( 0, 0 )
@@ -466,6 +469,12 @@ points = PoolVector2Array( 1, 0, 7, 0, 7, 1, 1, 1 )
 "autotile_coord": Vector2( 13, 3 ),
 "one_way": false,
 "one_way_margin": 1.0,
+"shape": SubResource( 57 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 13, 2 ),
+"one_way": false,
+"one_way_margin": 1.0,
 "shape": SubResource( 58 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 }, {
@@ -475,7 +484,7 @@ points = PoolVector2Array( 1, 0, 7, 0, 7, 1, 1, 1 )
 "shape": SubResource( 59 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 }, {
-"autotile_coord": Vector2( 13, 2 ),
+"autotile_coord": Vector2( 8, 1 ),
 "one_way": false,
 "one_way_margin": 1.0,
 "shape": SubResource( 60 ),
@@ -485,7 +494,7 @@ points = PoolVector2Array( 1, 0, 7, 0, 7, 1, 1, 1 )
 
 [node name="YSortTileMap" type="TileMap"]
 light_mask = -2147483647
-tile_set = SubResource( 57 )
+tile_set = SubResource( 61 )
 cell_size = Vector2( 8, 8 )
 cell_custom_transform = Transform2D( 8, 0, 0, 8, 0, 0 )
 cell_tile_origin = 1

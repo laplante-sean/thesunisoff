@@ -43,6 +43,11 @@ func _ready():
 
 
 func _physics_process(delta):
+	if stats.max_health == 1:
+		healthBar.visible = false
+	else:
+		healthBar.visible = true
+
 	knockback = knockback.move_toward(Vector2.ZERO, FRICTION * delta)
 	knockback = move_and_slide(knockback)
 

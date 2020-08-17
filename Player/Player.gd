@@ -47,6 +47,7 @@ onready var blinkAnimationPlayer = $BlinkAnimationPlayer
 onready var animationTree = $AnimationTree
 onready var spellHitbox = $Pivot/SpellHitbox
 onready var swordHitbox = $Pivot/SwordHitbox
+onready var spell360Hitbox = $Spell360Hitbox
 onready var hurtboxCollider = $Hurtbox/Collider
 onready var spellCollider = $Pivot/SpellHitbox/Collider
 onready var swordCollider = $Pivot/SwordHitbox/Collider
@@ -61,8 +62,12 @@ onready var animationState = animationTree.get("parameters/playback")
 
 func _ready():
 	Events.connect("yesno_answer", self, "_on_Events_yesno_answer")
+	stats.connect("boost_attack_strength", self, "_on_PlayerStats_boost_attack_strength")
 	stats.connect("no_health", self, "_on_PlayerStats_no_health")
 	stats.connect("level_up", self, "_on_PlayerStats_level_up")
+	stats.connect("sword_knockback_changed", self, "_on_PlayerStats_sword_knockback_changed")
+	stats.connect("spell_knockback_changed", self, "_on_PlayerStats_spell_knockback_changed")
+	stats.connect("spell_360_knockback_changed", self, "_on_PlayerStats_spell_360_knockback_changed")
 	animationTree.active = true
 	spellHitbox.knockback_vector = Vector2.DOWN
 	swordHitbox.knockback_vector = Vector2.DOWN
@@ -75,6 +80,16 @@ func _ready():
 
 	var mat = sprite.get_material()
 	mat.set_shader_param("active", false)
+
+	spellHitbox.DAMAGE += PlayerStats.weapon_hitpoint_boost
+	spell360Hitbox.DAMAGE += PlayerStats.weapon_hitpoint_boost
+	swordHitbox.DAMAGE += PlayerStats.weapon_hitpoint_boost
+
+
+func _on_PlayerStats_boost_attack_strength(value):
+	spellHitbox.DAMAGE += 1
+	spell360Hitbox.DAMAGE += 1 
+	swordHitbox.DAMAGE += 1
 
 
 func reset_colliders():
@@ -180,6 +195,8 @@ func move_state(delta):
 		self.potion = EquipedPotion.ICE
 	elif Input.is_action_just_pressed("inventory"):
 		PlayerStats.describe_inventory()
+	elif Input.is_action_just_pressed("display_stats"):
+		PlayerStats.describe_stats()
 
 	move()
 
@@ -253,6 +270,18 @@ func interact():
 			return
 
 	object.interact()
+
+
+func _on_PlayerStats_sword_knockback_changed(value):
+	swordHitbox.KNOCKBACK_FACTOR = value
+
+
+func _on_PlayerStats_spell_knockback_changed(value):
+	spellHitbox.KNOCKBACK_FACTOR = value
+
+
+func _on_PlayerStats_spell_360_knockback_changed(value):
+	spell360Hitbox.KNOCKBACK_FACTOR = value
 
 
 func _on_Events_yesno_answer(question, answer):

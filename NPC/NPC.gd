@@ -6,9 +6,11 @@ export(int) var MAX_SPEED = 30
 export(int) var FRICTION = 200
 export(int) var WANDER_TARGET_RANGE = 4
 export(bool) var INTERACT_WITH_QUESTION = false
+export(bool) var WIN_WITH_ALL_AMULETS = false
 export(String) var INTERACTION_TEXT = ""
 export(String) var INTERACTION_Q_POSITIVE_RESPONSE = ""
 export(String) var INTERACTION_Q_NEGATIVE_RESPONSE = ""
+export(String) var ALL_THE_AMULETS_MESSAGE = ""
 
 enum NPCState {
 	IDLE,
@@ -28,6 +30,7 @@ func _ready():
 	set_physics_process(false)
 	state = pick_random_state([NPCState.IDLE, NPCState.WANDER])
 	Events.connect("yesno_answer", self, "_on_Events_yesno_answer")
+	Events.connect("dialog_complete", self, "_on_Events_dialog_complete")
 
 
 func _physics_process(delta):
@@ -81,6 +84,10 @@ func pick_random_state(state_list):
 
 
 func interact():
+	if PlayerStats.has_all_four_amulets() and len(ALL_THE_AMULETS_MESSAGE) > 0:
+		Utils.say_dialog(ALL_THE_AMULETS_MESSAGE)
+		return
+	
 	if len(INTERACTION_TEXT) > 0 and not INTERACT_WITH_QUESTION:
 		Utils.say_dialog(INTERACTION_TEXT)
 	elif len(INTERACTION_TEXT) > 0 and INTERACT_WITH_QUESTION:
@@ -103,3 +110,8 @@ func _on_VisibilityEnabler2D_screen_entered():
 
 func _on_VisibilityEnabler2D_screen_exited():
 	set_physics_process(false)
+
+
+func _on_Events_dialog_complete(message):
+	if PlayerStats.has_all_four_amulets() and len(ALL_THE_AMULETS_MESSAGE) > 0 and message == ALL_THE_AMULETS_MESSAGE and WIN_WITH_ALL_AMULETS:
+		Events.emit_signal("win_the_game")

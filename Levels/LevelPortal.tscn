@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Levels/LevelPortal.gd" type="Script" id=1]
+[ext_resource path="res://Levels/stairs-up.png" type="Texture" id=2]
+[ext_resource path="res://Levels/stairs-down.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 3, 2 )
+
+[node name="LevelPortal" type="Area2D"]
+z_index = -1
+collision_layer = 0
+collision_mask = 2
+script = ExtResource( 1 )
+
+[node name="StairsUp" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 2 )
+
+[node name="StairsDown" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -1 )
+shape = SubResource( 1 )
+
+[node name="ReturnPosition" type="Position2D" parent="."]
+position = Vector2( 7, 7 )
+[connection signal="body_entered" from="." to="." method="_on_LevelPortal_body_entered"]

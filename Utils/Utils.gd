@@ -39,3 +39,10 @@ func ask_dialog(question):
 	var dialog = MainInstances.dialog
 	if dialog != null:
 		dialog.ask(question)
+
+
+func shop_dialog(message):
+	var MainInstances = get_main_instances()
+	var dialog = MainInstances.dialog
+	if dialog != null:
+		dialog.shop(message)
