@@ -1,7 +1,6 @@
 extends Area2D
 
 export(String, FILE, "*.tscn") var next_level_path = ""
-export(int) var portal_id = 0
 export(bool) var STAIRS_UP = false
 
 onready var stairsUp = $StairsUp

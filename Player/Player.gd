@@ -12,8 +12,8 @@ export(int) var FRICTION = 220
 export(int) var INTERACT_DISTANCE = 4
 export(float) var INVINCIBILITY_TIME = 0.6
 export(float) var LEVEL_UP_INVINCIBILITY_TIME = 5
-export(int) var SPELL_360_MAGIC_COST = 100
-export(int) var SPELL_MAGIC_COST = 50
+export(int) var SPELL_360_MAGIC_COST = 50
+export(int) var SPELL_MAGIC_COST = 25
 
 enum PlayerState {
 	MOVE,
@@ -126,7 +126,9 @@ func set_facing(vec):
 	player_facing = vec
 	spellHitbox.knockback_vector = vec
 	swordHitbox.knockback_vector = vec
-	interactionRay.cast_to = vec * INTERACT_DISTANCE
+	interactionRay.cast_to = vec
+	interactionRay.scale.x = INTERACT_DISTANCE
+	interactionRay.scale.y = INTERACT_DISTANCE
 	animationTree.set("parameters/Idle/blend_position", vec)
 	animationTree.set("parameters/Run/blend_position", vec)
 	animationTree.set("parameters/Spell/blend_position", vec)
@@ -179,8 +181,7 @@ func move_state(delta):
 		if Input.is_action_pressed("throw_behind_modifier"):
 			throw_potion(true)
 		else:
-			animationState.travel("Throw")
-			state = PlayerState.THROW
+			throw_potion()
 	elif Input.is_action_just_pressed("sword_attack"):
 		animationState.travel("Sword")
 		Utils.instance_scene_on_main(SwipeSound, global_position)

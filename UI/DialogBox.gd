@@ -97,8 +97,13 @@ func say(message):
 	characterTimer.start()
 
 
-func ask(question):
+func ask(question, default=false):
 	self.pause = true
+	answer = default
+	if answer:
+		yesnobox.frame = 0
+	else:
+		yesnobox.frame = 1
 	is_question = true
 	current_message = question
 	characterTimer.start()

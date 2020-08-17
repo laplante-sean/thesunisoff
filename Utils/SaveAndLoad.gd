@@ -70,6 +70,7 @@ func load_level(path):
 
 	save_game()
 
+
 func _save_data_to_file(data):
 	"""
 	Write a file with the current save data

@@ -17,6 +17,7 @@ func _ready():
 	Events.connect("yesno_answer", self, "_on_Events_yesno_answer")
 	PlayerStats.connect("no_health", self, "_on_PlayerStats_no_health")
 	spawn()
+	Events.emit_signal("level_loaded", LEVEL_ID)
 
 
 func spawn():
@@ -98,4 +99,4 @@ func load_data(data):
 
 
 func _on_DeathWaitTime_timeout():
-	Utils.call_deferred("ask_dialog", retry_question)
+	Utils.call_deferred("ask_dialog", retry_question, true)

@@ -34,11 +34,11 @@ func say_dialog(message):
 		dialog.say(message)
 
 
-func ask_dialog(question):
+func ask_dialog(question, default=false):
 	var MainInstances = get_main_instances()
 	var dialog = MainInstances.dialog
 	if dialog != null:
-		dialog.ask(question)
+		dialog.ask(question, default)
 
 
 func shop_dialog(message):

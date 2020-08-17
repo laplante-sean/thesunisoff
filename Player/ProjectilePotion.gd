@@ -14,8 +14,10 @@ enum PotionState {
 }
 
 export(float) var FLIGHT_TIME = 0.3
-export(int) var IMPACT_RADIUS = 5
-export(float) var LINGER_TIME = 5
+export(int) var IMPACT_RADIUS = 7
+export(float) var LINGER_TIME = 7
+export(float) var FIRE_MOVEMENT_BUF = 0.45
+export(float) var ICE_MOVEMENT_BUF = 0.1
 
 var state = PotionState.FLY
 var type = Potion.PotionType.FIRE setget set_type
@@ -52,14 +54,14 @@ func set_type(value):
 			linger_animation = "LingerFire"
 			disolve_animation = "DisolveFire"
 			lighting = FireLight.instance()
-			hitbox.MOVEMENT_BUF = 0.75
+			hitbox.MOVEMENT_BUF = FIRE_MOVEMENT_BUF
 		Potion.PotionType.ICE:
 			fly_animation = "Ice"
 			ignite_animation = "IgniteIce"
 			linger_animation = "LingerIce"
 			disolve_animation = "DisolveIce"
 			lighting = IceLight.instance()
-			hitbox.MOVEMENT_BUF = 0.2
+			hitbox.MOVEMENT_BUF = ICE_MOVEMENT_BUF
 	
 	add_child(lighting)
 

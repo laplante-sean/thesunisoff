@@ -6,7 +6,7 @@ export(int) var MIN_QUANTITY = 3
 export(int) var MAX_QUANTITY = 5
 export(bool) var RESPAWN_ONCE_DEAD = true  # respawn when all are dead
 export(bool) var DEFEATABLE = false
-export(int) var SPREAD_RADIUS = 12
+export(int) var SPREAD_RADIUS = 10
 
 signal defeated
 
@@ -25,8 +25,10 @@ func spawn():
 
 func spawn_one():
 	var point = get_next_spawn_point()
-	var inst = Utils.instance_scene_on_main(load(SPAWN_NPC), point)
-	inst.connect("tree_exited", self, "_on_NPC_tree_exited")
+	var instance = load(SPAWN_NPC).instance()
+	instance.position = point
+	add_child(instance)
+	instance.connect("tree_exited", self, "_on_NPC_tree_exited")
 
 
 func get_next_spawn_point():
@@ -34,7 +36,7 @@ func get_next_spawn_point():
 		rand_range(-SPREAD_RADIUS, SPREAD_RADIUS),
 		rand_range(-SPREAD_RADIUS, SPREAD_RADIUS)
 	)
-	return global_position + target_vector
+	return target_vector
 
 
 func _on_NPC_tree_exited():

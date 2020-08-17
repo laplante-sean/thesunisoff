@@ -4,4 +4,6 @@
 
 [node name="FireLight" type="Light2D"]
 texture = ExtResource( 1 )
+texture_scale = 0.8
+mode = 2
 shadow_enabled = true

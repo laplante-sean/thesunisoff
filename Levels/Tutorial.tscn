@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Levels/Level.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Levels/LevelPortal.tscn" type="PackedScene" id=2]
+
+[node name="Tutorial" instance=ExtResource( 1 )]
+LEVEL_ID = "tutorial"
+
+[node name="SpawnPoint" parent="." index="2"]
+position = Vector2( 30.4116, 32.9606 )
+
+[node name="LevelPortal" parent="." index="4" instance=ExtResource( 2 )]
+position = Vector2( 24.712, -156.934 )
+next_level_path = "res://Levels/Overworld.tscn"
+STAIRS_UP = true

@@ -7,6 +7,8 @@ export(int) var ACCELERATION = 100
 export(int) var MAX_SPEED = 30
 export(int) var FRICTION = 200
 export(int) var WANDER_TARGET_RANGE = 4
+export(int) var WANDER_MIN_TIME = 1
+export(int) var WANDER_MAX_TIME = 3
 export(int) var SOFT_COLLISION_PUSH_FACTOR = 200
 export(float) var INVICIBILITY_TIME = 0.4
 
@@ -63,7 +65,7 @@ func _physics_process(delta):
 
 			if global_position.distance_to(wanderController.target_position) <= WANDER_TARGET_RANGE:
 				state = pick_random_state([EnemyState.IDLE, EnemyState.WANDER])
-				wanderController.start_wander_timer(rand_range(1, 3))
+				wanderController.start_wander_timer(rand_range(WANDER_MIN_TIME, WANDER_MAX_TIME))
 		EnemyState.CHASE:
 			var player = playerDetectionZone.player
 			if player != null:
@@ -117,7 +119,7 @@ func move_toward_position(pos, delta):
 func check_and_update_state():
 	if wanderController.get_time_left() == 0:
 		state = pick_random_state([EnemyState.IDLE, EnemyState.WANDER])
-		wanderController.start_wander_timer(rand_range(1, 3))
+		wanderController.start_wander_timer(rand_range(WANDER_MIN_TIME, WANDER_MAX_TIME))
 
 
 func pick_random_state(state_list):

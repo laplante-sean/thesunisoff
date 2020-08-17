@@ -44,6 +44,8 @@ script = ExtResource( 4 )
 ACCELERATION = 75
 MAX_SPEED = 12
 FRICTION = 125
+WANDER_MIN_TIME = 3
+WANDER_MAX_TIME = 6
 
 [node name="ShadowSprite" parent="." index="0"]
 position = Vector2( 0, -2 )
@@ -53,7 +55,7 @@ texture = ExtResource( 3 )
 position = Vector2( 0, -4 )
 frames = SubResource( 6 )
 animation = "Animate"
-frame = 3
+frame = 1
 playing = true
 
 [node name="Collider" parent="." index="2"]

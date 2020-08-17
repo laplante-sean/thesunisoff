@@ -17,8 +17,8 @@ var spell_knockback = 100 setget set_spell_knockback
 var spell_360_knockback = 150 setget set_spell_360_knockback
 var current_level_path = "res://Levels/Overworld.tscn"
 var overworld_return_point = Vector2.ZERO
-var inventory = {}
 var first_time = true
+var inventory = {}
 
 var next_level_exp_threshold = 100
 
@@ -275,11 +275,13 @@ func describe_inventory():
 		if fire:
 			message += "\n Fire"
 		if earth:
-			message += "\n  Earth"
+			message += "\n Earth"
 		if water:
-			message += "\n  Water"
+			message += "\n Water"
 		if air:
-			message += "\n  Air"
+			message += "\n Air"
+	else:
+		message += "\nAmulets: None"
 
 	Utils.say_dialog(message)
 
@@ -294,6 +296,8 @@ func describe_stats():
 	message += "\n360 Dmg: {spell_360_damage}".format({"spell_360_damage": 3 + self.weapon_hitpoint_boost})
 	message += "\n360 Pwr: {spell_360_knockback}".format({"spell_360_knockback": self.spell_360_knockback})
 	message += "\nEnemy HP: +{enemy_health_boost}".format({"enemy_health_boost": self.enemy_health_boost})
+	message += "\nDeaths: {total_deaths}".format({"total_deaths": self.deaths})
+	message += "\nKills: {total_kills}".format({"total_kills": self.enemies_killed})
 	
 	Utils.say_dialog(message)
 
