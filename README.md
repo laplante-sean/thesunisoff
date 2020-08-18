@@ -4,7 +4,7 @@ Submission for LOWREZJAM 2020 game jam: 2D top-down maze exploring dungeon crawl
 
 ## Installation
 
-See the releases for an executable download. Also available at [itch.io](https://fire-bellied-toad.itch.io/the-sun-is-off)
+See the releases for an executable download. Play in your browser or download from [itch.io](https://fire-bellied-toad.itch.io/the-sun-is-off) as well.
 
 ## How to play
 
