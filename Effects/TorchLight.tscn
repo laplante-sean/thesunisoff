@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Effects/torch-light.png" type="Texture" id=1]
 [ext_resource path="res://Effects/torch.png" type="Texture" id=2]
+[ext_resource path="res://Effects/TorchLight.gd" type="Script" id=3]
 
 [node name="TorchLight" type="Light2D"]
+visible = false
 light_mask = -2147483647
 texture = ExtResource( 1 )
 texture_scale = 0.8
@@ -11,6 +13,7 @@ mode = 2
 shadow_enabled = true
 shadow_filter = 5
 shadow_item_cull_mask = -2147483647
+script = ExtResource( 3 )
 
 [node name="Torch" type="Sprite" parent="."]
 texture = ExtResource( 2 )

@@ -7,7 +7,7 @@
 extents = Vector2( 8, 2 )
 
 [sub_resource type="OccluderPolygon2D" id=2]
-polygon = PoolVector2Array( 8, -3, 8, -3, -8, -3, -8, -3 )
+polygon = PoolVector2Array( -7, -2, -7, 4, -7, 4, -7, -2, 7, -2, 7, 4, 7, 4, 7, -2 )
 
 [node name="WideDoor" instance=ExtResource( 1 )]
 

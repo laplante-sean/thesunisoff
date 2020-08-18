@@ -4,7 +4,7 @@
 [ext_resource path="res://Levels/LevelPortal.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Levels/Dungeon.gd" type="Script" id=3]
 [ext_resource path="res://Objects/Sign.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Objects/Chest.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Items/EarthAmulet.tscn" type="PackedScene" id=5]
 
 [node name="EarthDungeon" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
@@ -20,10 +20,8 @@ tile_data = PoolIntArray( 131060, 0, 0, 131061, 0, 1, 131062, 0, 1, 131063, 0, 1
 position = Vector2( -54, 27 )
 message = "I ran out of time. So this amulet is for free."
 
-[node name="Chest" parent="YSortTileMap" index="1" instance=ExtResource( 5 )]
-position = Vector2( -46, 27 )
-CONTENTS = [ "9,1" ]
-STARTING_STATE = 1
+[node name="EarthAmulet" parent="YSortTileMap" index="1" instance=ExtResource( 5 )]
+position = Vector2( -45, 28 )
 
 [node name="SpawnPoint" parent="." index="2"]
 position = Vector2( -81, 29 )

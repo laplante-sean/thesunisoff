@@ -68,6 +68,7 @@ func load_level(path):
 	if save_data != null and save_data.has(current_level.LEVEL_ID):
 		current_level.load_data(save_data[current_level.LEVEL_ID])
 
+	Events.emit_signal("level_loaded", current_level.LEVEL_ID)
 	save_game()
 
 

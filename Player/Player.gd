@@ -259,12 +259,12 @@ func interact():
 	if queued_locked_interactible != null:
 		return
 
-	if object is Chest and object.is_locked():
+	if object is Chest and object.is_locked() and object.UNLOCK_WITH_KEY:
 		if stats.has_item(ItemUtils.get_item_id("ChestKey")):
 			queued_locked_interactible = object
 			Utils.ask_dialog("Use 1 chest key to unlock the chest?")
 			return
-	elif object is Door and object.is_locked():
+	elif object is Door and object.is_locked() and object.UNLOCK_WITH_KEY:
 		if stats.has_item(ItemUtils.get_item_id("DoorKey")):
 			queued_locked_interactible = object
 			Utils.ask_dialog("Use 1 door key to unlock the door?")

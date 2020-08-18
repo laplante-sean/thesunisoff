@@ -38,3 +38,4 @@ See [wiki](https://github.com/vix597/thesunisoff/wiki)
   * Level up sound
   * Fire/Ice potion pickup sound
   * Amulet pickup sound
+  * Tutorial success sound

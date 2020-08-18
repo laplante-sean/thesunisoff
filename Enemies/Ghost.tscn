@@ -70,7 +70,6 @@ material = SubResource( 1 )
 position = Vector2( 0, -3 )
 frames = SubResource( 7 )
 animation = "Animate"
-frame = 1
 playing = true
 
 [node name="Collider" parent="." index="3"]

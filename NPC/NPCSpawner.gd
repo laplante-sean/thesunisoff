@@ -24,10 +24,11 @@ func spawn():
 
 
 func spawn_one():
+	var parent = get_parent()
 	var point = get_next_spawn_point()
 	var instance = load(SPAWN_NPC).instance()
-	instance.position = point
-	add_child(instance)
+	instance.global_position = point
+	parent.add_child(instance)
 	instance.connect("tree_exited", self, "_on_NPC_tree_exited")
 
 
@@ -36,7 +37,7 @@ func get_next_spawn_point():
 		rand_range(-SPREAD_RADIUS, SPREAD_RADIUS),
 		rand_range(-SPREAD_RADIUS, SPREAD_RADIUS)
 	)
-	return target_vector
+	return global_position + target_vector
 
 
 func _on_NPC_tree_exited():

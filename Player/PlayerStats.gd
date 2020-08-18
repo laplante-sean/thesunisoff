@@ -219,6 +219,19 @@ func has_all_four_amulets():
 	return false
 
 
+func count_amulets():
+	var count = 0
+	if has_item(ItemUtils.get_item_id("FireAmulet")):
+		count += 1
+	if has_item(ItemUtils.get_item_id("EarthAmulet")):
+		count += 1
+	if has_item(ItemUtils.get_item_id("WaterAmulet")):
+		count += 1
+	if has_item(ItemUtils.get_item_id("AirAmulet")):
+		count += 1
+	return count
+
+
 func count_item(item_id):
 	if not str(item_id) in self.inventory:
 		return 0

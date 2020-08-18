@@ -12,6 +12,8 @@ enum DoorState {
 }
 
 export(DoorState) var STARTING_STATE = DoorState.LOCKED
+export(String) var LOCKED_MESSAGE = "The door is locked"
+export(bool) var UNLOCK_WITH_KEY = true
 
 var state = DoorState.LOCKED setget set_state
 
@@ -63,7 +65,7 @@ func interact():
 	match self.state:
 		DoorState.LOCKED:
 			Utils.instance_scene_on_main(LockedDoorSound, global_position)
-			Utils.say_dialog("The door is locked")
+			Utils.say_dialog(LOCKED_MESSAGE)
 		DoorState.UNLOCKED:
 			Utils.instance_scene_on_main(DoorOpenSound, global_position)
 			self.state = DoorState.OPEN

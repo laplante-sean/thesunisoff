@@ -55,7 +55,7 @@ texture = ExtResource( 3 )
 position = Vector2( 0, -4 )
 frames = SubResource( 6 )
 animation = "Animate"
-frame = 1
+frame = 4
 playing = true
 
 [node name="Collider" parent="." index="2"]

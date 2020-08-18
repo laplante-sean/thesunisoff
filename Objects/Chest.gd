@@ -15,8 +15,10 @@ enum ChestState {
 # of item_id,quantity
 export(Array, String) var CONTENTS = []
 export(ChestState) var STARTING_STATE = ChestState.LOCKED
+export(String) var LOCKED_MESSAGE = "Sorry, the chest is locked."
 export(bool) var RANDOM_CHEST = false
 export(bool) var IGNORE_SAVE = false
+export(bool) var UNLOCK_WITH_KEY = true
 
 var state = ChestState.LOCKED setget set_state
 
@@ -76,7 +78,7 @@ func interact():
 	match self.state:
 		ChestState.LOCKED:
 			Utils.instance_scene_on_main(LockedDoorSound, global_position)
-			Utils.say_dialog("Sorry, the chest is locked.")
+			Utils.say_dialog(LOCKED_MESSAGE)
 		ChestState.UNLOCKED:
 			Utils.instance_scene_on_main(ChestOpenSound, global_position)
 			animationPlayer.play("Open")
