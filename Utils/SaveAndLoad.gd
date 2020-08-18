@@ -1,12 +1,19 @@
 extends Node
 
-const SAVE_DATA_PATH = "res://save_data.json"
+const SAVE_DATA_PATH = "user://the_sun_is_off_save_data.json"
+
+export(String, FILE, "*.tscn") var tutorial_level_path = "res://Levels/Tutorial.tscn"
 
 signal let_there_be_light
 
 var MainInstances = Utils.get_main_instances()
+var play_tutorial_question = "Would you like to play the tutorial?"
 
 var save_data = null
+
+
+func _ready():
+	Events.connect("yesno_answer", self, "_on_Events_yesno_answer")
 
 
 func mark_overworld_enemies_undefeated():
@@ -44,15 +51,26 @@ func save_game():
 func load_game():
 	save_data = _load_data_from_file()
 	if save_data == null:
-		Events.emit_signal("no_save_data")
-		return  # No save file. Nothing to load
+		save_game()  # Create initial save
+		save_data = _load_data_from_file()
 
 	if not save_data.get("darkness", true):
 		emit_signal("let_there_be_light")
 
 	PlayerStats.load_data(save_data.player_stats)
+	
+	if not PlayerStats.tutorial_complete:
+		PlayerStats.tutorial_complete = true
+		Utils.ask_dialog(play_tutorial_question, true)
+	else:
+		load_level(PlayerStats.current_level_path)
 
-	load_level(PlayerStats.current_level_path)
+
+func _on_Events_yesno_answer(question, answer):
+	if question == play_tutorial_question and answer:
+		call_deferred("load_level", tutorial_level_path)
+	elif question == play_tutorial_question and not answer:
+		call_deferred("load_level", PlayerStats.current_level_path)
 
 
 func load_level(path):

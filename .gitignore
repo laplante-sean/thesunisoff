@@ -3,7 +3,7 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=c++,godot,python,visualstudio
 
 ### Save data for game ###
-save_data.json
+*save_data.json
 
 ### C++ ###
 # Prerequisites

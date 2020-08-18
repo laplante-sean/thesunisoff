@@ -1,16 +1,11 @@
 extends Node2D
 
-const Player = preload("res://Player/Player.tscn")
-
-export(String, FILE, "*.tscn") var start_level_path = "res://Levels/Overworld.tscn"
-export(String, FILE, "*.tscn") var tutorial_level_path = "res://Levels/Tutorial.tscn"
 export(float) var CAMERA_ZOOM_STEP = 0.05
 export(float) var MIN_ZOOM = 1
 export(float) var MAX_ZOOM = 2
 export(bool) var ZOOMING_ENABLED = false
 
 var MainInstances = Utils.get_main_instances()
-var play_tutorial_question = "Would you like to play the tutorial?"
 
 onready var camera = $Camera
 onready var theDarkness = $TheDarkness
@@ -22,11 +17,9 @@ onready var welcomeMessageTimer = $WelcomeMessageTimer
 
 func _ready():
 	Events.connect("win_the_game", self, "_on_Events_win_the_game")
-	Events.connect("no_save_data", self, "_on_Events_no_save_data")
 	Events.connect("next_level", self, "_on_Events_next_level")
 	Events.connect("amulet_collected", self, "_on_Events_amulet_collected")
 	Events.connect("level_loaded", self, "_on_Events_level_loaded")
-	Events.connect("yesno_answer", self, "_on_Events_yesno_answer")
 	SaveAndLoad.connect("let_there_be_light", self, "_on_SaveAndLoad_let_there_be_light")
 	MainInstances.dialog = uiDialogBox
 	theDarkness.visible = true
@@ -74,20 +67,12 @@ func _on_Events_win_the_game():
 	SaveAndLoad.save_game()
 
 
-func _on_Events_yesno_answer(question, answer):
-	if question == play_tutorial_question and answer:
-		SaveAndLoad.call_deferred("load_level", tutorial_level_path)
-	elif question == play_tutorial_question and not answer:
-		SaveAndLoad.call_deferred("load_level", start_level_path)
-
-
 func _on_Events_level_loaded(level_id):
 	if PlayerStats.first_time and level_id == "overworld":
+		PlayerStats.first_time = false
+		PlayerStats.tutorial_complete = true
 		welcomeMessageTimer.start()
-
-
-func _on_Events_no_save_data():
-	Utils.call_deferred("ask_dialog", play_tutorial_question, true)
+		SaveAndLoad.save_game()
 
 
 func _on_Events_next_level(path):

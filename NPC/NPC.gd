@@ -1,6 +1,8 @@
 extends KinematicBody2D
 class_name NPC
 
+signal interacted_with()
+
 export(int) var ACCELERATION = 100
 export(int) var MAX_SPEED = 30
 export(int) var FRICTION = 200
@@ -94,6 +96,8 @@ func interact():
 		Utils.say_dialog(INTERACTION_TEXT)
 	elif len(INTERACTION_TEXT) > 0 and INTERACT_WITH_QUESTION:
 		Utils.ask_dialog(INTERACTION_TEXT)
+
+	emit_signal("interacted_with")
 
 
 func _on_Events_yesno_answer(question, answer):

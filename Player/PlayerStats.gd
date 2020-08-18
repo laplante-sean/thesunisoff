@@ -18,6 +18,7 @@ var spell_360_knockback = 150 setget set_spell_360_knockback
 var current_level_path = "res://Levels/Overworld.tscn"
 var overworld_return_point = Vector2.ZERO
 var first_time = true
+var tutorial_complete = false
 var inventory = {}
 
 var next_level_exp_threshold = 100
@@ -65,7 +66,9 @@ func save_data():
 			y = self.overworld_return_point.y
 		},
 		enemy_health_boost = self.enemy_health_boost,
-		weapon_hitpoint_boost = self.weapon_hitpoint_boost
+		weapon_hitpoint_boost = self.weapon_hitpoint_boost,
+		tutorial_complete = self.tutorial_complete,
+		first_time = self.first_time
 	}
 
 
@@ -87,7 +90,8 @@ func load_data(stats):
 	self.overworld_return_point.y = stats.get("overworld_return_point", {}).get("y", 0)
 	self.enemy_health_boost = stats.get("enemy_health_boost", 0)
 	self.weapon_hitpoint_boost = stats.get("weapon_hitpoint_boost", 0)
-	self.first_time = false
+	self.tutorial_complete = stats.get("tutorial_complete", false)
+	self.first_time = stats.get("first_time", true)
 	if stats.get("health", self.health) != 0:
 		self.health = stats.get("health", self.health)
 

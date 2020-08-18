@@ -62,6 +62,8 @@ func set_state(value):
 
 
 func interact():
+	.interact()
+	
 	match self.state:
 		DoorState.LOCKED:
 			Utils.instance_scene_on_main(LockedDoorSound, global_position)

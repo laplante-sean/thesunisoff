@@ -27,8 +27,10 @@ func interact():
 	if PlayerStats.has_all_four_amulets() and len(ALL_THE_AMULETS_MESSAGE) > 0:
 		Utils.say_dialog(ALL_THE_AMULETS_MESSAGE)
 		return
-	
+
 	Utils.shop_dialog("What're you buyin'?")
+
+	emit_signal("interacted_with")
 
 
 func _on_Events_purchase_item(item):

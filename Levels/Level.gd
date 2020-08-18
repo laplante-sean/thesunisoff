@@ -12,7 +12,6 @@ onready var ySortTileMap = $YSortTileMap
 onready var deathWaitTime = $DeathWaitTime
 
 func _ready():
-	Events.connect("no_save_data", self, "_on_Events_no_save_data")
 	Events.connect("yesno_answer", self, "_on_Events_yesno_answer")
 	PlayerStats.connect("no_health", self, "_on_PlayerStats_no_health")
 	spawn()
@@ -43,16 +42,6 @@ func _on_Events_yesno_answer(question, answer):
 			call_deferred("spawn")
 		else:
 			get_tree().quit(0)
-
-
-func _on_Events_no_save_data():
-	call_deferred("trigger_spawners")
-
-
-func trigger_spawners():
-	for child in ySortTileMap.get_children():
-		if child is NPCSpawner:
-			child.spawn()
 
 
 func save_data():

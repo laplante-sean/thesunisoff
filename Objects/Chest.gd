@@ -29,29 +29,33 @@ func _ready():
 	self.state = STARTING_STATE
 	
 	if RANDOM_CHEST:
-		CONTENTS = []
-		var num_potions = int(rand_range(1, 3))
-		var num_coins = int(rand_range(20, 100))
-		
-		CONTENTS.append("{id},{quantity}".format({
-			"id": ItemUtils.get_item_id("Coin"),
-			"quantity": num_coins
-		}))
-		
-		for idx in range(num_potions):
-			var potion_chance = int(rand_range(0, 100))
-			var potion_item = null
+		fill_random_chest()
 
-			if potion_chance > 50 and potion_chance < 80:
-				potion_item = "FirePotion"
-			elif potion_chance > 80:
-				potion_item = "IcePotion"
-			else:
-				potion_item = "HealthPotion"
-			
-			CONTENTS.append("{id},1".format(
-				{"id": ItemUtils.get_item_id(potion_item)}
-			))
+
+func fill_random_chest():
+	CONTENTS = []
+	var num_potions = int(rand_range(1, 3))
+	var num_coins = int(rand_range(20, 100))
+	
+	CONTENTS.append("{id},{quantity}".format({
+		"id": ItemUtils.get_item_id("Coin"),
+		"quantity": num_coins
+	}))
+	
+	for idx in range(num_potions):
+		var potion_chance = int(rand_range(0, 100))
+		var potion_item = null
+
+		if potion_chance > 50 and potion_chance < 80:
+			potion_item = "FirePotion"
+		elif potion_chance > 80:
+			potion_item = "IcePotion"
+		else:
+			potion_item = "HealthPotion"
+		
+		CONTENTS.append("{id},1".format(
+			{"id": ItemUtils.get_item_id(potion_item)}
+		))
 
 
 func is_locked():
@@ -75,6 +79,8 @@ func set_state(value):
 
 
 func interact():
+	.interact()
+	
 	match self.state:
 		ChestState.LOCKED:
 			Utils.instance_scene_on_main(LockedDoorSound, global_position)
@@ -120,3 +126,14 @@ func load_data(data):
 	CONTENTS = []
 	for item in data.contents:
 		CONTENTS.append(item)
+
+
+func _on_VisibilityEnabler2D_screen_entered():
+	if len(CONTENTS) == 0 and IGNORE_SAVE and RANDOM_CHEST:
+		if self.state == ChestState.OPEN:
+			self.state = ChestState.UNLOCKED
+		fill_random_chest()
+
+
+func _on_VisibilityEnabler2D_screen_exited():
+	pass # Replace with function body.

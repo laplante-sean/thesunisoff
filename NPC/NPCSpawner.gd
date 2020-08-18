@@ -45,7 +45,7 @@ func _on_NPC_tree_exited():
 		call_deferred("spawn_one")
 	else:
 		dead += 1
-		if dead == spawn:
+		if dead >= spawn:
 			if DEFEATABLE:
 				defeated = true
 			emit_signal("defeated")
@@ -71,3 +71,10 @@ func _on_VisibilityEnabler2D_screen_entered():
 	if not spawned:
 		spawned = true
 		call_deferred("spawn")
+
+
+func _on_VisibilityEnabler2D_screen_exited():
+	if not DEFEATABLE and dead >= spawn and spawned:
+		dead = 0
+		spawn = 0
+		spawned = false

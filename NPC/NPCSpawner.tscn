@@ -11,3 +11,4 @@ modulate = Color( 1, 1, 1, 0.223529 )
 position = Vector2( -1.90735e-06, 2 )
 scale = Vector2( 6.2, 6 )
 [connection signal="screen_entered" from="VisibilityEnabler2D" to="." method="_on_VisibilityEnabler2D_screen_entered"]
+[connection signal="screen_exited" from="VisibilityEnabler2D" to="." method="_on_VisibilityEnabler2D_screen_exited"]
