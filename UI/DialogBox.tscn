@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://UI/DialogBox.gd" type="Script" id=1]
 [ext_resource path="res://UI/dialog-box.png" type="Texture" id=2]
@@ -6,58 +6,49 @@
 [ext_resource path="res://Audio/dialog-continue-click.ogg" type="AudioStream" id=4]
 [ext_resource path="res://UI/yes-no-box.png" type="Texture" id=5]
 [ext_resource path="res://UI/shop-ui.png" type="Texture" id=6]
+[ext_resource path="res://Fonts/DialogBoxFont-KenneyMiniSquare.tres" type="DynamicFont" id=7]
 
-[sub_resource type="DynamicFontData" id=1]
-antialiased = false
-font_path = "res://Fonts/KenneyMini.ttf"
-
-[sub_resource type="DynamicFont" id=2]
-size = 7
-extra_spacing_top = -1
-extra_spacing_bottom = -4
-font_data = SubResource( 1 )
-
-[sub_resource type="AtlasTexture" id=3]
+[sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 3 )
 region = Rect2( 0, 0, 5, 1 )
 
-[sub_resource type="AtlasTexture" id=4]
+[sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 3 )
 region = Rect2( 5, 0, 5, 1 )
 
-[sub_resource type="AtlasTexture" id=5]
+[sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 3 )
 region = Rect2( 10, 0, 5, 1 )
 
-[sub_resource type="AtlasTexture" id=6]
+[sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 3 )
 region = Rect2( 15, 0, 5, 1 )
 
-[sub_resource type="SpriteFrames" id=7]
+[sub_resource type="SpriteFrames" id=6]
 animations = [ {
-"frames": [ SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
+"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
 "loop": true,
 "name": "Animate",
 "speed": 5.0
 } ]
 
-[sub_resource type="DynamicFontData" id=8]
+[sub_resource type="DynamicFontData" id=7]
 antialiased = false
 font_path = "res://Fonts/KenneyMini.ttf"
 
-[sub_resource type="DynamicFont" id=9]
+[sub_resource type="DynamicFont" id=8]
 size = 7
 extra_spacing_top = -1
-font_data = SubResource( 8 )
+font_data = SubResource( 7 )
 
-[sub_resource type="DynamicFontData" id=10]
+[sub_resource type="DynamicFontData" id=9]
 antialiased = false
 font_path = "res://Fonts/KenneyMini.ttf"
 
-[sub_resource type="DynamicFont" id=11]
+[sub_resource type="DynamicFont" id=10]
 size = 7
 extra_spacing_top = -2
-font_data = SubResource( 10 )
+font_data = SubResource( 9 )
 
 [node name="DialogBox" type="Control"]
 pause_mode = 2
@@ -85,8 +76,9 @@ margin_left = 1.0
 margin_top = 1.0
 margin_right = -1.0
 margin_bottom = -1.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = ExtResource( 7 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "test test weird spacing with"
 autowrap = true
 max_lines_visible = 3
 __meta__ = {
@@ -99,8 +91,9 @@ wait_time = 0.05
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 visible = false
 position = Vector2( 58, 62 )
-frames = SubResource( 7 )
+frames = SubResource( 6 )
 animation = "Animate"
+frame = 1
 playing = true
 centered = false
 
@@ -120,7 +113,7 @@ margin_left = -6.0
 margin_top = -7.0
 margin_right = 9.0
 margin_bottom = 1.0
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 8 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Yes"
 __meta__ = {
@@ -131,7 +124,7 @@ __meta__ = {
 margin_left = -6.0
 margin_right = 9.0
 margin_bottom = 8.0
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 8 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "No"
 __meta__ = {
@@ -149,7 +142,7 @@ margin_left = -11.0
 margin_top = -17.0
 margin_right = 16.0
 margin_bottom = -10.0
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 10 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Health"
 __meta__ = {
@@ -161,7 +154,7 @@ margin_left = -11.0
 margin_top = -8.0
 margin_right = 16.0
 margin_bottom = -1.0
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 10 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Fire"
 __meta__ = {
@@ -173,7 +166,7 @@ margin_left = -11.0
 margin_top = 1.0
 margin_right = 16.0
 margin_bottom = 8.0
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 10 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Ice"
 __meta__ = {
@@ -185,7 +178,7 @@ margin_left = -11.0
 margin_top = 10.0
 margin_right = 16.0
 margin_bottom = 17.0
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 10 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Exit"
 __meta__ = {

@@ -6,9 +6,9 @@ const ProjectilePotionScene = preload("res://Player/ProjectilePotion.tscn")
 const LevelUpSound = preload("res://Audio/LevelUpSound.tscn")
 const SwipeSound = preload("res://Audio/SwipeSound.tscn")
 
-export(int) var ACCELERATION = 200
+export(int) var ACCELERATION = 400
 export(int) var MAX_SPEED = 45
-export(int) var FRICTION = 220
+export(int) var FRICTION = 400
 export(int) var INTERACT_DISTANCE = 4
 export(float) var INVINCIBILITY_TIME = 0.6
 export(float) var LEVEL_UP_INVINCIBILITY_TIME = 5
@@ -139,8 +139,50 @@ func set_facing(vec):
 	animationTree.set("parameters/Success/blend_position", vec)
 
 
+func get_potion_item_id(value):
+	var item = null
+
+	match value:
+		EquipedPotion.HEALTH:
+			item = ItemUtils.get_item_id("HealthPotion")
+		EquipedPotion.FIRE:
+			item = ItemUtils.get_item_id("FirePotion")
+		EquipedPotion.ICE:
+			item = ItemUtils.get_item_id("IcePotion")
+
+	return item
+
+
 func set_potion(value):
-	potion = value
+	if value <= 0:
+		value = EquipedPotion.ICE
+	elif value > EquipedPotion.ICE:
+		value = EquipedPotion.HEALTH
+
+	var item = get_potion_item_id(value)
+	var found = true
+
+	if item != null and not PlayerStats.has_item(item):
+		found = false
+		var nxt_item = value + 1
+		while not found:
+			if nxt_item > EquipedPotion.ICE:
+				nxt_item = 1
+			if nxt_item == item:
+				break
+			
+			if PlayerStats.has_item(get_potion_item_id(nxt_item)):
+				found = true
+				value = nxt_item
+				break
+			
+			nxt_item += 1
+	
+	if not found:
+		potion = EquipedPotion.NONE
+	else:
+		potion = value
+
 	Events.emit_signal("equip_potion", value)
 
 
@@ -188,6 +230,10 @@ func move_state(delta):
 		state = PlayerState.ATTACK
 	elif Input.is_action_just_pressed("interact"):
 		interact()
+	elif Input.is_action_just_pressed("next_potion"):
+		self.potion += 1
+	elif Input.is_action_just_pressed("prev_potion"):
+		self.potion -= 1
 	elif Input.is_action_just_pressed("equip_health") and PlayerStats.has_item(ItemUtils.get_item_id("HealthPotion")):
 		self.potion = EquipedPotion.HEALTH
 	elif Input.is_action_just_pressed("equip_fire") and PlayerStats.has_item(ItemUtils.get_item_id("FirePotion")):

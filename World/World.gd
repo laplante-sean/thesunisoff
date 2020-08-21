@@ -16,6 +16,7 @@ onready var welcomeMessageTimer = $WelcomeMessageTimer
 
 
 func _ready():
+	Input.connect("joy_connection_changed", self, "_on_joy_connection_changed")
 	Events.connect("win_the_game", self, "_on_Events_win_the_game")
 	Events.connect("next_level", self, "_on_Events_next_level")
 	Events.connect("amulet_collected", self, "_on_Events_amulet_collected")
@@ -24,6 +25,13 @@ func _ready():
 	MainInstances.dialog = uiDialogBox
 	theDarkness.visible = true
 	SaveAndLoad.load_game()
+
+
+func _on_joy_connection_changed(device_id, connected):
+	if connected:
+		print("New input: ", Input.get_joy_name(device_id))
+	else:
+		print("Keyboard/mouse")
 
 
 func _physics_process(_delta):
