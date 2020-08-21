@@ -168,7 +168,7 @@ func set_potion(value):
 		while not found:
 			if nxt_item > EquipedPotion.ICE:
 				nxt_item = 1
-			if nxt_item == item:
+			if nxt_item == value:
 				break
 			
 			if PlayerStats.has_item(get_potion_item_id(nxt_item)):
@@ -183,7 +183,7 @@ func set_potion(value):
 	else:
 		potion = value
 
-	Events.emit_signal("equip_potion", value)
+	Events.emit_signal("equip_potion", potion)
 
 
 func play_walking_sound():
